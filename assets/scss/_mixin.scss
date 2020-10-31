@@ -1,0 +1,31 @@
+$line-height: 3.5rem;
+$margin: 0 0 2.5rem;
+$opacity: .8;
+$text-shadow: 1px 1px 2px rgba(Silver, .8);
+$box-shadow: 0 1px 1px;
+$bg-color-navi: #FAE3BE;
+$navi-border: 1px solid #dfdfdf;
+$font-600: 600;
+$font-large: large;
+
+$golden: 1.681;
+$silver: 1.414;
+
+$width-sm: 21.25rem;
+$width-md: 48rem;
+$width-lg: 64rem;
+
+$breakpoints: (
+  'xs': 'screen and (max-witdh: 21.245rem)',
+  'sm': 'screen and (min-width: 21.25rem) and (max-width: 47.9375rem)',
+  'md': 'screen and (min-width: 48rem) and (max-width: 63.95rem)',
+  'lg': 'screen and (min-width: 64rem)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+

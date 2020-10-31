@@ -1,0 +1,94 @@
+@import "compass";
+@import "mixin";
+@import "common";
+@import "sgn-common";
+@import "headerbar";
+@import "new-list";
+@import "list";
+@import "single";
+@import "category";
+@import "footerbar";
+@import "page";
+@import "breadcrumb";
+@import "contact_form";
+@import "sns";
+@import "nextprev";
+@import "ad";
+@import "404";
+@import "sidebar";
+@import "embed";
+@import "icon/*.png";
+@include all-icon-sprites;
+
+html {
+    font-size:  16px;
+}
+
+body {
+  background-color: #EEE;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.icon-* { width: 1rem; height: 1rem }
+// .icon-arrow-left { width: 16px; height: 16px  }
+// .icon-arrow-right { width: 16px; height: 16px  }
+// .icon-calender { width: 16px; height: 16px  }
+// .icon-home { width: 16px; height: 16px  }
+// .icon-start { width: 16px; height: 16px  }
+// .icon-tag { width: 16px; height: 16px  }
+
+header, footer, article, section {
+  background-color: #FFF;
+}
+
+amp-img {
+  @include border-radius(2px, 2px);
+  @include box-shadow($box-shadow);
+}
+
+amp-lightbox, .sgn-list-section  {
+  amp-img {
+    box-shadow: initial;
+    border-radius: initial;
+  }
+}
+
+amp-image-lightbox, amp-lightbox { 
+  background: rgba(0, 10, 10, 0.9);
+}
+
+.sgn-container {
+    max-width: 1280px;
+    min-width: 320px;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: .5rem;
+}
+
+.sgn-container {
+  @include mq(sm) {
+    width: 100%
+  }
+}
+
+.sgn-container {
+    @include mq(md) {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+.sgn-container {
+  @include mq(lg) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
+  }
+}
+
+
+

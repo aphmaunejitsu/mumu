@@ -1,0 +1,38 @@
+.sgn-list-category {
+  .sgn-category-title {
+    @include text-shadow($text-shadow);
+    font-size: large;
+  }
+
+  .category-header {
+    border: initial;
+    border-top: $navi-border;
+    border-right: $navi-border;
+    border-left: $navi-border;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    line-height: 1.5rem;
+  }
+}
+
+.sgn-list-category {
+    @include mq(sm) {
+        width: 100%;
+    }
+}
+
+.sgn-list-category {
+    @include mq(md) {
+        width: 100%;
+    }
+}
+
+.sgn-list-category {
+    @include mq(lg) {
+    }
+}

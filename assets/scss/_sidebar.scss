@@ -1,0 +1,21 @@
+.sgn-sidebar {
+    width: 100%;
+}
+
+.sgn-sidebar {
+    @include mq(sm) {
+        min-width: 340px;
+    }
+}
+
+.sgn-sidebar {
+    @include mq() {
+    }
+}
+
+.sgn-sidebar {
+    @include mq(lg) {
+        width: calc(#{$width-lg} - (#{$width-lg} / #{$silver}));
+        min-width: 340px;
+    }
+}

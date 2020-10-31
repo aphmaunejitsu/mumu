@@ -1,0 +1,140 @@
+.sgn-headerbar {
+  padding-right: 1rem;
+  border-bottom: solid 1px silver;
+  .toggle {
+    cursor: pointer;
+    text-decoration: none;
+    line-height: $line-height;
+  }
+
+  .toggle:focus {
+    outline: none;
+  }
+
+  .site-title-icon {
+    .site-icon {
+      amp-img {
+       @include border-radius(16px, 16px);
+     }
+    }
+    .site-title {
+      font: 600 1rem/1.6 'M PLUS 1p';
+    }
+  }
+
+  .search-icon {
+    cursor: pointer;
+  }
+
+  .submenu {
+    line-height: 3.5rem;
+    flex: 1;
+
+    ul {
+      text-align: right;
+      float: right;
+
+      li {
+        padding: 0 1rem;
+        background: transparent;
+        opacity: $opacity;
+      }
+
+    }
+
+		a {
+			display: block;
+			text-decoration: none;
+			cursor: pointer;
+		}
+  }
+
+  .submenu {
+    @include mq(sm) {
+      display: none;
+    }
+  }
+  
+  .submenu {
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  .submenu {
+    @include mq(lg) {
+      display: inline-block;
+    }
+  }
+
+}
+
+amp-lightbox {
+  background: rgba(0,0,0,.8);
+  color: #fff;
+
+  .sgn-search-lightbox {
+    justify-content: center;
+
+    .close {
+      top: 0.5rem;
+      right: 1rem;
+      font-weight: 600;
+    }
+
+    input[type='search'] {
+      line-height: 2rem;
+      width: 18rem;
+      padding: 1rem;
+      background-color: rgba(254,244,242, 0.95);
+      @include border-radius(8px, 8px);
+    }
+
+    input[type='search'] {
+      @include mq(sm) {
+        width: 20rem;
+      }
+    }
+
+    input[type='search'] {
+      @include mq(md) {
+        width: 40rem;
+      }
+    }
+
+    input[type='search'] {
+      @include mq(lg) {
+        width: 40rem;
+      }
+    }
+
+  }
+}
+
+amp-sidebar {
+  width: 20rem;
+  background-color: rgba(254,244,242, 0.95);
+
+  .sgn-sidebar-header {
+    line-height: 3.5rem;
+    min-height: 3.5rem;
+  }
+
+  .sgn-label {
+    font-size: 1rem;
+    color: #4f4f4f;
+    line-height: 1.42857;
+    letter-spacing: .06rem;
+    color: inherit;
+
+    .menu-item {
+      margin: 0 0 .5rem;
+      letter-spacing: 0.6px;
+      line-height: 2.0625;
+      font-weight: 700;
+
+      a { text-decoration: none }
+    }
+  }
+}
+

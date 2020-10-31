@@ -1,0 +1,71 @@
+.sgn-footerbar {
+  border-top: solid 1px Silver;
+  padding: .5rem;
+
+  .home-link {
+    .site-title-icon {
+      displau: flex;
+      justify-content: center;
+      .site-icon {
+        amp-img {
+         @include border-radius(16px, 16px);
+        }
+        .site-title {
+          font: 600 1.5rem/1.6 'M PLUS 1p';
+        }
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    ul {
+      li {
+        line-height: 1.5rem;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  nav {
+    @include mq(sm) {
+      ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        li {
+          padding-left: 1.5rem;
+        }
+      }
+    }
+  }
+  nav {
+    @include mq(md) {
+      ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        li {
+          padding-left: 1.5rem;
+        }
+      }
+    }
+  }
+  nav {
+    @include mq(lg) {
+      ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        li {
+          padding-left: 1.5rem;
+        }
+      }
+    }
+  }
+}

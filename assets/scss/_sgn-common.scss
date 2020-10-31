@@ -1,0 +1,28 @@
+header.sgn-navi {
+    background-color: $bg-color-navi;
+    border: $navi-border;
+    font-weight: $font-600;
+    font-size: $font-large;
+}
+
+.category-tag {
+  background-color: khaki;
+  font-size: small;
+  padding: 0.25rem;
+  @include border-radius(2px 2px);
+  @include box-shadow($box-shadow);
+  @include text-shadow($text-shadow);
+}
+
+.post-category {
+  @extend .category-tag;
+  z-index: 999;
+  top: .25rem;
+  right: .25rem;
+}
+
+amp-social-share {
+  @include border-radius(2px 2px);
+  margin-right: .5rem;
+}
+
