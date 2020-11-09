@@ -1,6 +1,7 @@
 <?php
-require dirname( __FILE__ ) . '/../vendor/autoload.php';
+
 use Masterminds\HTML5;
+
 require_once dirname( __FILE__ ) . '/content/image.php';
 require_once dirname( __FILE__ ) . '/content/embed.php';
 require_once dirname( __FILE__ ) . '/content/iframe.php';
