@@ -1,3 +1,5 @@
+vendor/
+
 # ignore node dependency directories
 node_modules/
 
