@@ -9,8 +9,8 @@ require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/wp/wp-load.php';
 $source_origin         = $_GET['__amp_source_origin'] ?? null;
 $origin                = null;
 $allowed_source_origin = home_url();
-$origin_h              = str_replace( '.', '-', $allowed_source_origin );
-$origin_h              = str_replace( 'hcm-nights', 'hcm--nights', $origin_h );
+$origin_h              = str_replace( '-', '--', $allowed_source_origin );
+$origin_h              = str_replace( '.', '-', $origin_h );
 
 $allow_origins = array(
 	$allowed_source_origin,
@@ -20,16 +20,20 @@ $allow_origins = array(
 );
 
 $headers = getallheaders();
-if ( isset( $headers['amp-same-origin'] ) && $headers['amp-same-origin'] === 'true' ) {
+if ( isset( $headers['Amp-Same-Origin'] ) && ($headers['Amp-Same-Origin'] == 'true') ) {
 	$origin = $source_origin;
-} elseif ( isset( $headers['origin'] ) && ( array_search( $headers['origin'], $allow_origins ) !== false ) && ( $source_origin === $allowed_source_origin ) ) {
+} elseif (
+    isset( $headers['origin'] )
+    && ( array_search( $headers['origin'], $allow_origins ) !== FALSE )
+    && ( $source_origin === $allowed_source_origin )
+) {
 	$origin = $headers['origin'];
 } else {
-	// if ( WP_DEBUG ) {
-	// } else {
-	// 	header( 'HTTP/1.1 403 Forbidden' );
-	// 	exit();
-	// }
+	if ( WP_DEBUG ) {
+	} else {
+        header( 'HTTP/1.1 403 Forbidden' );
+        exit();
+	}
 }
 
 
