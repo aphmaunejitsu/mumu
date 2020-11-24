@@ -4,7 +4,7 @@
 Template Name: API SGN Newlist
  *
  */
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/wp/wp-load.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/wp/wp-load.php';
 
 $source_origin         = $_GET['__amp_source_origin'] ?? null;
 $origin                = null;
