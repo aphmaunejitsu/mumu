@@ -20,7 +20,9 @@ $allow_origins = array(
 );
 
 $headers = getallheaders();
-if ( isset( $headers['Amp-Same-Origin'] ) && ($headers['Amp-Same-Origin'] == 'true') ) {
+$amp_same_origin = $headers['amp-same-origin'] ?? $headers['Amp-Same-Origin'] ?? $headers['AMP-Same-Origin'] ?? $headers['AMP-SAME-ORIGIN'] ?? $headers['AMP-SAME-Origin'] ?? false;
+
+if ( $amp_same_origin == true ) {
 	$origin = $source_origin;
 } elseif (
     isset( $headers['origin'] )
@@ -110,9 +112,8 @@ if ( $ps ) {
 	}
 }
 
-$http_origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '*';
 header( 'Content-Type: application/json; charset=utf-8' );
-header( 'Access-Control-Allow-Origin: ' . $http_origin);
+header( 'Access-Control-Allow-Origin: ' . $origin);
 header( 'Access-Control-Allow-Credentials: true' );
 header( 'amp-access-control-allow-source-origin: ' . $origin );
 header( 'access-control-allow-methods: POST, GET, OPTIONS' );
