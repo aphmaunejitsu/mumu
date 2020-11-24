@@ -4,7 +4,7 @@
 Template Name: API SGN Newlist
  *
  */
-require_once dirname(dirname(dirname(__FILE__))) . '/wp/wp-load.php';
+require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/wp/wp-load.php';
 
 $source_origin         = $_GET['__amp_source_origin'] ?? null;
 $origin                = null;
@@ -106,8 +106,9 @@ if ( $ps ) {
 	}
 }
 
+$http_origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '*';
 header( 'Content-Type: application/json; charset=utf-8' );
-header( 'Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN'] );
+header( 'Access-Control-Allow-Origin: ' . $http_origin);
 header( 'Access-Control-Allow-Credentials: true' );
 header( 'amp-access-control-allow-source-origin: ' . $origin );
 header( 'access-control-allow-methods: POST, GET, OPTIONS' );
