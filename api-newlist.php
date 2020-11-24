@@ -21,12 +21,12 @@ $allow_origins = array(
 
 $headers = getallheaders();
 $amp_same_origin = $headers['amp-same-origin'] ?? $headers['Amp-Same-Origin'] ?? $headers['AMP-Same-Origin'] ?? $headers['AMP-SAME-ORIGIN'] ?? $headers['AMP-SAME-Origin'] ?? false;
+$header_origin = $headers['origin'] ?? $headers['Origin'] ?? $headers['ORIGIN'] ?? false;
 
 if ( $amp_same_origin == true ) {
 	$origin = $source_origin;
 } elseif (
-    isset( $headers['origin'] )
-    && ( array_search( $headers['origin'], $allow_origins ) !== FALSE )
+    && ( array_search( $headers_origin, $allow_origins ) !== FALSE )
     && ( $source_origin === $allowed_source_origin )
 ) {
 	$origin = $headers['origin'];
