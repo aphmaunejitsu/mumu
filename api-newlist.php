@@ -25,11 +25,11 @@ if ( isset( $headers['amp-same-origin'] ) && $headers['amp-same-origin'] === 'tr
 } elseif ( isset( $headers['origin'] ) && ( array_search( $headers['origin'], $allow_origins ) !== false ) && ( $source_origin === $allowed_source_origin ) ) {
 	$origin = $headers['origin'];
 } else {
-	if ( WP_DEBUG ) {
-	} else {
-		header( 'HTTP/1.1 403 Forbidden' );
-		exit();
-	}
+	// if ( WP_DEBUG ) {
+	// } else {
+	// 	header( 'HTTP/1.1 403 Forbidden' );
+	// 	exit();
+	// }
 }
 
 
