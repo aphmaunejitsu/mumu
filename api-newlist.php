@@ -21,15 +21,16 @@ $allow_origins = array(
 
 $headers = getallheaders();
 $amp_same_origin = $headers['amp-same-origin'] ?? $headers['Amp-Same-Origin'] ?? $headers['AMP-Same-Origin'] ?? $headers['AMP-SAME-ORIGIN'] ?? $headers['AMP-SAME-Origin'] ?? false;
-$header_origin = $headers['origin'] ?? $headers['Origin'] ?? $headers['ORIGIN'] ?? false;
+$headers_origin = $headers['origin'] ?? $headers['Origin'] ?? $headers['ORIGIN'] ?? false;
 
+$origin = null;
 if ( $amp_same_origin == true ) {
 	$origin = $source_origin;
 } elseif (
-    && ( array_search( $headers_origin, $allow_origins ) !== FALSE )
+    ( array_search( $headers_origin, $allow_origins ) !== FALSE )
     && ( $source_origin === $allowed_source_origin )
 ) {
-	$origin = $headers['origin'];
+	$origin = $headers_origin;
 } else {
 	if ( WP_DEBUG ) {
 	} else {
@@ -37,12 +38,6 @@ if ( $amp_same_origin == true ) {
         exit();
 	}
 }
-
-
-
-$origin_h = $origin_h . '.cdn.ampproject.org';
-$origin   = esc_attr( $_GET['__amp_source_origin'] );
-
 
 $posts     = isset( $_GET['items'] ) ? esc_attr( $_GET['items'] ) : 5;
 $thumbnail = isset( $_GET['thumbnail'] ) ? esc_attr( $_GET['thumbnail'] ) : 'sgn-list-thum';
@@ -115,7 +110,14 @@ if ( $ps ) {
 header( 'Content-Type: application/json; charset=utf-8' );
 header( 'Access-Control-Allow-Origin: ' . $origin);
 header( 'Access-Control-Allow-Credentials: true' );
-header( 'amp-access-control-allow-source-origin: ' . $origin );
+header( 'amp-access-control-allow-source-origin: ' . $source_origin );
 header( 'access-control-allow-methods: POST, GET, OPTIONS' );
 header( 'access-control-expose-headers: AMP-Access-Control-Allow-Source-Origin' );
+if (WP_DEBUG) {
+    header( 'X-Headers-Origin '. $headers_origin );
+    header( 'X-Origin-H: '. $origin_h );
+    header( 'X-AMP_SAME_ORIGIN: '. $amp_same_origin );
+    header( 'X-Source_Origin: '. $source_origin);
+    header( 'X-Allow-Source-Origin: '. $allowed_source_origin);
+}
 echo wp_json_encode( $json );
