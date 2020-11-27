@@ -1,6 +1,4 @@
 html {
-  font-family: 'M PLUS 1p';
-  line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%
 }
@@ -11,6 +9,13 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  line-height: 1.15;
 }
 
 article,aside,footer,header,nav,section {
