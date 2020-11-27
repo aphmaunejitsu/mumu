@@ -19,6 +19,8 @@ header.sgn-navi {
   z-index: 999;
   top: .25rem;
   right: .25rem;
+  display: flex;
+  align-items: center;
 }
 
 amp-social-share {

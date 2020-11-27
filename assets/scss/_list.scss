@@ -1,3 +1,19 @@
+svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+}
+
+time {
+    display: flex;
+    align-items: center;
+}
+
+.post-time {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .sgn-container {
     .sgn-list-section {
         width: 100%;
@@ -23,9 +39,13 @@
                     }
 
                     .post-time {
-                        font-size: small;
+                        font-size: 0.75rem;
                         color: rgba(#696969, 1);
                         text-align: right;
+                        svg {
+                            width: 0.75rem;
+                            height: 0.75rem;
+                        }
                     }
 
                     .post-title {

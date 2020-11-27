@@ -27,6 +27,11 @@
     .sgn-post-meta {
       font-size: .75rem;
     }
+
+    .author {
+        display: flex;
+        align-items: center;
+    }
   }
 
   .sgn-article-content {
