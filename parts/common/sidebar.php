@@ -1,8 +1,5 @@
-	<section class="sgn-sidebar">
-	<?php get_template_part('parts/common/categories'); ?>
-	<?php get_template_part('parts/common/popular'); ?>
-<?php if ( is_singular() ) : ?>
-	<?php get_template_part('parts/common/similar'); ?>
-	<?php get_template_part('parts/common/new-list-small'); ?>
+<?php if (is_active_sidebar('sidebar-primary')): ?>
+<section class="sgn-sidebar">
+<?php dynamic_sidebar('sidebar-primary'); ?>
+</section>
 <?php endif; ?>
-	</section>
