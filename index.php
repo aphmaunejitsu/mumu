@@ -5,11 +5,11 @@
  * @link https://hcm-nights.com
  *
  * @package mumu
- * @since 1.0.0
+ * @since 2.0.0
  */
 get_header(); ?>
 <div id="primary" class="mx-auto">
-    <main id="main" class="px1">
+    <main id="main">
     <?php
     if (have_posts()) :
         while (have_posts()) :

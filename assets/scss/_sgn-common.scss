@@ -1,5 +1,4 @@
 h1, h2, h3, h4, h5, h6 {
-    font-size: 1rem;
     color: black;
 }
 
@@ -29,6 +28,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #primary {
     background-color: #white;
+}
+
+#primary {
+    @include mq(lg) {
+        padding-right: 0.5rem;
+    }
 }
 
 #secondary {

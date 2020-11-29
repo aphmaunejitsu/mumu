@@ -34,7 +34,7 @@ header, footer, article, section {
 }
 
 amp-img {
-  @include border-radius(2px, 2px);
+  @include border-radius(0.25rem);
   @include box-shadow($box-shadow);
 }
 

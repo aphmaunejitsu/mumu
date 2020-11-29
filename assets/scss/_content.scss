@@ -1,13 +1,11 @@
-.published {
-    margin-right: 0.5rem;
-
-    &:before {
-        content: image-url('calendar-alt.svg');
+article {
+    .published {
+        margin-right: 0.5rem;
     }
-}
 
-.updated {
-    &:before {
-        content: image-url('sync-alt.svg');
+    footer.article-footer {
+        a {
+            @extend .category-tag;
+        }
     }
 }
