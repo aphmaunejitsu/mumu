@@ -16,10 +16,10 @@ $width-md: 48rem;
 $width-lg: 64rem;
 
 $breakpoints: (
-  'xs': 'screen and (max-witdh: 21.245rem)',
-  'sm': 'screen and (min-width: 21.25rem) and (max-width: 47.9375rem)',
-  'md': 'screen and (min-width: 48rem) and (max-width: 63.95rem)',
-  'lg': 'screen and (min-width: 64rem)',
+  'xs': 'screen and (max-witdh: 40rem)',
+  'sm': 'screen and (min-width: 40.06rem) and (max-width: 52rem)',
+  'md': 'screen and (min-width: 52.06rem) and (max-width: 64rem)',
+  'lg': 'screen and (min-width: 64.06rem)',
 ) !default;
 
 @mixin mq($breakpoint: md) {
