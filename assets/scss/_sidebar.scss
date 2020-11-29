@@ -1,5 +1,42 @@
 .sgn-sidebar {
     width: 100%;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+
+    .widget {
+        h3 {
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(Silver, .5);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: -2rem;
+            li {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        ul > li ul {
+            margin-top: 0.25rem;
+            margin-left: -1rem;
+            li {
+                line-height: 1.5rem;
+            }
+        }
+    }
+
+    .widget_categories {
+        a {
+            &:hover {
+                color: blue;
+            }
+        }
+    }
 }
 
 .sgn-sidebar {
@@ -9,13 +46,8 @@
 }
 
 .sgn-sidebar {
-    @include mq() {
+    @include mq(lg) {
+        max-width: 340px;
     }
 }
 
-.sgn-sidebar {
-    @include mq(lg) {
-        width: calc(#{$width-lg} - (#{$width-lg} / #{$silver}));
-        min-width: 340px;
-    }
-}

@@ -5,7 +5,7 @@
 		<div class="site-title-icon mx-auto flex items-center p1 nowrap">
 			<?php get_template_part( 'parts/header/logo' ); ?>
 			<div class="site-title">
-				<?php echo esc_attr( bloginfo( 'name' ) ); ?>
+				<h1><?php echo esc_attr( bloginfo( 'name' ) ); ?></h1>
 			</div>
 		</div>
 	</a>

@@ -27,15 +27,32 @@ time {
                 a { display: block }
 
                 .card {
-                    border: 1px solid rgba(Silver, .5);
+                    border-bottom: 1px solid rgba(Silver, .5);
                     min-width: calc(20rem - 1rem);
 
                     background-color: #FEFEFF;
                     width: 100%;
-                    height: calc((20rem - 1rem) * #{$silver});
 
                     .thumbnail {
                         width: 100%;
+                        @include border-radius(2px, 2px);
+                        @include box-shadow($box-shadow);
+
+                        amp-img {
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                            width: 100%;
+                        }
+
+                        &:before {
+                            content: '';
+                            display: block;
+                            padding-top: 56.25%; 
+                        }
                     }
 
                     .post-time {
@@ -48,10 +65,6 @@ time {
                         }
                     }
 
-                    .post-title {
-                        @include text-shadow($text-shadow);
-                    }
-
                     .post-content {
                         line-height:1.5rem;
                         padding: .5rem;
@@ -62,10 +75,6 @@ time {
 
         .sgn-list {
             @include mq(sm) {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                align-content: flex-start;
                 .entry {
                     .post-time { font-size: 1rem; }
                 }
@@ -74,14 +83,7 @@ time {
 
         .sgn-list {
             @include mq(md) {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                align-content: flex-start;
-
                 .entry {
-                    width: calc(100% / 2 - .5rem);
-
                     .post-time { font-size: 1rem; }
                 }
             }
@@ -89,20 +91,10 @@ time {
 
         .sgn-list {
             @include mq(lg) {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                align-content: flex-start;
                 .entry {
-                    width: calc(100% / 2 - .5rem);
                     .post-time { font-size: 1rem; }
                 }
             }
-        }
-        .sgn-list::after {
-          content: "";
-          display: block;
-          width: 48%;
         }
 
         .sgn-pagination {
@@ -115,7 +107,6 @@ time {
             font-size: large;
 
             text-decoration: none;
-            @include text-shadow($text-shadow);
           }
 
           span.current {

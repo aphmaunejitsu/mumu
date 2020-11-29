@@ -20,6 +20,6 @@
 		投稿が見つかりません
 		<?php endif; ?>
 	</div>
-	<?php get_template_part( 'parts/common/sidebar' ); ?>
+    <?php get_template_part( 'parts/common/sidebar' ); ?>
 </article>
 <?php get_footer(); ?>

@@ -24,6 +24,5 @@
         background-color: rgba(#FEF, 0.9);
         border: solid 1px silver;
         @include box-shadow($box-shadow);
-        @include text-shadow($text-shadow);
     }
 }

@@ -31,12 +31,6 @@ body {
 }
 
 .icon-* { width: 1rem; height: 1rem }
-// .icon-arrow-left { width: 16px; height: 16px  }
-// .icon-arrow-right { width: 16px; height: 16px  }
-// .icon-calender { width: 16px; height: 16px  }
-// .icon-home { width: 16px; height: 16px  }
-// .icon-start { width: 16px; height: 16px  }
-// .icon-tag { width: 16px; height: 16px  }
 
 header, footer, article, section {
   background-color: #FFF;
@@ -59,24 +53,17 @@ amp-image-lightbox, amp-lightbox {
 }
 
 .sgn-container {
+    width: 100%;
     max-width: 1280px;
     min-width: 320px;
-    width:100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: .5rem;
-}
-
-.sgn-container {
-  @include mq(sm) {
-    width: 100%
-  }
+    background-color: #FFF;
 }
 
 .sgn-container {
     @include mq(md) {
-        width: 100%;
         justify-content: space-between;
     }
 }
