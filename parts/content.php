@@ -2,24 +2,15 @@
     <header class="article-header">
         <?php
             if ( is_singular() ) :
-                the_title('<h1 class="entry-title m0">', '</h1>');
+                the_title('<h1 class="entry-title">', '</h1>');
             else :
-                the_title('<h3 class="entry-title m0">', '</h3>');
+                the_title('<h3 class="entry-title">', '</h3>');
             endif;
         ?>
 
-        <?php // get_template_part('parts/common/feature-image');
-                featureImage();
-            ?>
+        <?php featureImage(); ?>
         <div class="meta">
-            <time datetime="" class="mr1">
-                <?php get_template_part('parts/svg/calender'); ?>
-                <span><?php echo get_the_date(null, get_the_ID()) ?></span>
-            </time>
-            <time datetime="">
-                <?php get_template_part('parts/svg/refresh'); ?>
-                <span><?php echo get_the_modified_date(null, get_the_ID()) ?></span>
-            </time>
+        <?php get_template_part('parts/content/meta/published'); ?>
         </div>
     </header>
     <div class="article-content content">

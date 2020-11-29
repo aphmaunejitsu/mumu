@@ -1,5 +1,11 @@
 <?php
 
+if (! function_exists('getAssetsDir')) {
+    function getAssetsDir() {
+        return esc_attr(get_template_directory_uri() . 'assests/');
+    }
+}
+
 if (! function_exists('featureImage')) {
     function featureImage() {
         $image[0] = esc_attr(get_template_directory_uri() . '/assets/images/no-image-752x423.jpg');
@@ -24,10 +30,7 @@ if (! function_exists('featureImage')) {
 
         $html = <<<EOL
 <div class='thumbnail mb1 overflow-hidden relative'>
-    <amp-img alt="{$title}" src='{$image[0]}'
-        layout="responsive" width='{$image[1]}' height='{$image[2]}'
-        srcset='{$image[0]} 480w, {$medium[0]} 752w, {$large[0]} 1280w'>
-    </amp-img>
+    <amp-img alt="{$title}" src='{$image[0]}' layout="responsive" width='{$image[1]}' height='{$image[2]}' srcset='{$image[0]} 480w, {$medium[0]} 752w, {$large[0]} 1280w'></amp-img>
 </div>
 EOL;
         echo $html;
