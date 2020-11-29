@@ -16,7 +16,7 @@
     <div class="article-content content">
         <?php the_excerpt() ?>
     </div>
-    <footer class="article-fotter">
+    <footer class="article-footer">
         <?php the_category(' '); ?>
         <?php the_tags('', ' '); ?>
     </footer>
