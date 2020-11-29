@@ -8,6 +8,7 @@
  * @since 2.0.0
  */
 get_header(); ?>
+
 <div id="primary" class="mx-auto">
     <main id="main">
     <?php

@@ -30,13 +30,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #white;
 }
 
-#primary {
-    @include mq(lg) {
-        padding-right: 0.5rem;
-    }
-}
-
 #secondary {
+    @include mq(lg) {
+        padding-left: 0.5rem;
+    }
+    
 }
 
 a {
