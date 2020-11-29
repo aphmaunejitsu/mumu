@@ -1,5 +1,5 @@
-<article id="post-<?php the_ID()?>" <?php post_class() ?>>
-    <header class="article-header">
+<article id="post-<?php the_ID()?>" <?php post_class('mb2') ?>>
+    <header class="article-header mb1">
         <?php
             if ( is_singular() ) :
                 the_title('<h1 class="entry-title">', '</h1>');
@@ -13,7 +13,7 @@
         <?php get_template_part('parts/content/meta/published'); ?>
         </div>
     </header>
-    <div class="article-content content">
+    <div class="article-content content mb1">
         <?php the_excerpt() ?>
     </div>
     <footer class="article-footer">
