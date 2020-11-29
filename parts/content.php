@@ -8,7 +8,9 @@
             endif;
         ?>
 
-        <?php get_template_part('parts/common/feature-image'); ?>
+        <?php // get_template_part('parts/common/feature-image');
+                featureImage();
+            ?>
         <div class="meta">
             <time datetime="" class="mr1">
                 <?php get_template_part('parts/svg/calender'); ?>
