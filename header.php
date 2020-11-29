@@ -4,4 +4,4 @@
 <body <?php body_class() ?>>
 <?php do_action( 'sgn_google_ads' ); ?>
 <?php get_template_part( 'parts/header' ); ?>
-<div id="content" class="site-content">
+<div id="content" class="site-content flex mx-auto">

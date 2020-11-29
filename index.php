@@ -9,7 +9,7 @@
  */
 get_header(); ?>
 <div id="primary" class="mx-auto">
-    <main id="main">
+    <main id="main" class="px1">
     <?php
     if (have_posts()) :
         while (have_posts()) :

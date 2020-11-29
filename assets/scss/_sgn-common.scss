@@ -3,6 +3,37 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
+#content {
+    width: 100%;
+    max-width: 1280px;
+    min-width: 320px;
+    background-color: #FFF;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#content {
+    @include mq(md) {
+        justify-content: space-between;
+    }
+}
+
+#content {
+  @include mq(lg) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
+  }
+}
+
+#primary {
+    background-color: #white;
+}
+
+#secondary {
+}
+
 a {
     color: #3273dc;
     padding: 0.25rem;
