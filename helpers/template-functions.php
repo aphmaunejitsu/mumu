@@ -15,6 +15,7 @@ if (! function_exists('featureImage')) {
         $large[0]  = $image[0];
         $medium[0] = $image[0];
         $title = esc_attr(get_the_title());
+        $link = get_the_permalink();
 
         $category = null;
         if ( has_post_thumbnail( get_the_ID() ) ) {
