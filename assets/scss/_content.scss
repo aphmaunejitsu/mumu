@@ -1,0 +1,13 @@
+.published {
+    margin-right: 0.5rem;
+
+    &:before {
+        content: image-url('calendar-alt.svg');
+    }
+}
+
+.updated {
+    &:before {
+        content: image-url('sync-alt.svg');
+    }
+}
