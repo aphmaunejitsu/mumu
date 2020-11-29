@@ -22,8 +22,8 @@
         height="<?php echo esc_html( $medium[2] ); ?>"
         layout="responsive"
         srcset="<?php echo esc_url( $img[0] ); ?> 1280w,
-                        <?php echo esc_url( $medium[0] ); ?> 640w,
-                        <?php echo esc_url( $small[0] ); ?> 320w">
+                        <?php echo esc_url( $medium[0] ); ?> 752w,
+                        <?php echo esc_url( $small[0] ); ?> 480w">
     </amp-img>
     </figure>
 </div>

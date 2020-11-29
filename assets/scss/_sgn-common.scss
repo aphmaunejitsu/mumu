@@ -1,3 +1,23 @@
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    color: black;
+}
+
+a {
+    color: #3273dc;
+    padding: 0.25rem;
+
+    &:visited {
+        color: #3273dc;
+    }
+    &:hover {
+        color: #0000ff;
+    }
+    &:active {
+        color: #3273dc;
+    }
+}
+
 header.sgn-navi {
     background-color: $bg-color-navi;
     border: $navi-border;
@@ -6,12 +26,17 @@ header.sgn-navi {
 }
 
 .category-tag {
-  background-color: khaki;
-  font-size: small;
-  padding: 0.25rem;
-  @include border-radius(2px 2px);
-  @include box-shadow($box-shadow);
-  @include text-shadow($text-shadow);
+    display: inline-block;
+    padding: .5em;
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid #f1efef;
+    font-size: 0.75rem;
+    @include border-radius(0.5rem 0.5rem);
+    &:before {
+        content: "#";
+    }
+
 }
 
 .post-category {

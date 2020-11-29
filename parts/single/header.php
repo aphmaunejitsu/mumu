@@ -5,7 +5,7 @@ if ( $cats = get_the_category() ) {
 }
 ?>
 <header class="sgn-article-header mb1">
-	<h1 class="sgn-post-title m0 mb1"><?php echo esc_html( get_the_title() ); ?></h1>
+	<h2 class="sgn-post-title m0 mb1"><?php echo esc_html( get_the_title() ); ?></h2>
 	<?php get_template_part( 'parts/single/feature-image' ); ?>
 	<div class="sgn-post-meta flex justify-end flex-wrap">
         <div class="author mb1">

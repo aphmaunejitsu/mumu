@@ -1,4 +1,4 @@
-<section class="sgn-list-section relative">
+<section class="sgn-list-section">
 <?php if ( is_search() ) :
 	$search_query = esc_attr( get_search_query() );
 	?>
@@ -25,6 +25,9 @@ if ( have_posts() ) :
 		$image['width']  = 752;
 		$image['height'] = 423;
 
+        $large[0] = $image['src'];
+        $medium[0] = $image['src'];
+
 		$category = null;
 		if ( ( $terms = get_the_category( get_the_ID() ) ) ) {
 			$category = $terms[0];
@@ -33,6 +36,8 @@ if ( have_posts() ) :
 		if ( has_post_thumbnail( get_the_ID() ) ) {
 			$thum_id = get_post_thumbnail_id( get_the_ID() );
 			$img     = wp_get_attachment_image_src( $thum_id, 'sgn-list-thum' );
+            $large   = wp_get_attachment_image_src( $thum_id, 'sgn-eyecatch-16-9' );
+            $medium  = wp_get_attachment_image_src( $thum_id, 'post-eye-thum' );
 
 			$image['src']    = $img[0];
 			$image['width']  = $img[1];
@@ -45,25 +50,25 @@ if ( have_posts() ) :
 		if ( $date > $mdate ) {
 			$mdate = $date;
 		}
-		$content  = mb_strimwidth( trim( str_replace( array( "\r\n", "\r", "\n" ), '', strip_tags( get_the_content() ) ) ), 0, 300, '...' );
+		$content  = mb_strimwidth( trim( str_replace( array( "\r\n", "\r", "\n" ), '', strip_tags( get_the_content() ) ) ), 0, 150, '...' );
 		$category = $category->cat_name;
 		?>
-		<div class="entry content-stretch flex-column flex mb1">
+            <div id="post-<?php the_ID(); ?>" <?php post_class('entry content-stretch flex-column flex mb1') ?>>
 		<a href="<?php echo get_the_permalink(); ?>" class="mb1 text-decoration-none" >
-					<div class='card overflow-hidden relative'>
-						<div class='thumbnail mb1 overflow-hidden'>
+					<div class='card'>
+						<h3 class="post-title mb1 px1"><?php echo $title; ?></h3>
+						<div class='thumbnail mb1 overflow-hidden relative'>
 							<amp-img alt="<?php echo esc_attr( $title ); ?>"
 								src='<?php echo esc_attr( $image['src'] ); ?>'
 								layout="responsive"
 								width='<?php echo $image['width']; ?>'
-								height='<?php echo $image['height']; ?>' >
+                                height='<?php echo $image['height']; ?>'
+                                srcset='<?php echo $image['src'] ?> 480w,
+                                        <?php echo $medium[0] ?> 752w,
+                                        <?php echo $large[0] ?>1280w'
+                            >
 							</amp-img>
 						</div>
-                        <div class="post-category nowrap absolute display-inline">
-                            <?php get_template_part('parts/svg/tag'); ?>
-                            <span><?php echo esc_attr( $category ); ?></span>
-                        </div>
-						<h3 class="post-title mb1 px1"><?php echo $title; ?></h3>
 						<div class="post-time px1">
                             <time datetime="<?php echo $date; ?>" class="mr1">
                                 <?php get_template_part('parts/svg/calender'); ?>
