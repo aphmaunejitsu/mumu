@@ -29,11 +29,39 @@ if (! function_exists('featureImage')) {
             $medium[0] = esc_attr($medium[0]);
         }
 
-        $html = <<<EOL
-<div class='thumbnail mb1 overflow-hidden relative'>
-    <amp-img alt="{$title}" src='{$image[0]}' layout="responsive" width='{$image[1]}' height='{$image[2]}' srcset='{$image[0]} 480w, {$medium[0]} 752w, {$large[0]} 1280w'></amp-img>
-</div>
-EOL;
-        echo $html;
+        ob_start();
+        require dirname( __FILE__ ) . '/views/feature-image.php';
+        $feature = ob_get_contents();
+        ob_end_clean();
+
+        echo $feature;
+    }
+}
+
+if (! function_exists('publishedPost')) {
+    function publishedPost() {
+        $published = get_the_date('U');
+        $updated   = get_the_modified_date('U');
+
+        if (get_the_date('U') > get_the_modified_date('U')) {
+            $published = get_the_date();
+            $updated   = $published;
+
+            $published_t = get_the_date('Y-m-d');
+            $updated_t   = $published_t;
+        } else {
+            $published = get_the_date();
+            $updated   = get_the_modified_date();
+
+            $published_t = get_the_date('Y-m-d');
+            $updated_t   = get_the_modified_date('Y-m-d');
+        }
+
+        ob_start();
+        require dirname( __FILE__ ) . '/views/meta-published.php';
+        $meta = ob_get_contents();
+        ob_end_clean();
+
+        echo $meta;
     }
 }
