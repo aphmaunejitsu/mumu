@@ -10,7 +10,7 @@
         ?>
         <?php featureImage(); ?>
         <div class="meta">
-        <?php get_template_part('parts/content/meta/published'); ?>
+        <?php publishedPost(); ?>
         </div>
     </header>
     <div class="article-content content mb1">
