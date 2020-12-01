@@ -6,6 +6,27 @@ if (! function_exists('getAssetsDir')) {
     }
 }
 
+if (! function_exists('customLogo')) {
+    function customLogo($id = null) {
+        if (has_custom_logo($id)) {
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+            $output = sprintf(
+                '<amp-img src="%1$s" width="%2$s" height="%3$s" layout="fixed"></amp_img>',
+                $image[0],
+                $image[1],
+                $image[2]
+            );
+        } else {
+            $output = get_bloginfo('name');
+        }
+
+        $logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
+
+        echo $logo;
+    }
+}
+
 if (! function_exists('featureImage')) {
     function featureImage() {
         $image[0] = esc_attr(get_template_directory_uri() . '/assets/images/no-image-752x423.jpg');
