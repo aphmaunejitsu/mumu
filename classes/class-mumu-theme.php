@@ -26,44 +26,6 @@ class Mumu_Theme {
 		return $url;
 	}
 
-	public function pagination() {
-		global $wp_query;
-		$bignum = 999999999;
-		if ( $wp_query->max_num_pages <= 1 ) {
-			return;
-		}
-
-		$pagination = paginate_links(
-			array(
-				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
-				'format'    => '',
-				'current'   => max( 1, get_query_var( 'paged' ) ),
-				'total'     => $wp_query->max_num_pages,
-				'prev_text' => '<i class="fas fa-angle-left"></i>',
-				'next_text' => '<i class="fas fa-angle-right"></i>',
-				'type'      => 'array',
-				'end_size'  => 1,
-				'mid_size'  => 2,
-			)
-		);
-
-		$html = null;
-		foreach ( $pagination as $page ) {
-			$html .= $page;
-		}
-
-		if ( $html ) {
-			ob_start();
-			require dirname( __FILE__ ) . '/template/pagination.php';
-			$paginate = ob_get_contents();
-			ob_end_clean();
-
-			return $paginate;
-		} else {
-			return null;
-		}
-	}
-
 	//ボットの判別
 	public function is_bot() {
 		$bot_list = array(

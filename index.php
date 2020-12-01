@@ -23,6 +23,7 @@ get_header(); ?>
     endif;
     ?>
     </main><!-- #main -->
+    <?php pagination() ?>
 </div> <!-- #primary -->
 <?php
 get_sidebar();

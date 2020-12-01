@@ -32,14 +32,6 @@ class Sgn_Filter
         return $sep;
     }
 
-    public static function setup_thumbnail()
-    {
-        add_theme_support('post-thumbnails');
-
-        add_image_size('mumu-thumbnail-s-16x9', 480, 270, true);
-        add_image_size('mumu-thumbnail-m-16x9', 752, 423, true);
-        add_image_size('mumu-thumbnail-l-16x9', 1280, 720, true);
-    }
     public static function set_query_vars($query_vars)
     {
         $query_vars[] = 'thumbnail';
