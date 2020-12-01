@@ -1,0 +1,22 @@
+article {
+    .article-content {
+        .read-more a {
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.25em;
+            text-decoration: none;
+            border: solid 1px $read-more;
+            transition: .4s;
+            @include border-radius(4px 4px);
+        }
+    }
+
+    footer.article-footer {
+        a {
+            @extend .category-tag;
+        }
+    }
+
+
+
+}

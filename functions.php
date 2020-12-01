@@ -7,6 +7,7 @@ require_once dirname(__FILE__) . '/classes/class-mumu-popular.php';
 require_once dirname(__FILE__) . '/classes/class-sgn-content.php';
 require_once dirname(__FILE__) . '/classes/class-sgn-fliter.php';
 require_once dirname(__FILE__) . '/classes/class-sgn-customizer.php';
+require_once dirname(__FILE__) . '/helpers/template-functions.php';
 
 use App\Filters\ExcerptFilter;
 

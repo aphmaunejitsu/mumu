@@ -1,0 +1,142 @@
+html {
+    font-size:  16px;
+}
+
+body {
+  background-color: #EEE;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25rem;
+}
+
+#content {
+    width: 100%;
+    max-width: 1280px;
+    min-width: 320px;
+    background-color: #FFF;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#content {
+    @include mq(md) {
+        justify-content: space-between;
+    }
+}
+
+#content {
+  @include mq(lg) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
+  }
+}
+
+#primary {
+    background-color: #white;
+}
+
+#secondary {
+    @include mq(lg) {
+        padding-left: 0.5rem;
+    }
+    
+}
+
+
+header, footer, article, section {
+  background-color: #FFF;
+}
+
+amp-img {
+  @include border-radius(0.25rem);
+  @include box-shadow($box-shadow);
+}
+
+amp-lightbox, .sgn-list-section  {
+  amp-img {
+    box-shadow: initial;
+    border-radius: initial;
+  }
+}
+
+amp-image-lightbox, amp-lightbox { 
+  background: rgba(0, 10, 10, 0.9);
+}
+
+
+a {
+    color: $a-link;
+    padding: 0.25rem;
+
+    &:visited {
+        color: $a-visited;
+    }
+    &:hover {
+        color: $a-hover;
+    }
+    &:active {
+        color: $a-active;
+    }
+}
+
+header.sgn-navi {
+    background-color: $bg-color-navi;
+    border: $navi-border;
+    font-weight: $font-600;
+    font-size: $font-large;
+}
+
+.category-tag {
+    display: inline-block;
+    line-height: 1;
+    text-decoration: none;
+    margin-bottom: .25rem;
+    &:before {
+        content: "#";
+    }
+
+}
+
+.post-category {
+  @extend .category-tag;
+  z-index: 999;
+  top: .25rem;
+  right: .25rem;
+  display: flex;
+  align-items: center;
+}
+
+amp-social-share {
+  @include border-radius(2px 2px);
+  margin-right: .5rem;
+}
+
+.sgn-container {
+    width: 100%;
+    max-width: 1280px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FFF;
+}
+
+.sgn-container {
+    @include mq(md) {
+        justify-content: space-between;
+    }
+}
+
+.sgn-container {
+  @include mq(lg) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
+  }
+}

@@ -8,12 +8,14 @@ $navi-border: 1px solid #dfdfdf;
 $font-600: 600;
 $font-large: large;
 
+$a-link: #3273dc;
+$a-hover: #0000ff;
+$a-visited: #3273dc;
+$a-active: #3273dc;
+$read-more: #3273dc;
+
 $golden: 1.681;
 $silver: 1.414;
-
-$width-sm: 21.25rem;
-$width-md: 48rem;
-$width-lg: 64rem;
 
 $breakpoints: (
   'xs': 'screen and (max-witdh: 40rem)',
