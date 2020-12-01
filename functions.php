@@ -10,6 +10,7 @@ require_once dirname(__FILE__) . '/classes/class-sgn-customizer.php';
 require_once dirname(__FILE__) . '/helpers/template-functions.php';
 
 use App\Filters\ExcerptFilter;
+use App\Actions\RegisterMenuAction;
 
 // テーマオブジェクトをグローバル変数へ
 add_action('after_setup_theme', 'instantiate_theme', 99999);
@@ -121,3 +122,5 @@ add_action('widgets_init', function () {
         'id'            => 'sidebar-footer'
     ] + $config);
 });
+
+add_action('after_setup_theme', [RegisterMenuAction::class, 'register']);
