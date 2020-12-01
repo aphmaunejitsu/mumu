@@ -20,9 +20,9 @@ if (! function_exists('featureImage')) {
         $category = null;
         if ( has_post_thumbnail( get_the_ID() ) ) {
             $thum_id = get_post_thumbnail_id( get_the_ID() );
-            $image   = wp_get_attachment_image_src( $thum_id, 'sgn-list-thum' );
-            $large   = wp_get_attachment_image_src( $thum_id, 'sgn-eyecatch-16-9' );
-            $medium  = wp_get_attachment_image_src( $thum_id, 'post-eye-thum' );
+            $image   = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-s-16x9' );
+            $large   = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-l-16x9' );
+            $medium  = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-m-16x9' );
 
             $image[0] = esc_attr($image[0]);
             $large[0] = esc_attr($large[0]);

@@ -36,13 +36,9 @@ class Sgn_Filter
     {
         add_theme_support('post-thumbnails');
 
-        add_image_size('post-amp-thum', 96, 54, true);
-        add_image_size('post-eye-thum', 752, 423, true);
-        add_image_size('sgn-list-thum', 480, 270, true);
-        add_image_size('sgn-site-thum', 512, 512, true);
-        add_image_size('sgn-eyecatch-16-9', 1280, 720, true);
-        add_image_size('sgn-eyecatch-4-3', 1280, 960, true);
-        add_image_size('sgn-eyecatch-1-1', 1280, 1280, true);
+        add_image_size('mumu-thumbnail-s-16x9', 480, 270, true);
+        add_image_size('mumu-thumbnail-m-16x9', 752, 423, true);
+        add_image_size('mumu-thumbnail-l-16x9', 1280, 720, true);
     }
     public static function set_query_vars($query_vars)
     {
