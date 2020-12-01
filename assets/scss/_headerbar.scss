@@ -1,6 +1,9 @@
 .sgn-headerbar {
   padding-right: 1rem;
   border-bottom: solid 1px silver;
+  a {
+      color: black;
+  }
   .toggle {
     cursor: pointer;
     text-decoration: none;
@@ -42,11 +45,11 @@
 
     }
 
-		a {
-			display: block;
-			text-decoration: none;
-			cursor: pointer;
-		}
+    a {
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+    }
   }
 
   .submenu {
@@ -132,8 +135,6 @@ amp-sidebar {
       letter-spacing: 0.6px;
       line-height: 2.0625;
       font-weight: 700;
-
-      a { text-decoration: none }
     }
   }
 }
