@@ -1,27 +1,28 @@
 nav.pagination {
-  a, span {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    color: black;
+    .dots {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: large;
+        color: black;
+    }
 
-    text-decoration: none;
-    border: solid 1px pink;
-    @include border-radius(2px, 2px);
-    margin: .25rem;
-  }
+    .page-numbers:not(.dots) {
+        @extend .dots;
 
-  span.current {
-    border: solid 1px pink;
-    background-color: lightpink;
-    font-weight: 600;
-    @include border-radius(2px, 2px);
-  }
-}
+        text-decoration: none;
+        border: solid 1px pink;
+        @include border-radius(2px, 2px);
+        margin: .25rem;
+    }
 
-.sgn-pagination * {
-  margin-right: 0.25rem;
+
+    .current {
+        border: solid 1px pink;
+        background-color: lightpink;
+        font-weight: 600;
+        @include border-radius(2px, 2px);
+    }
 }
