@@ -15,6 +15,8 @@ get_header(); ?>
 
             get_template_part( 'parts/content', get_post_type() );
         endwhile;
+
+        pagination();
     else :
         get_template_part( 'parts/content', 'none' );
     endif;
