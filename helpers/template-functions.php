@@ -1,13 +1,54 @@
 <?php
 
 if (! function_exists('getAssetsDir')) {
-    function getAssetsDir() {
+    function getAssetsDir()
+    {
         return esc_attr(get_template_directory_uri() . 'assests/');
     }
 }
 
+if (! function_exists('pagination')) {
+    function pagination()
+    {
+		global $wp_query;
+		$bignum = 999999999;
+		if ( $wp_query->max_num_pages <= 1 ) {
+			return;
+		}
+
+		$pagination = paginate_links(
+			array(
+				'base'      => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
+				'format'    => '',
+				'current'   => max( 1, get_query_var( 'paged' ) ),
+				'total'     => $wp_query->max_num_pages,
+				'prev_text' => '<',
+				'next_text' => '>',
+				'type'      => 'array',
+				'end_size'  => 1,
+				'mid_size'  => 2,
+			)
+		);
+
+		$html = null;
+		foreach ( $pagination as $page ) {
+			$html .= $page;
+		}
+
+		if ( $html ) {
+			ob_start();
+			require dirname( __FILE__ ) . '/views/pagination.php';
+			$paginate = ob_get_contents();
+			ob_end_clean();
+
+			echo $paginate;
+		}
+    }
+}
+
 if (! function_exists('customLogo')) {
-    function customLogo($id = null) {
+    function customLogo($id = null)
+    {
         if (has_custom_logo($id)) {
             $custom_logo_id = get_theme_mod('custom_logo');
             $image = wp_get_attachment_image_src($custom_logo_id, 'full');
@@ -28,7 +69,8 @@ if (! function_exists('customLogo')) {
 }
 
 if (! function_exists('featureImage')) {
-    function featureImage() {
+    function featureImage()
+    {
         $image[0] = esc_attr(get_template_directory_uri() . '/assets/images/no-image-752x423.jpg');
         $image[1] = 752;
         $image[2] = 423;

@@ -1,6 +1,8 @@
 <?php
 
 require_once dirname(__FILE__) . '/vendor/autoload.php';
+
+require_once dirname(__FILE__) . '/app/actions.php';
 require_once dirname(__FILE__) . '/app/supports.php';
 
 require_once dirname(__FILE__) . '/classes/class-mumu-theme.php';
@@ -11,7 +13,6 @@ require_once dirname(__FILE__) . '/classes/class-sgn-customizer.php';
 require_once dirname(__FILE__) . '/helpers/template-functions.php';
 
 use App\Filters\ExcerptFilter;
-use App\Actions\RegisterMenuAction;
 
 // テーマオブジェクトをグローバル変数へ
 add_action('after_setup_theme', 'instantiate_theme', 99999);
@@ -30,20 +31,7 @@ function instantiate_theme()
 add_action(
     'after_setup_theme',
     function () {
-        // 色々停止
-        remove_action('wp_head', 'print_emoji_detection_script', 7);
-        remove_action('wp_print_styles', 'print_emoji_styles');
-        remove_action('wp_head', 'rsd_link');
-        remove_action('wp_head', 'wlwmanifest_link');
-        remove_action('wp_head', 'wp_generator');
-        remove_action('wp_head', 'feed_links_extra', 3);
-        remove_action('wp_head', 'wp_shortlink_wp_head');
-        remove_action('wp_head', 'rest_output_link_wp_head');
-        remove_action('wp_head', 'wp_oembed_add_discovery_links');
-        remove_action('wp_head', 'wp_oembed_add_host_js');
-        remove_action('wp_head', 'rel_canonical');
         add_action('wp_head', array( 'Sgn_Filter', 'add_canonical' ));
-        add_filter('show_admin_bar', '__return_false');
         add_action(
             'wp_enqueue_scripts',
             function () {
@@ -56,8 +44,6 @@ add_action(
     0
 );
 
-// サムネイルのカスタマイズ
-add_action('after_setup_theme', array( 'Sgn_Filter', 'setup_thumbnail' ));
 add_filter('posts_search', array( 'Sgn_Filter', 'post_search' ));
 add_filter('sgn_additional_js', array( 'Sgn_Filter', 'add_js' ));
 add_filter('sgn_google_ads', array( 'Sgn_Filter', 'add_google_ads' ));
@@ -122,4 +108,3 @@ add_action('widgets_init', function () {
     ] + $config);
 });
 
-add_action('after_setup_theme', [RegisterMenuAction::class, 'register']);
