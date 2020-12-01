@@ -6,6 +6,27 @@ if (! function_exists('getAssetsDir')) {
     }
 }
 
+if (! function_exists('customLogo')) {
+    function customLogo($id = null) {
+        if (has_custom_logo($id)) {
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+            $output = sprintf(
+                '<amp-img src="%1$s" width="%2$s" height="%3$s" layout="fixed"></amp_img>',
+                $image[0],
+                $image[1],
+                $image[2]
+            );
+        } else {
+            $output = '<h1 class="site-name">' . get_bloginfo('name') . '</h1>';
+        }
+
+        $logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
+
+        echo $logo;
+    }
+}
+
 if (! function_exists('featureImage')) {
     function featureImage() {
         $image[0] = esc_attr(get_template_directory_uri() . '/assets/images/no-image-752x423.jpg');
@@ -20,9 +41,9 @@ if (! function_exists('featureImage')) {
         $category = null;
         if ( has_post_thumbnail( get_the_ID() ) ) {
             $thum_id = get_post_thumbnail_id( get_the_ID() );
-            $image   = wp_get_attachment_image_src( $thum_id, 'sgn-list-thum' );
-            $large   = wp_get_attachment_image_src( $thum_id, 'sgn-eyecatch-16-9' );
-            $medium  = wp_get_attachment_image_src( $thum_id, 'post-eye-thum' );
+            $image   = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-s-16x9' );
+            $large   = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-l-16x9' );
+            $medium  = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-m-16x9' );
 
             $image[0] = esc_attr($image[0]);
             $large[0] = esc_attr($large[0]);

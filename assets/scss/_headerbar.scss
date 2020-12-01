@@ -1,75 +1,77 @@
-.sgn-headerbar {
-  padding-right: 1rem;
-  border-bottom: solid 1px silver;
-  a {
-      color: black;
-  }
-  .toggle {
-    cursor: pointer;
-    text-decoration: none;
-    line-height: $line-height;
-  }
+header#mumu-top {
+    @include box-shadow($box-shadow);
 
-  .toggle:focus {
-    outline: none;
-  }
-
-  .site-title-icon {
-    .site-icon {
-      amp-img {
-       @include border-radius(16px, 16px);
-     }
-    }
-    .site-title {
-      h1 { font-size: 1.25rem }
-    }
-  }
-
-  .search-icon {
-    cursor: pointer;
-  }
-
-  .submenu {
-    line-height: 3.5rem;
-    flex: 1;
-
-    ul {
-      text-align: right;
-      float: right;
-
-      li {
-        padding: 0 1rem;
-        background: transparent;
-        opacity: $opacity;
-      }
-
+    amp-img {
+        @include box-shadow(none);
     }
 
+    h1 {
+        color: black;
+    }
+
+    .submenu {
+        flex: 1;
+
+        ul {
+            text-align: right;
+            float: right;
+
+            li {
+                padding: 0 1rem;
+                background: transparent;
+                opacity: $opacity;
+            }
+
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+            color: black;
+        }
+    }
+
+    .submenu {
+        @include mq(sm) {
+          display: none;
+        }
+    }
+
+    .submenu {
+        @include mq(md) {
+          display: inline-block;
+        }
+    }
+
+    .submenu {
+        @include mq(lg) {
+          display: inline-block;
+        }
+    }
+
+    .toggle {
+        cursor: pointer;
+        text-decoration: none;
+        line-height: $line-height;
+    }
+
+    .toggle:focus {
+        outline: none;
+    }
+
+    .search-icon {
+        cursor: pointer;
+    }
+}
+
+#header-side-menu {
     a {
         display: block;
         text-decoration: none;
         cursor: pointer;
+        color: black;
     }
-  }
-
-  .submenu {
-    @include mq(sm) {
-      display: none;
-    }
-  }
-  
-  .submenu {
-    @include mq(md) {
-      display: none;
-    }
-  }
-
-  .submenu {
-    @include mq(lg) {
-      display: inline-block;
-    }
-  }
-
 }
 
 amp-lightbox {
@@ -114,16 +116,11 @@ amp-lightbox {
   }
 }
 
-amp-sidebar {
+amp-sidebar#header-side-menu {
   width: 20rem;
   background-color: rgba(254,244,242, 0.95);
 
-  .sgn-sidebar-header {
-    line-height: 3.5rem;
-    min-height: 3.5rem;
-  }
-
-  .sgn-label {
+  .label {
     font-size: 1rem;
     color: #4f4f4f;
     line-height: 1.42857;

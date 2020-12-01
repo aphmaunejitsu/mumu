@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__FILE__) . '/vendor/autoload.php';
+require_once dirname(__FILE__) . '/app/supports.php';
 
 require_once dirname(__FILE__) . '/classes/class-mumu-theme.php';
 require_once dirname(__FILE__) . '/classes/class-mumu-popular.php';
@@ -10,6 +11,7 @@ require_once dirname(__FILE__) . '/classes/class-sgn-customizer.php';
 require_once dirname(__FILE__) . '/helpers/template-functions.php';
 
 use App\Filters\ExcerptFilter;
+use App\Actions\RegisterMenuAction;
 
 // テーマオブジェクトをグローバル変数へ
 add_action('after_setup_theme', 'instantiate_theme', 99999);
@@ -70,8 +72,6 @@ add_action('customize_register', array( 'sgn_theme_customizer', 'ad' ));
 add_action('customize_register', array( 'sgn_theme_customizer', 'my_sns' ));
 add_action('customize_register', array( 'sgn_theme_customizer', 'amp' ));
 
-add_theme_support('custom-logo');
-add_theme_support('title-tag');
 
 
 add_action('restrict_manage_posts', 'add_author_filter');
@@ -121,3 +121,5 @@ add_action('widgets_init', function () {
         'id'            => 'sidebar-footer'
     ] + $config);
 });
+
+add_action('after_setup_theme', [RegisterMenuAction::class, 'register']);
