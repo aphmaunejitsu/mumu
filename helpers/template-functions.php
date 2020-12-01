@@ -18,7 +18,7 @@ if (! function_exists('customLogo')) {
                 $image[2]
             );
         } else {
-            $output = get_bloginfo('name');
+            $output = '<h1 class="site-name">' . get_bloginfo('name') . '</h1>';
         }
 
         $logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';

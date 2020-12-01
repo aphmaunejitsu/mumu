@@ -5,6 +5,10 @@ header#mumu-top {
         @include box-shadow(none);
     }
 
+    h1 {
+        color: black;
+    }
+
     .submenu {
         flex: 1;
 
