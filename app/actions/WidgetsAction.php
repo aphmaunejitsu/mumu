@@ -18,6 +18,11 @@ class WidgetsAction
             'id'            => 'sidebar-primary'
         ] + $config);
 
+        register_sidebar([
+            'name'          => 'Under Article',
+            'id'            => 'under-article',
+        ] + $config);
+
     }
 }
 
