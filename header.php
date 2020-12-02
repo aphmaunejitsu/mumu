@@ -22,19 +22,35 @@
         </div> <!-- .search-icon -->
     </div> <!-- .container -->
 </header>
-<amp-sidebar id="header-side-menu" class='header-side-menu px3 lg-hide' layout='nodisplay'>
-	<div class="flex justify-start items-center sgn-sidebar-header">
-		<div role="button" aria-label="close sidebar" on="tap:header-side-menu.toggle" tabindex="0" class="navbar-trigger items-start">✕</div>
+<amp-sidebar id="header-side-menu" class='header-side-menu p2 lg-hide' layout='nodisplay'>
+	<div class="flex justify-end items-center">
+		<div role="button" aria-label="close sidebar" on="tap:header-side-menu.toggle" tabindex="0" class="navbar-trigger">✕</div>
 	</div>
 	<?php
-	 wp_nav_menu([
-		'menu_class'      => 'list-reset m0 p0 label',
-		'container'       => 'nav',
-		'container_class' => 'sidebar-menu',
-		'theme_location'  => 'header-navigation',
-        'fallback_cb'     => null
-	 ]);
-		?>
+         wp_nav_menu([
+            'menu_class'      => 'list-reset m0 p0 label',
+            'container'       => 'nav',
+            'container_class' => 'sidebar-menu',
+            'theme_location'  => 'header-navigation',
+            'fallback_cb'     => null
+        ]);
+    ?>
+    <div class="flex-column items-center justify-center">
+        <div class="sns flex items-center justify-center">
+        <?php
+        if (($tw_url = get_option('sgn_theme_my_twitter'))) : ?>
+            <a href="<?php echo $tw_url; ?>" target="_blank" class="inline-block p1" aria-label="<?php echo bloginfo('name'); ?> Twitter">
+            <?php get_template_part('parts/icons/svg', 'twitter'); ?>
+            </a>
+        <?php
+        endif;
+        if (($fb_url = get_option('sgn_theme_my_fbpage'))) : ?>
+            <a href="<?php echo $fb_url; ?>" target="_blank" class="inline-block p1" aria-label="Link to <?php echo bloginfo('name'); ?> Facebook">
+            <?php get_template_part('parts/icons/svg', 'facebook'); ?>
+            </a>
+        <?php endif; ?>
+        </div>
+    </div>
 </amp-sidebar>
 <?php get_search_form(); ?>
 <div id="content" class="site-content flex mx-auto p1">

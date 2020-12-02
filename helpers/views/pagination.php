@@ -1,3 +1,3 @@
-<nav class="pagination flex justify-center items-center p1">
+<nav class="pagination flex justify-center items-center">
 <?php echo $html; ?>
 </nav>

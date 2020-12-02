@@ -8,16 +8,41 @@ body {
   line-height: 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.25rem;
-}
-
 svg {
     width: 1rem;
     height: 1rem;
     margin-right: 0.25rem;
 }
 
+h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+    line-height: 1.42rem;
+}
+
+h4 {
+    font-size: 1.12rem;
+    line-height: 1.37rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+    line-height: 1.08rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
 
 .container {
     width: 100%;
@@ -32,6 +57,7 @@ svg {
     background-color: #FFF;
     flex-direction: column;
     justify-content: center;
+    margin-top: 1px;
 }
 
 #content {
@@ -115,6 +141,14 @@ header.sgn-navi {
 
 }
 
+.sns {
+    svg {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
 .post-category {
   @extend .category-tag;
   z-index: 999;
@@ -127,29 +161,4 @@ header.sgn-navi {
 amp-social-share {
   @include border-radius(2px 2px);
   margin-right: .5rem;
-}
-
-.sgn-container {
-    width: 100%;
-    max-width: 1280px;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #FFF;
-}
-
-.sgn-container {
-    @include mq(md) {
-        justify-content: space-between;
-    }
-}
-
-.sgn-container {
-  @include mq(lg) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
-  }
 }
