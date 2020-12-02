@@ -1,7 +1,9 @@
-.sgn-sidebar {
+ #secondary {
+    a {
+        color: black;
+    }
+
     width: 100%;
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
 
     .widget {
         h3 {
@@ -30,24 +32,13 @@
         }
     }
 
-    .widget_categories {
-        a {
-            &:hover {
-                color: blue;
-            }
-        }
-    }
-}
-
-.sgn-sidebar {
     @include mq(sm) {
         min-width: 340px;
     }
-}
 
-.sgn-sidebar {
     @include mq(lg) {
         max-width: 340px;
+        margin-left: 0.25rem;
     }
-}
 
+}

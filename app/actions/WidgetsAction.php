@@ -18,20 +18,6 @@ class WidgetsAction
             'id'            => 'sidebar-primary'
         ] + $config);
 
-        register_sidebar([
-            'name'          => 'Footer Center',
-            'id'            => 'sidebar-center-footer'
-        ] + $config);
-
-        register_sidebar([
-            'name'          => 'Footer Left',
-            'id'            => 'sidebar-left-footer'
-        ] + $config);
-
-        register_sidebar([
-            'name'          => 'Footer right',
-            'id'            => 'sidebar-right-footer'
-        ] + $config);
     }
 }
 
