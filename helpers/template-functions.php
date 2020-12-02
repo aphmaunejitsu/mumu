@@ -26,7 +26,7 @@ if (! function_exists('pagination')) {
 				'next_text' => '>',
 				'type'      => 'array',
 				'end_size'  => 1,
-				'mid_size'  => 2,
+				'mid_size'  => 1,
 			)
 		);
 

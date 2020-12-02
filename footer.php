@@ -12,7 +12,7 @@
             ]);
         ?>
         <div class="theme-copyright flex-column items-center justify-center">
-            <div class="sgn-sns-page flex items-center justify-center">
+            <div class="sns flex items-center justify-center">
             <?php
             if (($tw_url = get_option('sgn_theme_my_twitter'))) : ?>
                 <a href="<?php echo $tw_url; ?>" target="_blank" class="inline-block p1" aria-label="<?php echo bloginfo('name'); ?> Twitter">
