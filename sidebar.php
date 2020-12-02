@@ -1,5 +1,5 @@
 <?php if (is_active_sidebar('sidebar-primary')): ?>
-<aside id="secondary" class="sgn-sidebar">
+<aside id="secondary">
 <?php dynamic_sidebar('sidebar-primary'); ?>
-</section> <!-- #secondary -->
+</aside> <!-- #secondary -->
 <?php endif; ?>
