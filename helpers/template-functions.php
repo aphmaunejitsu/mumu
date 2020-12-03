@@ -46,6 +46,15 @@ if (! function_exists('pagination')) {
     }
 }
 
+if (! function_exists('nextPrev')) {
+    function nextPrev()
+    {
+        $next = get_next_post(true);
+        $prev = get_previous_post(true);
+
+    }
+}
+
 if (! function_exists('customLogo')) {
     function customLogo($id = null)
     {

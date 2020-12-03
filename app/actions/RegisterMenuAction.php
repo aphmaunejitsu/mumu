@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace Aphmau\Actions;
 
 class RegisterMenuAction
 {

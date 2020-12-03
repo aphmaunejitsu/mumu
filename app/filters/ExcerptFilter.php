@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filters;
+namespace Mumu\Filters;
 
 class ExcerptFilter {
     public static function customExcerptLength($length) {
