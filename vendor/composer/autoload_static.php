@@ -4,21 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd7ac20c5b0500a3bfd5f837c37ee605f
+class ComposerStaticInit9a2cc5d5a1713df467712b47464dd5c8
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
-            'Mumu\\' => 5,
             'Masterminds\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Mumu\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
-        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -26,39 +21,15 @@ class ComposerStaticInitd7ac20c5b0500a3bfd5f837c37ee605f
     );
 
     public static $classMap = array (
-        'Masterminds\\HTML5' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5.php',
-        'Masterminds\\HTML5\\Elements' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Elements.php',
-        'Masterminds\\HTML5\\Entities' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Entities.php',
-        'Masterminds\\HTML5\\Exception' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Exception.php',
-        'Masterminds\\HTML5\\InstructionProcessor' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/InstructionProcessor.php',
-        'Masterminds\\HTML5\\Parser\\CharacterReference' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/CharacterReference.php',
-        'Masterminds\\HTML5\\Parser\\DOMTreeBuilder' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/DOMTreeBuilder.php',
-        'Masterminds\\HTML5\\Parser\\EventHandler' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/EventHandler.php',
-        'Masterminds\\HTML5\\Parser\\FileInputStream' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/FileInputStream.php',
-        'Masterminds\\HTML5\\Parser\\InputStream' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/InputStream.php',
-        'Masterminds\\HTML5\\Parser\\ParseError' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/ParseError.php',
-        'Masterminds\\HTML5\\Parser\\Scanner' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/Scanner.php',
-        'Masterminds\\HTML5\\Parser\\StringInputStream' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/StringInputStream.php',
-        'Masterminds\\HTML5\\Parser\\Tokenizer' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/Tokenizer.php',
-        'Masterminds\\HTML5\\Parser\\TreeBuildingRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/TreeBuildingRules.php',
-        'Masterminds\\HTML5\\Parser\\UTF8Utils' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Parser/UTF8Utils.php',
-        'Masterminds\\HTML5\\Serializer\\HTML5Entities' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/HTML5Entities.php',
-        'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
-        'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
-        'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
-        'Mumu\\Actions\\RemoveAction' => __DIR__ . '/../..' . '/app/actions/RemoveAction.php',
-        'Mumu\\Actions\\SetupThumbnail' => __DIR__ . '/../..' . '/app/actions/SetupThumbnail.php',
-        'Mumu\\Actions\\Style' => __DIR__ . '/../..' . '/app/actions/StyleAction.php',
-        'Mumu\\Actions\\WidgetsAction' => __DIR__ . '/../..' . '/app/actions/WidgetsAction.php',
-        'Mumu\\Filters\\ExcerptFilter' => __DIR__ . '/../..' . '/app/filters/ExcerptFilter.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd7ac20c5b0500a3bfd5f837c37ee605f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd7ac20c5b0500a3bfd5f837c37ee605f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd7ac20c5b0500a3bfd5f837c37ee605f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9a2cc5d5a1713df467712b47464dd5c8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9a2cc5d5a1713df467712b47464dd5c8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9a2cc5d5a1713df467712b47464dd5c8::$classMap;
 
         }, null, ClassLoader::class);
     }
