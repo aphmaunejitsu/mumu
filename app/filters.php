@@ -1,5 +1,9 @@
 <?php
 
+
+remove_filter('the_excerpt', 'wpautop');
+remove_filter('term_description', 'wpautop');
+
 function newExcerptMore($more) {
     return '...';
 }
@@ -37,3 +41,37 @@ function titleSeparator()
     return $sep;
 }
 add_filter('document_title_separator', 'titleSeparator');
+
+
+function post_search($search)
+{
+    if (is_search()) {
+        $search .= " AND post_type = 'post'";
+    }
+    return $search;
+}
+add_filter('posts_search', 'post_search');
+
+function google_auto_adsens()
+{
+    $ad = null;
+    if (is_404()) {
+        return;
+    }
+
+    if (! get_option('sgn_theme_ad_show')) {
+        return;
+    }
+
+    if (! get_option('sgn_theme_ad_adsens_auto')) {
+        return;
+    }
+
+    if (($adsens = get_option('sgn_theme_ad_adsens'))) {
+        $ad = '<amp-auto-ads type="adsense" data-ad-client="ca-pub-' . $adsens . "></amp-auto-ads>";
+    }
+
+    echo $ad;
+}
+add_filter('google_auto_adsens', 'google_auto_adsens');
+

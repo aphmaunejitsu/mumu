@@ -69,3 +69,35 @@ function enqueueInlineStyle()
     echo $style;
 }
 add_action('mumu_amp_custom_css', 'enqueueInlineStyle');
+
+function mumu_after_setup_theme()
+{
+    add_action('wp_enqueue_scripts', function () {
+        wp_deregister_script('jquery');
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wordpress-popular-posts-css');
+    });
+}
+add_action('after_setup_theme', 'mumu_after_setup_theme');
+
+function add_canonical()
+{
+    $canonical = null;
+    if (is_home() || is_front_page()) {
+        $canonical = home_url();
+    } elseif (is_category()) {
+        $canonical = get_category_link(get_query_var('cat'));
+    } elseif (is_tag()) {
+        $canonical = get_tag_link(get_queried_object()->term_id);
+    } elseif (is_search()) {
+        $canonical = get_search_link();
+    } elseif (is_page() || is_single()) {
+        $canonical = get_permalink();
+    } else {
+        $canonical = home_url();
+    }
+
+    echo '<link rel="canonical" href="' . $canonical. '">';
+}
+add_action('wp_head', 'add_canonical');
+
