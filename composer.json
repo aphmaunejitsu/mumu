@@ -13,10 +13,5 @@
     "require": {
       "php": ">=7.3",
       "masterminds/html5": "^2.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Mumu\\": "app/"
-        }
     }
 }

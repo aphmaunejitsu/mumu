@@ -1,9 +1,5 @@
 <?php
 
-namespace Mumu;
-
-require_once dirname(__FILE__) . '/vendor/autoload.php';
-
 require_once dirname(__FILE__) . '/app/actions.php';
 require_once dirname(__FILE__) . '/app/filters.php';
 require_once dirname(__FILE__) . '/app/supports.php';
@@ -51,8 +47,6 @@ add_filter('sgn_additional_js', array( 'Sgn_Filter', 'add_js' ));
 add_filter('sgn_google_ads', array( 'Sgn_Filter', 'add_google_ads' ));
 
 add_filter('the_content', array( 'Sgn_Content', 'the_content' ));
-add_filter('document_title_parts', array( 'Sgn_Filter', 'title_parts' ));
-add_filter('document_title_separator', array( 'Sgn_Filter', 'title_separator' ));
 
 add_action('customize_register', array( 'sgn_theme_customizer', 'contact_us' ));
 add_action('customize_register', array( 'sgn_theme_customizer', 'google_analytics' ));

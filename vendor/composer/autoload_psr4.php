@@ -6,6 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Mumu\\' => array($baseDir . '/app'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
 );
