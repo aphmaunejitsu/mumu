@@ -1,6 +1,5 @@
 <?php
 
-use App\Filters\SetupThumbnail;
+use Mumu\Filters\ExcerptFilter;
 
-// サムネイルのカスタマイズ
-add_action('after_setup_theme', [SetupThumbnail::class, 'thumbnails']);
+add_filter('excerpt_more', [ExcerptFilter::class, 'newExcerptMore']);

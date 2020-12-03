@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filters;
+namespace Mumu\Actions;
 
 class SetupThumbnail
 {
-    public function thumbnails()
+    public static function thumbnails()
     {
         add_theme_support('post-thumbnails');
 

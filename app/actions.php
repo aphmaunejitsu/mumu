@@ -1,11 +1,18 @@
 <?php
 
-use App\Actions\RegisterMenuAction;
-use App\Actions\RemoveAction;
-use App\Actions\WidgetsAction;
-use App\Actions\Style;
+use Mumu\Actions\RegisterMenuAction;
+use Mumu\Actions\RemoveAction;
+use Mumu\Actions\WidgetsAction;
+use Mumu\Actions\StyleAction;
+use Mumu\Actions\SetupThumbnail;
 
-add_action('after_setup_theme',     [RegisterMenuAction::class, 'register']);
-add_action('after_setup_theme',     [RemoveAction::class, 'remove']);
-add_action('widgets_init',          [WidgetsAction::class, 'init']);
-add_action('mumu_amp_custom_css', [Style::class, 'enqueueInlineStyle']);
+// サムネイルのカスタマイズ
+add_action('after_setup_theme',   [SetupThumbnail::class, 'thumbnails']);
+// メニューの追加
+add_action('after_setup_theme',   [RegisterMenuAction::class, 'register']);
+// AMPに不要なAction削除
+add_action('after_setup_theme',   [RemoveAction::class, 'remove']);
+// Widgetsの初期化
+add_action('widgets_init',        [WidgetsAction::class, 'init']);
+// AMPのCSS出力
+add_action('mumu_amp_custom_css', [StyleAction::class, 'enqueueInlineStyle']);

@@ -1,8 +1,11 @@
 <?php
 
+namespace Mumu;
+
 require_once dirname(__FILE__) . '/vendor/autoload.php';
 
 require_once dirname(__FILE__) . '/app/actions.php';
+require_once dirname(__FILE__) . '/app/filters.php';
 require_once dirname(__FILE__) . '/app/supports.php';
 
 require_once dirname(__FILE__) . '/classes/class-mumu-theme.php';
@@ -12,7 +15,6 @@ require_once dirname(__FILE__) . '/classes/class-sgn-fliter.php';
 require_once dirname(__FILE__) . '/classes/class-sgn-customizer.php';
 require_once dirname(__FILE__) . '/helpers/template-functions.php';
 
-use App\Filters\ExcerptFilter;
 
 // テーマオブジェクトをグローバル変数へ
 add_action('after_setup_theme', 'instantiate_theme', 99999);
@@ -76,7 +78,6 @@ function add_author_filter()
 
 remove_filter('the_excerpt', 'wpautop');
 remove_filter('term_description', 'wpautop');
-add_filter('excerpt_more', [ExcerptFilter::class, 'newExcerptMore']);
 
 if (! function_exists('_log')) {
     function _log($message)

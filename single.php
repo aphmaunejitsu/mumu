@@ -12,7 +12,9 @@
     endif;
     ?>
     </main><!-- #main -->
-    <?php pagination() ?>
+    <nav>
+    <?php nextPrev() ?>
+    </nav>
 </div> <!-- #primary -->
 <?php
 get_sidebar();
