@@ -8,6 +8,7 @@ require_once MUMU_APP . '/actions.php';
 require_once MUMU_APP . '/filters.php';
 require_once MUMU_APP . '/supports.php';
 require_once MUMU_APP . '/customizers.php';
+require_once MUMU_APP . '/sanitizer.php';
 require_once MUMU_HELPERS . '/template-functions.php';
 
 require_once MUMU_DIR . '/classes/class-mumu-theme.php';
