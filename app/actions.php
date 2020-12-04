@@ -101,3 +101,17 @@ function add_canonical()
 }
 add_action('wp_head', 'add_canonical');
 
+// 管理にユーザを表示
+function add_author_filter()
+{
+    global $post_type;
+    if ($post_type == 'post') {
+        wp_dropdown_users(
+            array(
+                'show_option_all' => 'すべてのユーザー',
+                'name'            => 'author',
+            )
+        );
+    }
+}
+add_action('restrict_manage_posts', 'add_author_filter');

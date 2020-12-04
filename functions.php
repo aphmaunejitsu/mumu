@@ -1,13 +1,17 @@
 <?php
 
-require_once dirname(__FILE__) . '/app/actions.php';
-require_once dirname(__FILE__) . '/app/filters.php';
-require_once dirname(__FILE__) . '/app/supports.php';
-require_once dirname(__FILE__) . '/app/customizers.php';
-require_once dirname(__FILE__) . '/helpers/template-functions.php';
+define("MUMU_DIR", dirname(__FILE__));
+define("MUMU_APP", MUMU_DIR . '/app');
+define("MUMU_HELPERS", MUMU_DIR . '/helpers');
 
-require_once dirname(__FILE__) . '/classes/class-mumu-theme.php';
-require_once dirname(__FILE__) . '/classes/class-mumu-popular.php';
+require_once MUMU_APP . '/actions.php';
+require_once MUMU_APP . '/filters.php';
+require_once MUMU_APP . '/supports.php';
+require_once MUMU_APP . '/customizers.php';
+require_once MUMU_HELPERS . '/template-functions.php';
+
+require_once MUMU_DIR . '/classes/class-mumu-theme.php';
+require_once MUMU_DIR . '/classes/class-mumu-popular.php';
 
 
 // テーマオブジェクトをグローバル変数へ
@@ -26,19 +30,6 @@ function instantiate_theme()
 
 
 
-add_action('restrict_manage_posts', 'add_author_filter');
-function add_author_filter()
-{
-    global $post_type;
-    if ($post_type == 'post') {
-        wp_dropdown_users(
-            array(
-                'show_option_all' => 'すべてのユーザー',
-                'name'            => 'author',
-            )
-        );
-    }
-}
 
 
 if (! function_exists('_log')) {

@@ -1,6 +1,6 @@
 <?php
 
-function contact_us( $wp_customize ) {
+function contactUs( $wp_customize ) {
     $wp_customize->add_section(
         'sgn_theme_option',
         array(
@@ -28,9 +28,9 @@ function contact_us( $wp_customize ) {
         )
     );
 }
-add_action('customize_register', array( 'sgn_theme_customizer', 'contact_us' ));
+add_action('customize_register', 'contactUs');
 
-function google_analytics( $wp_customize ) {
+function googleAnalytics( $wp_customize ) {
     $wp_customize->add_section(
         'sgn_theme_analytics',
         array(
@@ -58,7 +58,7 @@ function google_analytics( $wp_customize ) {
         )
     );
 }
-add_action('customize_register', array( 'sgn_theme_customizer', 'google_analytics' ));
+add_action('customize_register', 'googleAnalytics');
 
 function ad( $wp_customize ) {
     $wp_customize->add_section(
@@ -241,9 +241,9 @@ function ad( $wp_customize ) {
     );
 
 }
-add_action('customize_register', array( 'sgn_theme_customizer', 'ad' ));
+add_action('customize_register', 'ad');
 
-function my_sns( $wp_customize ) {
+function mySns( $wp_customize ) {
     $wp_customize->add_section(
         'sgn_theme_my_sns',
         array(
@@ -290,7 +290,7 @@ function my_sns( $wp_customize ) {
         )
     );
 }
-add_action('customize_register', array( 'sgn_theme_customizer', 'my_sns' ));
+add_action('customize_register', 'mySns');
 
 function amp( $wp_customize ) {
     $wp_customize->add_section(
@@ -343,4 +343,4 @@ function amp( $wp_customize ) {
         )
     );
 }
-add_action('customize_register', array( 'sgn_theme_customizer', 'amp' ));
+add_action('customize_register', 'amp');
