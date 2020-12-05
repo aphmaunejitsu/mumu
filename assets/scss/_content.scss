@@ -43,13 +43,24 @@ article {
 
   figure[class*="wp-block-embed-"] {
     margin: 0;
-    width: 300px;
-    padding: 0.25rem;
+    width: 100%;
+    padding: 9px 14px 5px 14px;
+    max-width: 320px;
+
+    @include mq(sm) {
+
+    }
   }
 
   figure.wp-block-embed-wordpress {
-    border: 1px solid silver;
-    @include border-radius(0.5rem, 0.5rem);
+    div.container {
+      border: 1px solid #ccc;
+      @include border-radius(0.5rem, 0.5rem);
+
+      h4 {
+        margin: 0;
+      }
+    }
   }
 
   figure.wp-block-embed-twitter {
