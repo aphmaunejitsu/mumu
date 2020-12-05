@@ -3,6 +3,7 @@
 
 remove_filter('the_excerpt', 'wpautop');
 remove_filter('term_description', 'wpautop');
+add_filter('wp_lazy_loading_enabled', '__return_false');
 
 function newExcerptMore($more) {
     return '...';
