@@ -37,7 +37,21 @@ article {
         &:before {
             content: '';
             display: block;
-            padding-top: 56.25%; 
+            padding-top: 56.25%;
         }
     }
+
+  figure[class*="wp-block-embed-"] {
+    margin: 0;
+    width: 300px;
+    padding: 0.25rem;
+  }
+
+  figure.wp-block-embed-wordpress {
+    border: 1px solid silver;
+    @include border-radius(0.5rem, 0.5rem);
+  }
+
+  figure.wp-block-embed-twitter {
+  }
 }
