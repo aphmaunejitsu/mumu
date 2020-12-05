@@ -13,16 +13,19 @@ class Ad
         try {
             $matches = null;
 
+			$nodes = $this->contents->getElementsByTagName('p');
+            if (($count = $nodes->count()) < 1) {
+                $nodes = $this->contents->getElementsByTagName('img');
+                if (($count = $nodes->count()) < 1) {
+                    return $this->contents;
+                }
+            }
+
             if (! (get_option('sgn_theme_ad_inner_single'))) {
                 return $this->contents;
             }
 
             if (! ($adsens = get_option('sgn_theme_ad_single'))) {
-                return $this->contents;
-            }
-
-			$nodes = $this->contents->getElementsByTagName('p');
-            if ($nodes->length < 1) {
                 return $this->contents;
             }
 

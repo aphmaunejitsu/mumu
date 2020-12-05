@@ -12,6 +12,6 @@
     "type": "wordpress-theme",
     "require": {
       "php": ">=7.3",
-      "masterminds/html5": "^2.5"
+      "masterminds/html5": "^2.0"
     }
 }
