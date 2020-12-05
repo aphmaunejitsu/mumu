@@ -7,6 +7,18 @@ if (! function_exists('getAssetsDir')) {
     }
 }
 
+if (! function_exists('mumu_excerpt')) {
+    function mumu_excerpt($content, $length = 55)
+    {
+        $content =  preg_replace('/<!--more-->.+/is', '', $content); //moreタグ以降削除
+        $content =  strip_shortcodes($content);
+        $content =  strip_tags($content);
+        $content =  str_replace("&nbsp;", '', $content);
+        $content =  mb_substr($content, 0, $length);
+        return $content . ' ...';
+    }
+}
+
 if (! function_exists('pagination')) {
     function pagination()
     {

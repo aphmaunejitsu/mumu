@@ -26,8 +26,8 @@ class Twitter
 
                 $twitter = $this->content->createElement(self::BLOCK);
                 $twitter->setAttribute('data-tweetid', $id);
-                $twitter->setAttribute('width', 640);
-                $twitter->setAttribute('height', 360);
+                $twitter->setAttribute('width', 320);
+                $twitter->setAttribute('height', 320);
                 $twitter->setAttribute('layout', 'responsive');
 
                 $node->replaceChild($twitter, $node->firstChild);
