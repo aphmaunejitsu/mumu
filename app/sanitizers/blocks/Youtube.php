@@ -44,10 +44,8 @@ class Youtube
     private function getYoutubeId($node)
     {
         _log('Start getYoutubeId');
-        $src = $this->content->saveHTML($node);
-		$is_short = false;
+        $src = $node->nodeValue; //$this->content->saveHTML($node);
 		if ( ! preg_match( '/https:\/\/www\.youtube\.com/', $src ) ) {
-			//https://youtu.be/BTe6Oh-mxDQ
 			if ( ! preg_match( '/https:\/\/youtu.be/', $src ) ) {
 				return null;
 			}

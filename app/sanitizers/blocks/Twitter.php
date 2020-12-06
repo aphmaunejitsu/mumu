@@ -18,7 +18,6 @@ class Twitter
 
         try {
             foreach ($this->nodes as $node) {
-                _log($node);
                 if (($id = $this->getTwitterId($node)) === null) {
                     _log('nullpo');
                     continue;
@@ -44,13 +43,8 @@ class Twitter
     private function getTwitterId($node)
     {
         _log('Start getTheId');
-        $src = $this->content->saveHTML($node);
-		$is_short = false;
-		if ( ! preg_match( '/https:\/\/twitter\.com/', $src ) ) {
-            return null;
-		}
-
-		if ( ! preg_match( '/.*\/status\/([^&]+)\?.*/', $src, $match ) ) {
+        $src = $node->nodeValue;
+		if ( ! preg_match( '/https:\/\/twitter\.com\/[0-9a-zA-Z]+\/status\/([^&]+)\?.*/i', $src, $match ) ) {
             return null;
 		}
 
