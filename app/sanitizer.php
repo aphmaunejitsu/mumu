@@ -5,6 +5,7 @@ use Masterminds\HTML5;
 require_once MUMU_APP . '/sanitizers/Ad.php';
 require_once MUMU_APP . '/sanitizers/Block.php';
 require_once MUMU_APP . '/sanitizers/CleanHtml.php';
+require_once MUMU_APP . '/sanitizers/Iframe.php';
 require_once MUMU_DIR . '/classes/content/iframe.php';
 require_once MUMU_DIR . '/classes/content/image.php';
 
@@ -29,6 +30,7 @@ function ampContent() {
         foreach ($sanitizers as $sanitizer) {
             $dom = (new $sanitizer($dom))();
         }
+
         $html = $dom->saveHTML($dom);
 
         $html = (new CleanHtml($html))();
@@ -48,5 +50,6 @@ function getSanitizers()
     return [
         'Ad',
         'Block',
+        'Iframe',
     ];
 }
