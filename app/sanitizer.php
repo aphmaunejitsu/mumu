@@ -7,7 +7,7 @@ require_once MUMU_APP . '/sanitizers/Block.php';
 require_once MUMU_DIR . '/classes/content/iframe.php';
 require_once MUMU_DIR . '/classes/content/image.php';
 
-function ampContent( $content ) {
+function ampContent() {
     try {
         if ( ! ( in_the_loop() && is_main_query() ) ) {
             return $content;
@@ -17,8 +17,9 @@ function ampContent( $content ) {
             return $content;
         }
 
+        $content = get_the_content();
+
         $body = mb_convert_encoding($content, 'HTML-ENTITIES', 'auto');
-        $body = preg_replace('/<!--[\s\S]*?-->/', '', do_shortcode($body));
 
         $html5 = new HTML5();
         $dom = @$html5->loadHTML($body);

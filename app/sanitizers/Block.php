@@ -3,6 +3,7 @@
 require_once MUMU_APP . '/sanitizers/blocks/Youtube.php';
 require_once MUMU_APP . '/sanitizers/blocks/Twitter.php';
 require_once MUMU_APP . '/sanitizers/blocks/Wordpress.php';
+require_once MUMU_APP . '/sanitizers/blocks/Instagram.php';
 
 class Block
 {
@@ -11,6 +12,7 @@ class Block
         'wp-block-embed-youtube'   => 'Youtube',
         'wp-block-embed-wordpress' => 'Wordpress',
         'wp-block-embed-twitter'   => 'Twitter',
+        'wp-block-embed-instagram' => 'Instagram',
     ];
 
     public function __construct($content)

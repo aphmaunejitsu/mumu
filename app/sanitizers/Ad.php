@@ -12,7 +12,6 @@ class Ad
     {
         try {
             $matches = null;
-
 			$nodes = $this->contents->getElementsByTagName('p');
             if (($count = $nodes->count()) < 1) {
                 $nodes = $this->contents->getElementsByTagName('img');
