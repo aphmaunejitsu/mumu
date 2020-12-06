@@ -8,7 +8,7 @@ require_once MUMU_APP . '/sanitizers/CleanHtml.php';
 require_once MUMU_APP . '/sanitizers/Iframe.php';
 require_once MUMU_APP . '/sanitizers/Image.php';
 
-function ampContent() {
+function ampContent($content) {
     try {
         if ( ! ( in_the_loop() && is_main_query() ) ) {
             return $content;
