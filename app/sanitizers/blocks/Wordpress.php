@@ -13,7 +13,8 @@ class Wordpress
     public function __invoke()
     {
         try {
-            foreach ($this->nodes as $node) {
+            for ($i = $this->nodes->count() - 1; $i >= 0; $i--) {
+                $node = $this->nodes->item($i);
                 if (($src = $this->getWordpressSrc($node)) === null) {
                     _log('nullpo wordpress');
                     continue;

@@ -17,8 +17,8 @@ class Youtube
         _log('Start Youtube::__invoke');
 
         try {
-            foreach ($this->nodes as $node) {
-                _log($node);
+            for ($i = $this->nodes->count() - 1; $i >= 0; $i--) {
+                $node = $this->nodes->item($i);
                 if (($id = $this->getYoutubeId($node)) === null) {
                     _log('nullpo');
                     continue;
