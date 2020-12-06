@@ -4,6 +4,7 @@ use Masterminds\HTML5;
 
 require_once MUMU_APP . '/sanitizers/Ad.php';
 require_once MUMU_APP . '/sanitizers/Block.php';
+require_once MUMU_APP . '/sanitizers/CleanHtml.php';
 require_once MUMU_DIR . '/classes/content/iframe.php';
 require_once MUMU_DIR . '/classes/content/image.php';
 
@@ -30,9 +31,9 @@ function ampContent() {
         }
         $html = $dom->saveHTML($dom);
 
-        $html = preg_replace( '/<html .*?>/', '', $html );
-        $html = preg_replace( '/<\/html>/', '', $html );
-        $html = preg_replace( '/<!DOCTYPE html>/', '', $html );
+        $html = (new CleanHtml($html))();
+        _log($html);
+
         return $html;
     } catch (\Exception $e) {
         _log($e);
