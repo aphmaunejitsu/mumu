@@ -6,8 +6,7 @@ require_once MUMU_APP . '/sanitizers/Ad.php';
 require_once MUMU_APP . '/sanitizers/Block.php';
 require_once MUMU_APP . '/sanitizers/CleanHtml.php';
 require_once MUMU_APP . '/sanitizers/Iframe.php';
-require_once MUMU_DIR . '/classes/content/iframe.php';
-require_once MUMU_DIR . '/classes/content/image.php';
+require_once MUMU_APP . '/sanitizers/Image.php';
 
 function ampContent() {
     try {
@@ -34,7 +33,6 @@ function ampContent() {
         $html = $dom->saveHTML($dom);
 
         $html = (new CleanHtml($html))();
-        _log($html);
 
         return $html;
     } catch (\Exception $e) {
@@ -51,5 +49,6 @@ function getSanitizers()
         'Ad',
         'Block',
         'Iframe',
+        'Image',
     ];
 }

@@ -14,10 +14,11 @@ class Twitter
 
     public function __invoke()
     {
-        _log('Start Twitter::__invoke');
+        _log('Start ' . __METHOD__);
 
         try {
-            foreach ($this->nodes as $node) {
+            for ($i = $this->nodes->count() - 1; $i >= 0; $i--) {
+                $node = $this->nodes->item($i);
                 if (($id = $this->getTwitterId($node)) === null) {
                     _log('nullpo');
                     continue;
@@ -32,12 +33,13 @@ class Twitter
                 $node->replaceChild($twitter, $node->firstChild);
             }
 
+            _log('End ' . __METHOD__);
             return $this->content;
         } catch (\Exception $e) {
+            _log($e);
             return $this->content;
         }
 
-        _log('End Youtube::__invoke');
     }
 
     private function getTwitterId($node)
