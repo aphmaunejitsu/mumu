@@ -7,6 +7,26 @@ if (! function_exists('getAssetsDir')) {
     }
 }
 
+if (! function_exists('mumu_edit_link')) {
+    function mumu_edit_link() {
+		edit_post_link(
+			sprintf(
+				wp_kses(
+					'Edit <span class="screen-reader-text">%s</span>',
+					array(
+						'span' => array(
+							'class' => array(),
+						),
+					)
+				),
+				get_the_title()
+			),
+			'<span class="edit-link">',
+			'</span>'
+		);
+    }
+}
+
 if (! function_exists('mumu_excerpt')) {
     function mumu_excerpt($content, $length = 55)
     {
