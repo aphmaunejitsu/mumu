@@ -12,5 +12,6 @@
     <footer class="article-footer mt1">
         <?php the_category(' '); ?>
         <?php the_tags('', ' '); ?>
+        <?php mumu_edit_link(); ?>
     </footer>
 </article>
