@@ -83,6 +83,17 @@ if (! function_exists('nextPrev')) {
     {
         $next = get_next_post(true);
         $prev = get_previous_post(true);
+        $html = '<nav><div class="container">';
+        if ($next) {
+            $thum_id = get_post_thumbnail_id( $next->ID );
+
+            if ( $thum_id ) {
+                $next_thumb = wp_get_attachment_image_src( $thum_id, 'thumbnail' );
+            }
+           $nextHtml  = '<div class="next-page">';
+           $nextHtml .= '';
+           $nextHtml .= '</div>';
+        }
 
     }
 }
@@ -168,10 +179,18 @@ if (! function_exists('publishedPost')) {
             $updated_t   = get_the_modified_date('Y-m-d');
         }
 
-        ob_start();
-        require dirname( __FILE__ ) . '/views/meta-published.php';
-        $meta = ob_get_contents();
-        ob_end_clean();
+        $meta = <<<EOF
+<span class="published-post flex justify-end">
+    <time class="entry-date published flex items-center mr1" datetime="{$published_t}"">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V10h16v11zm0-13H4V5h16v3z"/></svg>
+        {$published}
+    </time>
+    <time class="updateed-post flex items-center" datetime="<?php echo $updated_t; ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M.01 0h24v24h-24V0z" fill="none"/><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+        {$updated}
+    </time>
+</span>
+EOF;
 
         echo $meta;
     }
