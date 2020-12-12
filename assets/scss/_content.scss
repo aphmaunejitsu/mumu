@@ -86,18 +86,8 @@ article {
 }
 
 .next-prev {
-  a {
+  span > a {
+    text-decoration: none;
     color: black;
-  }
-  .container {
-    flex-direction: column;
-    @include mq(md) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    @include mq(lg) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
   }
 }
