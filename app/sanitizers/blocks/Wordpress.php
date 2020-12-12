@@ -42,10 +42,10 @@ class Wordpress
                     $html .= '</div>';
                 }
 
-                $html .= '<div class="content">';
+                $html .= '<div class="content flex flex-column">';
                 $html .= '<div class="title">' . esc_html($post->post_title) . '</div>';
                 $html .= '<div class="excerpt">' . esc_html(mumu_excerpt($post->post_content), 70) . '</div>';
-                $html .= '<div class="read-more flex justify-end"><a href="' . $permalink . '">Read More</a></div>';
+                $html .= '<div class="read-more m-auto"><a href="' . $permalink . '">Read More</a></div>';
                 $html .= '</div>';
                 $html .= '</div>';
 

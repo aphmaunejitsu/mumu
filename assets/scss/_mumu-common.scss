@@ -83,7 +83,7 @@ h6 {
     @include mq(lg) {
         padding-left: 0.5rem;
     }
-    
+
 }
 
 
@@ -96,14 +96,22 @@ amp-img {
   @include box-shadow($box-shadow);
 }
 
-amp-lightbox, .sgn-list-section  {
+amp-lightbox  {
   amp-img {
     box-shadow: initial;
     border-radius: initial;
   }
 }
 
-amp-image-lightbox, amp-lightbox { 
+.none-box-shadow {
+  box-shadow: initial;
+}
+
+.none-border-radius {
+  border-radius: initial;
+}
+
+amp-image-lightbox, amp-lightbox {
   background: rgba(0, 10, 10, 0.9);
 }
 
