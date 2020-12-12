@@ -12,7 +12,7 @@
     endif;
     ?>
     </main><!-- #main -->
-    <nav>
+    <nav class="next-prev">
     <?php nextPrev() ?>
     </nav>
 </div> <!-- #primary -->

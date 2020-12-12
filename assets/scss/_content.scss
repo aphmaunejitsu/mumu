@@ -1,45 +1,45 @@
 article {
-    .article-content {
-        .read-more a {
-            display: inline-block;
-            font-weight: bold;
-            padding: 0.25em;
-            text-decoration: none;
-            border: solid 1px $read-more;
-            transition: .4s;
-            @include border-radius(4px 4px);
-        }
-    }
+  .article-content {
+      .read-more a {
+          display: inline-block;
+          font-weight: bold;
+          padding: 0.25em;
+          text-decoration: none;
+          border: solid 1px $read-more;
+          transition: .4s;
+          @include border-radius(4px 4px);
+      }
+  }
 
-    footer.article-footer {
-        a {
-            @extend .category-tag;
-        }
-    }
+  footer.article-footer {
+      a {
+          @extend .category-tag;
+      }
+  }
 
-    .thumbnail {
+  .thumbnail {
+    width: 100%;
+    @include border-radius(2px, 2px);
+    @include box-shadow($box-shadow);
+
+    amp-img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
       width: 100%;
-      @include border-radius(2px, 2px);
-      @include box-shadow($box-shadow);
-
-      amp-img {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      &:before {
-        content: '';
-        display: block;
-        padding-top: 56.25%;
-      }
+      height: 100%;
+      object-fit: cover;
     }
+
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 56.25%;
+    }
+  }
 
   figure[class*="wp-block-embed-"] {
     margin: 0;
@@ -82,5 +82,22 @@ article {
   }
 
   figure.wp-block-embed-twitter {
+  }
+}
+
+.next-prev {
+  a {
+    color: black;
+  }
+  .container {
+    flex-direction: column;
+    @include mq(md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include mq(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 }
