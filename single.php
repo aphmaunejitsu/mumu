@@ -12,9 +12,7 @@
     endif;
     ?>
     </main><!-- #main -->
-    <nav class="next-prev">
-    <?php nextPrev() ?>
-    </nav>
+    <?php mumu_next_prev() ?>
 </div> <!-- #primary -->
 <?php
 get_sidebar();
