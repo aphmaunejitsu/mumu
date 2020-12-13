@@ -1,8 +1,8 @@
-( function( $ ) {
+(function($) {
     // Codes here.
-  wp.customize( 'custom-logo', function( $value ) {
+  wp.customize('custom-logo', function( $value ) {
     value.bind( function(to) {
-      $( '.site-icon amp-img' ).src( $value )
-    } )
-  } )
-} )( jQuery );
+      $('header#mumu-top amp-img' ).src( $value )
+    })
+  })
+})(jQuery);
