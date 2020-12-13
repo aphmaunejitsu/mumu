@@ -1,47 +1,47 @@
 footer#main-footer {
-    border-top: solid 1px Silver;
-    padding: .5rem;
+  border-top: solid 1px Silver;
+  padding: .5rem;
 
-    amp-img {
-        @include box-shadow(none);
+  amp-img {
+    @include box-shadow(none);
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      li {
+        line-height: 1.5rem;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
     }
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        ul {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            
-            li {
-                line-height: 1.5rem;
-                a {
-                  text-decoration: none;
-                  color: black;
-                }
-            }
-        }
-
-        @include mq(sm) {
-            ul {
-                flex-direction: row;
-            }
-        }
-
-        @include mq(md) {
-            ul {
-                flex-direction: row;
-            }
-        }
-
-        @include mq(lg) {
-            ul {
-                flex-direction: row;
-            }
-        }
+    @include mq(sm) {
+      ul {
+        flex-direction: row;
+      }
     }
+
+    @include mq(md) {
+      ul {
+        flex-direction: row;
+      }
+    }
+
+    @include mq(lg) {
+      ul {
+        flex-direction: row;
+      }
+    }
+  }
 
 }

@@ -1,84 +1,83 @@
 header#mumu-top {
-    @include box-shadow($box-shadow);
+  @include box-shadow($box-shadow);
 
-    amp-img {
-        @include box-shadow(none);
+  amp-img {
+    @include box-shadow(none);
+  }
+
+  h1 {
+    color: black;
+  }
+
+  .submenu {
+    flex: 1;
+
+    ul {
+      text-align: right;
+      float: right;
+
+      li {
+        padding: 0 1rem;
+        background: transparent;
+        opacity: $opacity;
+      }
     }
 
-    h1 {
-        color: black;
+    a {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      color: black;
     }
+  }
 
-    .submenu {
-        flex: 1;
-
-        ul {
-            text-align: right;
-            float: right;
-
-            li {
-                padding: 0 1rem;
-                background: transparent;
-                opacity: $opacity;
-            }
-
-        }
-
-        a {
-            display: block;
-            text-decoration: none;
-            cursor: pointer;
-            color: black;
-        }
+  .submenu {
+    @include mq(sm) {
+      display: none;
     }
+  }
 
-    .submenu {
-        @include mq(sm) {
-          display: none;
-        }
+  .submenu {
+    @include mq(md) {
+      display: inline-block;
     }
+  }
 
-    .submenu {
-        @include mq(md) {
-          display: inline-block;
-        }
+  .submenu {
+    @include mq(lg) {
+      display: inline-block;
     }
+  }
 
-    .submenu {
-        @include mq(lg) {
-          display: inline-block;
-        }
-    }
+  .toggle {
+    cursor: pointer;
+    text-decoration: none;
+    line-height: $line-height;
+  }
 
-    .toggle {
-        cursor: pointer;
-        text-decoration: none;
-        line-height: $line-height;
-    }
+  .toggle:focus {
+    outline: none;
+  }
 
-    .toggle:focus {
-        outline: none;
-    }
-
-    .search-icon {
-        cursor: pointer;
-    }
+  .search-icon {
+      cursor: pointer;
+  }
 }
 
 #header-side-menu {
-    a {
-        display: block;
-        text-decoration: none;
-        cursor: pointer;
-        color: black;
-    }
+  a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
 }
 
 amp-lightbox {
   background: rgba(0,0,0,.8);
   color: #fff;
 
-  .sgn-search-lightbox {
+  .mumu-search-lightbox {
     justify-content: center;
 
     .close {
@@ -112,7 +111,6 @@ amp-lightbox {
         width: 40rem;
       }
     }
-
   }
 }
 

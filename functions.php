@@ -30,9 +30,6 @@ function instantiate_theme()
 }
 
 
-
-
-
 if (! function_exists('_log')) {
     function _log($message)
     {
