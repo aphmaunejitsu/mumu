@@ -6,13 +6,13 @@
         <?php publishedPost(); ?>
         </div> <!-- .meta -->
         <div class="sns mb1 flex justify-center">
-        <?php get_template_part('parts/content', 'sns'); ?>
+        <?php get_template_part('parts/content/article', 'sns'); ?>
         </div> <!-- .sns -->
     </header>
     <div class="article-content content mb1">
         <?php the_content() ?>
     </div><!-- .article-content -->
     <footer class="article-footer mt1">
-        <?php get_template_part('parts/content', 'footer'); ?>
+        <?php get_template_part('parts/content/article', 'footer'); ?>
     </footer>
 </article>
