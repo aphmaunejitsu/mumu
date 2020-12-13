@@ -12,7 +12,12 @@ $a-link: #3273dc;
 $a-hover: #0000ff;
 $a-visited: #3273dc;
 $a-active: #3273dc;
-$read-more: #3273dc;
+
+$read-more: rgba(200, 200, 200, 0.8);
+$read-more-radis: 8px 8px;
+
+$button-border-color: rgba(200, 200, 200, 0.8);
+$button-radius: 8px 8px;
 
 $golden: 1.681;
 $silver: 1.414;

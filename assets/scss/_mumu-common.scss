@@ -131,18 +131,14 @@ a {
     }
 }
 
-header.sgn-navi {
-    background-color: $bg-color-navi;
-    border: $navi-border;
-    font-weight: $font-600;
-    font-size: $font-large;
-}
-
 .category-tag {
     display: inline-block;
     line-height: 1;
+    border: 1px solid $button-border-color;
     text-decoration: none;
     margin-bottom: .25rem;
+    padding: .5rem;
+    @include border-radius($button-radius);
     &:before {
         content: "#";
     }
@@ -154,16 +150,6 @@ header.sgn-navi {
         width: 36px;
         height: 36px;
     }
-}
-
-
-.post-category {
-  @extend .category-tag;
-  z-index: 999;
-  top: .25rem;
-  right: .25rem;
-  display: flex;
-  align-items: center;
 }
 
 amp-social-share {

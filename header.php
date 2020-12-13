@@ -15,7 +15,7 @@
                 'fallback_cb'     => null
         ]);
         ?>
-        <div class="search-icon center m0 p0 nowrap" role="button" tabindex="1" on="tap:sgn-search-lightbox">
+        <div class="search-icon center m0 p0 nowrap" role="button" tabindex="1" on="tap:mumu-search-lightbox">
             <div class="flex items-center">
                 <?php get_template_part('parts/icons/svg', 'search'); ?>
             </div>
