@@ -1,10 +1,11 @@
 <?php
 
-function contactUs( $wp_customize ) {
+function contactUs($wp_customize)
+{
     $wp_customize->add_section(
         'sgn_theme_option',
         array(
-            'title'    => 'お問い合わせ',
+           'title'    => 'お問い合わせ',
             'priority' => 200,
         )
     );
@@ -12,7 +13,7 @@ function contactUs( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_option_contact_us',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -30,7 +31,8 @@ function contactUs( $wp_customize ) {
 }
 add_action('customize_register', 'contactUs');
 
-function googleAnalytics( $wp_customize ) {
+function googleAnalytics($wp_customize)
+{
     $wp_customize->add_section(
         'sgn_theme_analytics',
         array(
@@ -42,7 +44,7 @@ function googleAnalytics( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_analytics_id',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -60,7 +62,8 @@ function googleAnalytics( $wp_customize ) {
 }
 add_action('customize_register', 'googleAnalytics');
 
-function ad( $wp_customize ) {
+function ad($wp_customize)
+{
     $wp_customize->add_section(
         'sgn_theme_ad',
         array(
@@ -73,7 +76,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_show',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -92,7 +95,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_adsens',
         array(
-            'default'   => array(),
+            'default'   => null,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -111,7 +114,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_adsens_auto',
         array(
-            'default'   => array(),
+            'default'   => false,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -130,7 +133,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_inner_single',
         array(
-            'default'   => array(),
+            'default'   => false,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -148,7 +151,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_single',
         array(
-            'default'   => array(),
+            'default'   => null,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -167,7 +170,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_page',
         array(
-            'default'   => array(),
+            'default'   => null,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -186,7 +189,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_similar',
         array(
-            'default'   => array(),
+            'default'   => null,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -195,7 +198,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_category',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -224,7 +227,7 @@ function ad( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_ad_new',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -239,13 +242,13 @@ function ad( $wp_customize ) {
             'type'     => 'textarea',
         )
     );
-
 }
 add_action('customize_register', 'ad');
 
-function mySns( $wp_customize ) {
+function mySns($wp_customize)
+{
     $wp_customize->add_section(
-        'sgn_theme_my_sns',
+        'mumu[theme_my_sns]',
         array(
             'title'    => 'SNS',
             'priority' => 211,
@@ -253,46 +256,164 @@ function mySns( $wp_customize ) {
     );
 
     $wp_customize->add_setting(
-        'sgn_theme_my_twitter',
+        'mumu[theme_my_sns][is_twitter]',
         array(
-            'default'   => array(),
+            'default'   => 0,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
     );
 
     $wp_customize->add_control(
-        'sgn_theme_my_twitter',
+        'mumu[theme_my_sns][is_twitter]',
         array(
-            'settings' => 'sgn_theme_my_twitter',
+            'settings' => 'mumu[theme_my_sns][is_twitter]',
+            'label'    => 'Shared Twitter',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'checkbox',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][is_facebook]',
+        array(
+            'default'   => 0,
+            'type'      => 'option',
+            'transport' => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns][is_facebook]',
+        array(
+            'settings' => 'mumu[theme_my_sns][is_facebook]',
+            'label'    => 'Shared Facebook',
+            'description' => 'Facebok APP IDを取得して入力してください',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'checkbox',
+        )
+    );
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][fbappid]',
+        [
+            'default'   => '',
+            'type'      => 'option',
+            'transport' => 'postMessage',
+        ]
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns][fbappid]',
+        [
+            'settings' => 'mumu[theme_my_sns][fbappid]',
+            'label'    => 'Facebook APP ID',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'text',
+        ]
+    );
+
+    // line
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][is_line]',
+        array(
+            'default'   => 0,
+            'type'      => 'option',
+            'transport' => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns][is_line]',
+        array(
+            'settings' => 'mumu[theme_my_sns][is_line]',
+            'label'    => 'Shared LINE',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'checkbox',
+        )
+    );
+
+    // pinterest
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][is_pinterest]',
+        array(
+            'default'   => 0,
+            'type'      => 'option',
+            'transport' => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns]is_pinterest',
+        array(
+            'settings' => 'mumu[theme_my_sns][is_pinterest]',
+            'label'    => 'Shared Pinterest',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'checkbox',
+        )
+    );
+
+    // Tumblr
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][is_tumblr]',
+        array(
+            'default'   => 0,
+            'type'      => 'option',
+            'transport' => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns][is_tumblr]',
+        array(
+            'settings' => 'mumu[theme_my_sns][is_tumblr]',
+            'label'    => 'Shared Tumblr',
+            'section'  => 'mumu[theme_my_sns]',
+            'type'     => 'checkbox',
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mumu[theme_my_sns][twitter]',
+        array(
+            'default'   => '',
+            'type'      => 'option',
+            'transport' => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mumu[theme_my_sns][twitter]',
+        array(
+            'settings' => 'mumu[theme_my_sns][twitter]',
             'label'    => 'Twitter Profile Url',
-            'section'  => 'sgn_theme_my_sns',
+            'section'  => 'mumu[theme_my_sns]',
             'type'     => 'text',
         )
     );
 
     $wp_customize->add_setting(
-        'sgn_theme_my_fbpage',
+        'mumu[theme_my_sns][fbpage]',
         array(
-            'default'   => array(),
+            'default'   => '',
             'type'      => 'option',
-            'transport' => 'postMessage',
+            'transport' => 'refresh',
         )
     );
 
     $wp_customize->add_control(
-        'sgn_theme_my_fbpage',
+        'mumu[theme_my_sns][fbpage]',
         array(
-            'settings' => 'sgn_theme_my_fbpage',
+            'settings' => 'mumu[theme_my_sns][fbpage]',
             'label'    => 'Facebook Page',
-            'section'  => 'sgn_theme_my_sns',
+            'section'  => 'mumu[theme_my_sns]',
             'type'     => 'text',
         )
     );
 }
 add_action('customize_register', 'mySns');
 
-function amp( $wp_customize ) {
+function amp($wp_customize)
+{
     $wp_customize->add_section(
         'sgn_theme_amp',
         array(
@@ -304,7 +425,7 @@ function amp( $wp_customize ) {
     $wp_customize->add_setting(
         'sgn_theme_amp_logo',
         array(
-            'default'   => array(),
+            'default'   => null,
             'type'      => 'option',
             'transport' => 'postMessage',
         )
@@ -336,7 +457,7 @@ function amp( $wp_customize ) {
     $wp_customize->add_control(
         'sgn_theme_amp_eyecatch_popup',
         array(
-            'label'    => _( 'アイキャッチ画像をポップアップする' ),
+            'label'    => _('アイキャッチ画像をポップアップする'),
             'section'  => 'sgn_theme_amp',
             'settings' => 'sgn_theme_amp_eyecatch_popup',
             'type'     => 'checkbox',
@@ -344,3 +465,28 @@ function amp( $wp_customize ) {
     );
 }
 add_action('customize_register', 'amp');
+
+// カスタマイザー
+function mumu_customize_preview_js()
+{
+    wp_enqueue_script(
+        'mumu_customizer_preview',
+        get_template_directory_uri() . '/js/customizer-preview.js',
+        ['customize-preview'],
+        null,
+        true
+    );
+}
+add_action('customize_preview_init', 'mumu_customize_preview_js');
+
+function mumu_customize_control_js()
+{
+    wp_enqueue_script(
+        'mumu_customizer_control',
+        get_template_directory_uri() . '/js/customizer-control.js',
+        ['customize-controls', 'jquery'],
+        null,
+        true
+    );
+}
+add_action('customize_controls_enqueue_scripts', 'mumu_customize_control_js');
