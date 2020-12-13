@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID()?>" <?php post_class('mb2') ?>>
     <header class="article-header mb1">
         <?php
-            if ( is_singular() ) :
+            if (is_singular()) :
                 the_title('<h1 class="entry-title my1">', '</h1>');
             else :
                 the_title('<h3 class="entry-title my1">', '</h3>');
@@ -19,6 +19,6 @@
 		</div><!-- .read-more -->
     </div><!-- .article-content -->
     <footer class="article-footer mt1">
-        <?php get_template_part('parts/content', 'footer'); ?>
+        <?php get_template_part('parts/content/article', 'footer'); ?>
     </footer>
 </article>
