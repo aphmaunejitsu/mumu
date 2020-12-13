@@ -1,44 +1,44 @@
  #secondary {
+  width: 100%;
+  a {
+    color: black;
+  }
+
+
+  .widget {
+    h3 {
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid rgba(Silver, .5);
+    }
+
     a {
-        color: black;
+      text-decoration: none;
     }
 
-    width: 100%;
-
-    .widget {
-        h3 {
-            padding-bottom: 0.25rem;
-            border-bottom: 1px solid rgba(Silver, .5);
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        ul {
-            list-style: none;
-            margin-left: -2rem;
-            li {
-                margin-bottom: 0.5rem;
-            }
-        }
-
-        ul > li ul {
-            margin-top: 0.25rem;
-            margin-left: -1rem;
-            li {
-                line-height: 1.5rem;
-            }
-        }
+    ul {
+      list-style: none;
+      margin-left: -2rem;
+      li {
+        margin-bottom: 0.5rem;
+      }
     }
 
-    @include mq(sm) {
-        min-width: 340px;
+    ul > li ul {
+      margin-top: 0.25rem;
+      margin-left: -1rem;
+      li {
+          line-height: 1.5rem;
+      }
     }
+  }
 
-    @include mq(lg) {
-        max-width: 340px;
-        margin-left: 0.25rem;
-    }
+  @include mq(sm) {
+    min-width: 340px;
+  }
+
+  @include mq(lg) {
+    max-width: 340px;
+    margin-left: 0.25rem;
+  }
 
 }

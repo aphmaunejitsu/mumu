@@ -12,7 +12,7 @@
     endif;
     ?>
     </main><!-- #main -->
-    <?php pagination() ?>
+    <?php mumu_next_prev() ?>
 </div> <!-- #primary -->
 <?php
 get_sidebar();

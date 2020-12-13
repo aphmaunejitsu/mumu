@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '73f921b2a0d699059bd3bcf4492d8ff040e7eabc',
+    'reference' => 'd802e97b5177ac80ca657bc33cac2ac05d5aa2f9',
     'name' => 'hcm-nights/mumu',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '73f921b2a0d699059bd3bcf4492d8ff040e7eabc',
+      'reference' => 'd802e97b5177ac80ca657bc33cac2ac05d5aa2f9',
     ),
     'masterminds/html5' => 
     array (

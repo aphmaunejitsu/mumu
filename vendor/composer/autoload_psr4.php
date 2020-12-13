@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
-    'App\\' => array($baseDir . '/app'),
 );

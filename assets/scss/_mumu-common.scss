@@ -8,16 +8,41 @@ body {
   line-height: 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.25rem;
-}
-
 svg {
     width: 1rem;
     height: 1rem;
     margin-right: 0.25rem;
 }
 
+h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+    line-height: 1.42rem;
+}
+
+h4 {
+    font-size: 1.12rem;
+    line-height: 1.37rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+    line-height: 1.08rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
 
 .container {
     width: 100%;
@@ -32,6 +57,7 @@ svg {
     background-color: #FFF;
     flex-direction: column;
     justify-content: center;
+    margin-top: 1px;
 }
 
 #content {
@@ -57,7 +83,7 @@ svg {
     @include mq(lg) {
         padding-left: 0.5rem;
     }
-    
+
 }
 
 
@@ -70,14 +96,22 @@ amp-img {
   @include box-shadow($box-shadow);
 }
 
-amp-lightbox, .sgn-list-section  {
+amp-lightbox  {
   amp-img {
     box-shadow: initial;
     border-radius: initial;
   }
 }
 
-amp-image-lightbox, amp-lightbox { 
+.none-box-shadow {
+  box-shadow: initial;
+}
+
+.none-border-radius {
+  border-radius: initial;
+}
+
+amp-image-lightbox, amp-lightbox {
   background: rgba(0, 10, 10, 0.9);
 }
 
@@ -97,59 +131,27 @@ a {
     }
 }
 
-header.sgn-navi {
-    background-color: $bg-color-navi;
-    border: $navi-border;
-    font-weight: $font-600;
-    font-size: $font-large;
-}
-
 .category-tag {
     display: inline-block;
     line-height: 1;
+    border: 1px solid $button-border-color;
     text-decoration: none;
     margin-bottom: .25rem;
+    padding: .5rem;
+    @include border-radius($button-radius);
     &:before {
         content: "#";
     }
-
 }
 
-.post-category {
-  @extend .category-tag;
-  z-index: 999;
-  top: .25rem;
-  right: .25rem;
-  display: flex;
-  align-items: center;
-}
-
-amp-social-share {
-  @include border-radius(2px 2px);
-  margin-right: .5rem;
-}
-
-.sgn-container {
-    width: 100%;
-    max-width: 1280px;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #FFF;
-}
-
-.sgn-container {
-    @include mq(md) {
-        justify-content: space-between;
+.sns {
+    svg {
+        width: 36px;
+        height: 36px;
     }
 }
 
-.sgn-container {
-  @include mq(lg) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
-  }
+amp-social-share {
+  @include border-radius(4px 4px);
+  margin-right: .25rem;
 }

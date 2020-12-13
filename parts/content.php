@@ -19,7 +19,6 @@
 		</div><!-- .read-more -->
     </div><!-- .article-content -->
     <footer class="article-footer mt1">
-        <?php the_category(' '); ?>
-        <?php the_tags('', ' '); ?>
+        <?php get_template_part('parts/content', 'footer'); ?>
     </footer>
 </article>
