@@ -2,7 +2,10 @@
 
 define("MUMU_DIR", dirname(__FILE__));
 define("MUMU_APP", MUMU_DIR . '/app');
+define("MUMU_VENDOR", MUMU_DIR . '/vendor');
 define("MUMU_HELPERS", MUMU_DIR . '/helpers');
+
+require_once MUMU_VENDOR . '/autoload.php';
 
 require_once MUMU_APP . '/actions.php';
 require_once MUMU_APP . '/filters.php';
