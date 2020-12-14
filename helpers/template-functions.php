@@ -125,12 +125,6 @@ if (! function_exists('customLogo')) {
 if (! function_exists('featureImage')) {
     function featureImage()
     {
-        $image[0] = esc_attr(get_template_directory_uri() . '/assets/images/no-image-752x423.jpg');
-        $image[1] = 752;
-        $image[2] = 423;
-
-        $large[0]  = $image[0];
-        $medium[0] = $image[0];
         $title = esc_attr(get_the_title());
         $link = get_the_permalink();
 
@@ -144,6 +138,8 @@ if (! function_exists('featureImage')) {
             $image[0] = esc_attr($image[0]);
             $large[0] = esc_attr($large[0]);
             $medium[0] = esc_attr($medium[0]);
+        } else {
+            return null;
         }
 
         $feature = <<<EOF
