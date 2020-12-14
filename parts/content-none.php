@@ -20,12 +20,11 @@
 
 		elseif (is_search()) : ?>
 			<p>検索結果がありません。</p>
-            <p>もう一度検索してください</p>
+            <p><a href="/">hcm-nights.com トップへ</a></p>
 			<?php
 		else : ?>
-
-			<p>( ^ω^ ) 何かがおかしいようです</p>
-            <p>もう一度検索してください</p>
+			<p>指定されたURLは存在しませんでした</p>
+            <p><a href="/">hcm-nights.com トップへ</a></p>
         <?php
         endif; ?>
     </div><!-- .content -->
