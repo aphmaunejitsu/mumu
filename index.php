@@ -2,7 +2,7 @@
 /**
  * The main template file
  *
- * @link https://hcm-nights.com
+ * @link https://github.com/aphmaunejitsu/mumu
  *
  * @package mumu
  * @since 2.0.0
@@ -23,7 +23,7 @@ get_header(); ?>
     endif;
     ?>
     </main><!-- #main -->
-    <?php pagination() ?>
+    <?php mumu_pagination() ?>
 </div> <!-- #primary -->
 <?php
 get_sidebar();

@@ -61,8 +61,8 @@ if (! function_exists('mumu_excerpt')) {
     }
 }
 
-if (! function_exists('pagination')) {
-    function pagination()
+if (! function_exists('mumu_pagination')) {
+    function mumu_pagination()
     {
 		global $wp_query;
 		$bignum = 999999999;
