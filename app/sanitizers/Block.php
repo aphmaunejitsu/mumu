@@ -11,6 +11,7 @@ class Block
     public $blocks = [
         'wp-block-embed-youtube'   => 'Youtube',
         'wp-block-embed-wordpress' => 'Wordpress',
+        'wp-block-embed'           => 'Wordpress',
         'wp-block-embed-twitter'   => 'Twitter',
         'wp-block-embed-instagram' => 'Instagram',
     ];
