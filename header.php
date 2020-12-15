@@ -1,7 +1,7 @@
 <!doctype html>
 <html amp >
 	<?php get_template_part( 'parts/head' ); ?>
-<body <?php body_class() ?>>
+<body <?php body_class('flex flex-column') ?>>
 <?php do_action('mumu_google_auto_adsens'); ?>
 <header id="mumu-top" class="top-0 left-0 right-0 flex justify-center">
     <div class="container flex justify-start items-center px2">

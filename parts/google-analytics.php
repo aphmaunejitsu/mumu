@@ -1,6 +1,7 @@
 <?php
-$id = get_option( 'sgn_theme_analytics_id' );
-if ( empty( $id ) ) {
+$mumu = get_option('mumu');
+$analytics = $mumu['theme_my_analytics']['id'] ?? null;
+if (empty($analytics)) {
 	return;
 }
 ?>
@@ -8,7 +9,7 @@ if ( empty( $id ) ) {
 <script type="application/json">
 {
   "vars": {
-		"account": "<?php echo esc_attr( $id ); ?>"
+		"account": "<?php echo esc_attr($analytics); ?>"
   },
   "triggers": {
 	"trackPageview": {

@@ -56,15 +56,12 @@ h6 {
     flex-direction: column;
     justify-content: center;
     margin-top: 1px;
-}
+    flex: 1;
 
-#content {
     @include mq(md) {
         justify-content: space-between;
     }
-}
 
-#content {
   @include mq(lg) {
         display: flex;
         flex-direction: row;
