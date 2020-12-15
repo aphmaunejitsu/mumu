@@ -8,7 +8,7 @@ require_once MUMU_APP . '/sanitizers/CleanHtml.php';
 require_once MUMU_APP . '/sanitizers/Iframe.php';
 require_once MUMU_APP . '/sanitizers/Image.php';
 
-function ampContent($content) {
+function mumu_amp_content($content) {
     try {
         if ( ! ( in_the_loop() && is_main_query() ) ) {
             return $content;
@@ -25,7 +25,7 @@ function ampContent($content) {
         $html5 = new HTML5();
         $dom = @$html5->loadHTML($body);
 
-        $sanitizers = getSanitizers();
+        $sanitizers = mumu_get_sanitizers();
         foreach ($sanitizers as $sanitizer) {
             $dom = (new $sanitizer($dom))();
         }
@@ -41,9 +41,9 @@ function ampContent($content) {
     }
 }
 
-add_filter('the_content', 'ampContent', 999999999);
+add_filter('the_content', 'mumu_amp_content', 999999999);
 
-function getSanitizers()
+function mumu_get_sanitizers()
 {
     return [
         'Ad',

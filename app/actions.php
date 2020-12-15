@@ -1,7 +1,7 @@
 <?php
 
 // サムネイルのカスタマイズ
-function thumbnails()
+function mumu_thumbnails()
 {
     add_theme_support('post-thumbnails');
 
@@ -10,17 +10,17 @@ function thumbnails()
     add_image_size('mumu-thumbnail-m-16x9',  752, 423, true);
     add_image_size('mumu-thumbnail-l-16x9', 1280, 720, true);
 }
-add_action('after_setup_theme', 'thumbnails');
+add_action('after_setup_theme', 'mumu_thumbnails');
 
 // メニューの追加
-function register_menu_action()
+function mumu_register_menu_action()
 {
     register_nav_menus([
         'header-navigation' => 'Header Navigation',
         'footer-navigation' => 'Footer Navigation',
     ]);
 }
-add_action('after_setup_theme',   'register_menu_action');
+add_action('after_setup_theme',   'mumu_register_menu_action');
 
 // AMPに不要なAction削除
 function removeAction()
@@ -36,12 +36,13 @@ function removeAction()
     remove_action('wp_head', 'wp_oembed_add_discovery_links');
     remove_action('wp_head', 'wp_oembed_add_host_js');
     remove_action('wp_head', 'rel_canonical');
+
     add_filter('show_admin_bar', '__return_false');
 }
 add_action('after_setup_theme',   'removeAction');
 
 // Widgetsの初期化
-function widgets_init()
+function mumu_widgets_init()
 {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',
@@ -61,15 +62,15 @@ function widgets_init()
     ] + $config);
 
 }
-add_action('widgets_init', 'widgets_init');
+add_action('widgets_init', 'mumu_widgets_init');
 
 // AMPのCSS出力
-function enqueueInlineStyle()
+function mumu_enqueue_inline_style()
 {
     $style = file_get_contents(get_template_directory() . '/assets/css/aphmau.css');
     echo $style;
 }
-add_action('mumu_amp_custom_css', 'enqueueInlineStyle');
+add_action('mumu_amp_custom_css', 'mumu_enqueue_inline_style');
 
 function mumu_after_setup_theme()
 {
@@ -81,7 +82,7 @@ function mumu_after_setup_theme()
 }
 add_action('after_setup_theme', 'mumu_after_setup_theme');
 
-function add_canonical()
+function mumu_add_canonical()
 {
     $canonical = null;
     if (is_home() || is_front_page()) {
@@ -100,10 +101,10 @@ function add_canonical()
 
     echo '<link rel="canonical" href="' . $canonical. '">';
 }
-add_action('wp_head', 'add_canonical');
+add_action('wp_head', 'mumu_add_canonical');
 
 // 管理にユーザを表示
-function add_author_filter()
+function mumu_add_author_filter()
 {
     global $post_type;
     if ($post_type == 'post') {
@@ -115,4 +116,4 @@ function add_author_filter()
         );
     }
 }
-add_action('restrict_manage_posts', 'add_author_filter');
+add_action('restrict_manage_posts', 'mumu_add_author_filter');
