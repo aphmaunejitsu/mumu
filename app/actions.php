@@ -6,9 +6,9 @@ if (! function_exists('mumu_thumbnails')) {
     {
         add_theme_support('post-thumbnails');
 
-        add_image_size('mumu-thumbnail-xs-16x9', 144,  81, true);
-        add_image_size('mumu-thumbnail-s-16x9',  480, 270, true);
-        add_image_size('mumu-thumbnail-m-16x9',  752, 423, true);
+        add_image_size('mumu-thumbnail-xs-16x9', 144, 81, true);
+        add_image_size('mumu-thumbnail-s-16x9', 480, 270, true);
+        add_image_size('mumu-thumbnail-m-16x9', 752, 423, true);
         add_image_size('mumu-thumbnail-l-16x9', 1280, 720, true);
     }
 }
@@ -24,7 +24,7 @@ if (! function_exists('mumu_register_menu_action')) {
         ]);
     }
 }
-add_action('after_setup_theme',   'mumu_register_menu_action');
+add_action('after_setup_theme', 'mumu_register_menu_action');
 
 // AMPに不要なAction削除
 if (! function_exists('mumu_remove_action')) {
@@ -44,7 +44,7 @@ if (! function_exists('mumu_remove_action')) {
         add_filter('show_admin_bar', '__return_false');
     }
 }
-add_action('after_setup_theme',   'mumu_remove_action');
+add_action('after_setup_theme', 'mumu_remove_action');
 
 // AMPのCSS出力
 if (! function_exists('mumu_enqueue_inline_style')) {
@@ -86,14 +86,14 @@ if (! function_exists('mumu_add_canonical')) {
             $canonical = home_url();
         }
 
-        echo '<link rel="canonical" href="' . $canonical. '">';
+        echo '<link rel="canonical" href="' . $canonical . '">';
     }
 }
 add_action('wp_head', 'mumu_add_canonical');
 
 // 管理にユーザを表示
-if (! function_exists('mumu_add_author_filter')) {
-    function mumu_add_author_filter()
+if (! function_exists('mumu_add_author_action')) {
+    function mumu_add_author_action()
     {
         global $post_type;
         if ($post_type == 'post') {
@@ -106,4 +106,4 @@ if (! function_exists('mumu_add_author_filter')) {
         }
     }
 }
-add_action('restrict_manage_posts', 'mumu_add_author_filter');
+add_action('restrict_manage_posts', 'mumu_add_author_action');

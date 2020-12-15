@@ -1,6 +1,6 @@
 <!doctype html>
-<html amp >
-	<?php get_template_part( 'parts/head' ); ?>
+<html amp>
+    <?php get_template_part('parts/head'); ?>
 <body <?php body_class('flex flex-column') ?>>
 <?php do_action('mumu_google_auto_adsens'); ?>
 <header id="mumu-top" class="top-0 left-0 right-0 flex justify-center">
@@ -23,18 +23,18 @@
     </div> <!-- .container -->
 </header>
 <amp-sidebar id="header-side-menu" class='header-side-menu p2 lg-hide' layout='nodisplay'>
-	<div class="flex justify-end items-center">
-		<div role="button" aria-label="close sidebar" on="tap:header-side-menu.toggle" tabindex="0" class="navbar-trigger">✕</div>
-	</div>
-	<?php
+    <div class="flex justify-end items-center">
+        <div role="button" aria-label="close sidebar" on="tap:header-side-menu.toggle" tabindex="0" class="navbar-trigger">✕</div>
+    </div>
+    <?php
          wp_nav_menu([
             'menu_class'      => 'list-reset m0 p0 label',
             'container'       => 'nav',
             'container_class' => 'sidebar-menu',
             'theme_location'  => 'header-navigation',
             'fallback_cb'     => null
-        ]);
-    ?>
+         ]);
+            ?>
     <?php get_template_part('parts/common/sns'); ?>
 </amp-sidebar>
 <?php get_search_form(); ?>

@@ -5,7 +5,8 @@ remove_filter('term_description', 'wpautop');
 add_filter('wp_lazy_loading_enabled', '__return_false');
 
 if (! function_exists('mumu_new_excerpt_more')) {
-    function mumu_new_excerpt_more($more) {
+    function mumu_new_excerpt_more($more)
+    {
         return '...';
     }
 }
@@ -84,4 +85,3 @@ if (! function_exists('mumu_google_auto_adsens_filter')) {
     }
 }
 add_filter('mumu_google_auto_adsens', 'mumu_google_auto_adsens_filter');
-
