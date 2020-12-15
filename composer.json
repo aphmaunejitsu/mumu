@@ -1,17 +1,17 @@
 {
-    "name": "hcm-nights/mumu",
+    "name": "aphmaunejitsu/mumu",
     "description": "",
     "keywords": ["wordpress", "theme"],
-    "homepage": "https://github.com/hcm-nights/mumu",
+    "homepage": "https://github.com/aphmaunejitsu/mumu",
     "authors": [
       {
-        "name": "aphmaunejitsu",
+        "name": "Aphmau Nejitsu",
         "homepage": "https://github.com/aphmaunejitsu"
       }
     ],
     "type": "wordpress-theme",
     "require": {
-      "php": ">=7.3",
-      "masterminds/html5": "^2.0"
+      "php": ">=7.4",
+        "masterminds/html5": "^2.7"
     }
 }

@@ -19,19 +19,19 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd802e97b5177ac80ca657bc33cac2ac05d5aa2f9',
-    'name' => 'hcm-nights/mumu',
+    'reference' => '317423ed51738c08b9ad3897ede888937c4ac9d8',
+    'name' => 'aphmaunejitsu/mumu',
   ),
   'versions' => 
   array (
-    'hcm-nights/mumu' => 
+    'aphmaunejitsu/mumu' => 
     array (
       'pretty_version' => 'dev-master',
       'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => 'd802e97b5177ac80ca657bc33cac2ac05d5aa2f9',
+      'reference' => '317423ed51738c08b9ad3897ede888937c4ac9d8',
     ),
     'masterminds/html5' => 
     array (

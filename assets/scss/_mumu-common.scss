@@ -44,11 +44,9 @@ h6 {
     line-height: 1rem;
 }
 
-.container {
-    width: 100%;
-    padding: .5em;
+#main {
+  width: 100%;
 }
-
 
 #content {
     width: 100%;
@@ -58,15 +56,12 @@ h6 {
     flex-direction: column;
     justify-content: center;
     margin-top: 1px;
-}
+    flex: 1;
 
-#content {
     @include mq(md) {
         justify-content: space-between;
     }
-}
 
-#content {
   @include mq(lg) {
         display: flex;
         flex-direction: row;
@@ -142,6 +137,11 @@ a {
     &:before {
         content: "#";
     }
+}
+
+.container {
+    width: 100%;
+    padding: .5em;
 }
 
 .sns {
