@@ -4,7 +4,7 @@ if (! function_exists('mumu_google_analytics')) {
     function mumu_google_analytics($wp_customize)
     {
         $wp_customize->add_section(
-            'sgn_theme_analytics',
+            'mumu[theme_my_analytics]',
             array(
                 'title'    => 'Google Analytics',
                 'priority' => 201,
@@ -12,7 +12,7 @@ if (! function_exists('mumu_google_analytics')) {
         );
 
         $wp_customize->add_setting(
-            'sgn_theme_analytics_id',
+            'mumu[theme_my_analytics][id]',
             array(
                 'default'   => '',
                 'type'      => 'option',
@@ -21,11 +21,11 @@ if (! function_exists('mumu_google_analytics')) {
         );
 
         $wp_customize->add_control(
-            'sgn_theme_analytics_id',
+            'mumu[theme_my_analytics][id]',
             array(
-                'settings' => 'sgn_theme_analytics_id',
+                'settings' => 'mumu[theme_my_analytics][id]',
                 'label'    => 'Tracking ID',
-                'section'  => 'sgn_theme_analytics',
+                'section'  => 'mumu[theme_my_analytics]',
                 'type'     => 'text',
             )
         );
