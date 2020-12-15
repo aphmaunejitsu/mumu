@@ -44,11 +44,9 @@ h6 {
     line-height: 1rem;
 }
 
-.container {
-    width: 100%;
-    padding: .5em;
+#main {
+  width: 100%;
 }
-
 
 #content {
     width: 100%;
@@ -142,6 +140,11 @@ a {
     &:before {
         content: "#";
     }
+}
+
+.container {
+    width: 100%;
+    padding: .5em;
 }
 
 .sns {
