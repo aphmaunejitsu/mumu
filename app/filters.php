@@ -69,19 +69,61 @@ if (! function_exists('mumu_google_auto_adsens_filter')) {
             return;
         }
 
-        if (! get_option('sgn_theme_ad_show')) {
+        if (! ($mumu = get_option('mumu'))) {
             return;
         }
 
-        if (! get_option('sgn_theme_ad_adsens_auto')) {
+        $ads = $mumu['theme_my_google']['adsens']['is_use'] ?? null;
+        $auto = $mumu['theme_my_google']['adsens']['auto'] ?? null;
+        $id = $mumu['theme_my_google']['adsens']['id'] ?? null;
+
+        if (! $ads) {
             return;
         }
 
-        if (($adsens = get_option('sgn_theme_ad_adsens'))) {
-            $ad = '<amp-auto-ads type="adsense" data-ad-client="ca-pub-' . $adsens . "></amp-auto-ads>";
+        if (! $auto) {
+            return;
+        }
+
+        if ($id) {
+            $ad = '<amp-auto-ads type="adsense" data-ad-client="ca-pub-' . $id . '"></amp-auto-ads>"';
         }
 
         echo $ad;
     }
 }
 add_filter('mumu_google_auto_adsens', 'mumu_google_auto_adsens_filter');
+
+if (! function_exists('mumu_google_analytics_filter')) {
+    function mumu_google_analytics_filter()
+    {
+        if (! ($mumu = get_option('mumu'))) {
+            return;
+        }
+        $analytics = $mumu['theme_my_google']['analytics']['id'] ?? null;
+
+        if (! $analytics) {
+            return;
+        }
+
+        $html = <<<EOL
+<amp-analytics type="googleanalytics" id="analytics-1">
+<script type="application/json">
+{
+  "vars": {
+		"account": "{$analytics}"
+  },
+  "triggers": {
+	"trackPageview": {
+	  "on": "visible",
+	  "request": "pageview"
+	}
+  }
+}
+</script>
+</amp-analytics>
+EOL;
+        echo $html;
+    }
+}
+add_filter('mumu_google_analytics', 'mumu_google_analytics_filter');
