@@ -8,39 +8,39 @@ require_once MUMU_APP . '/sanitizers/CleanHtml.php';
 require_once MUMU_APP . '/sanitizers/Iframe.php';
 require_once MUMU_APP . '/sanitizers/Image.php';
 
-if (! function_exists('mumu_amp_content')) {
-    function mumu_amp_content($content) {
-        try {
-            if ( ! ( in_the_loop() && is_main_query() ) ) {
-                return $content;
-            }
+if ( ! function_exists( 'mumu_amp_content' ) ) {
+	function mumu_amp_content( $content ) {
+		try {
+			if ( ! ( in_the_loop() && is_main_query() ) ) {
+				return $content;
+			}
 
-            if (! is_single() ) {
-                return $content;
-            }
+			if ( ! is_single() ) {
+				return $content;
+			}
 
-            $content = get_the_content();
+			$content = get_the_content();
 
-            $body = mb_convert_encoding($content, 'HTML-ENTITIES', 'auto');
+			$body = mb_convert_encoding( $content, 'HTML-ENTITIES', 'auto' );
 
-            $html5 = new HTML5();
-            $dom = @$html5->loadHTML($body);
+			$html5 = new HTML5();
+			$dom   = @$html5->loadHTML( $body );
 
-            $sanitizers = ['Ad', 'Block', 'Iframe', 'Image'];
-            foreach ($sanitizers as $sanitizer) {
-                $dom = (new $sanitizer($dom))();
-            }
+			$sanitizers = array( 'Ad', 'Block', 'Iframe', 'Image' );
+			foreach ( $sanitizers as $sanitizer ) {
+				$dom = ( new $sanitizer( $dom ) )();
+			}
 
-            $html = $dom->saveHTML($dom);
+			$html = $dom->saveHTML( $dom );
 
-            $html = (new CleanHtml($html))();
+			$html = ( new CleanHtml( $html ) )();
 
-            return $html;
-        } catch (\Exception $e) {
-            _log($e);
-            return $content;
-        }
-    }
+			return $html;
+		} catch ( \Exception $e ) {
+			_log( $e );
+			return $content;
+		}
+	}
 }
-add_filter('the_content', 'mumu_amp_content', 999999999);
+add_filter( 'the_content', 'mumu_amp_content', 999999999 );
 

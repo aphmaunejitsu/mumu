@@ -42,7 +42,6 @@ add_action('customize_register', 'mumu_google_section');
 if (! function_exists('mumu_google_analytics')) {
     function mumu_google_analytics($wp_customize)
     {
-
         $wp_customize->add_setting(
             'mumu[theme_my_google][analytics][id]',
             array(

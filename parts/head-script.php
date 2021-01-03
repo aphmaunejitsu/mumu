@@ -1,4 +1,11 @@
-<?php $mumu = get_option('mumu'); ?>
+<?php
+/**
+ * Printing javascripts
+ *
+ * @package Mumu theme
+ */
+
+$mumu = get_option( 'mumu' ); ?>
 
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
@@ -10,17 +17,20 @@
 <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
 <script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
 <?php
-$ads = $mumu['theme_my_google']['adsens']['is_use'] ?? null;
+$ads  = $mumu['theme_my_google']['adsens']['is_use'] ?? null;
 $auto = $mumu['theme_my_google']['adsens']['auto'] ?? null;
-if ($ads) : ?>
+if ( $ads ) :
+	?>
 <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-    <?php if ($auto) : ?>
+	<?php if ( $auto ) : ?>
 <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-    <?php endif;
-endif; ?>
+		<?php
+	endif;
+endif;
+?>
 <?php
 $analytics = $mumu['theme_my_google']['analytics']['id'] ?? null;
-if ($analytics) : ?>
+if ( $analytics ) :
+	?>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 <?php endif; ?>
-

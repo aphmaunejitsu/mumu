@@ -26,7 +26,7 @@ class Mumu_Theme {
 		return $url;
 	}
 
-	//ボットの判別
+	// ボットの判別
 	public function is_bot() {
 		$bot_list = array(
 			'Googlebot',

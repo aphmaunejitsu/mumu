@@ -1,71 +1,69 @@
 <?php
 
-class Image
-{
-    public $content;
-    public function __construct($content)
-    {
-        $this->content = $content;
-    }
+class Image {
 
-    public function __invoke()
-    {
-        _log('Start ' . __METHOD__);
+	public $content;
+	public function __construct( $content ) {
+		$this->content = $content;
+	}
 
-        $nodes = $this->content->getElementsByTagName('img');
-        if ($nodes->count() < 1) {
-            return $this->content;
-        }
+	public function __invoke() {
+		_log( 'Start ' . __METHOD__ );
 
-        try {
-            for ($i = $nodes->count() - 1; $i >= 0; $i--) {
-                $node = $nodes->item($i);
-                if (! $node->hasAttribute('src')) {
-                    $node->parentNode->removeChild($node);
-                    continue;
-                }
+		$nodes = $this->content->getElementsByTagName( 'img' );
+		if ( $nodes->count() < 1 ) {
+			return $this->content;
+		}
 
-                $src = $node->getAttribute('src');
-                $width  = $node->getAttribute('width');
-                $height = $node->getAttribute('height');
+		try {
+			for ( $i = $nodes->count() - 1; $i >= 0; $i-- ) {
+				$node = $nodes->item( $i );
+				if ( ! $node->hasAttribute( 'src' ) ) {
+					$node->parentNode->removeChild( $node );
+					continue;
+				}
 
-                if ( empty(trim($width)) || empty(trim($height))) {
-                    if ( ($attachment = $this->get_image_id($node))) {
-                        list($src, $width, $height, $f) = wp_get_attachment_image_src($attachment, 'large');
-                    } else {
-                        $width  = 480;
-                        $height = 600;
-                    }
-                }
+				$src    = $node->getAttribute( 'src' );
+				$width  = $node->getAttribute( 'width' );
+				$height = $node->getAttribute( 'height' );
 
-                $img = $this->content->createElement('amp-img');
-                $img->setAttribute('src', $src);
-                $img->setAttribute('width', $width);
-                $img->setAttribute('height', $height);
-                $img->setAttribute('layout', 'responsive');
+				if ( empty( trim( $width ) ) || empty( trim( $height ) ) ) {
+					if ( ( $attachment = $this->get_image_id( $node ) ) ) {
+						list($src, $width, $height, $f) = wp_get_attachment_image_src( $attachment, 'large' );
+					} else {
+						$width  = 480;
+						$height = 600;
+					}
+				}
 
-                $node->parentNode->insertBefore($img, $node);
-                $node->parentNode->removeChild($node);
-            }
+				$img = $this->content->createElement( 'amp-img' );
+				$img->setAttribute( 'src', $src );
+				$img->setAttribute( 'width', $width );
+				$img->setAttribute( 'height', $height );
+				$img->setAttribute( 'layout', 'responsive' );
 
-            return $this->content;
-        } catch (\Exception $e) {
-            _log($e);
-            return $this->content;
-        }
-    }
+				$node->parentNode->insertBefore( $img, $node );
+				$node->parentNode->removeChild( $node );
+			}
+
+			return $this->content;
+		} catch ( \Exception $e ) {
+			_log( $e );
+			return $this->content;
+		}
+	}
 
 	public function get_image_id( $image ) {
-		if ( ($class = $image->getAttribute('class'))) {
-			if (preg_match('/(.*)wp-image-([0-9]{1,})(.*)$/', $class, $matches ) ) {
-				return (int)$matches[2];
+		if ( ( $class = $image->getAttribute( 'class' ) ) ) {
+			if ( preg_match( '/(.*)wp-image-([0-9]{1,})(.*)$/', $class, $matches ) ) {
+				return (int) $matches[2];
 			}
 		}
 
 		global $wpdb;
 		$sql = "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s";
-		preg_match('/([^\/]+?)(-e\d+)?(-\d+x\d+)?(\.\w+)?$/', $image->getAttribute('src'), $matches );
+		preg_match( '/([^\/]+?)(-e\d+)?(-\d+x\d+)?(\.\w+)?$/', $image->getAttribute( 'src' ), $matches );
 		$post_name = $matches[1];
-		return (int)$wpdb->get_var($wpdb->prepare($sql, $post_name));
+		return (int) $wpdb->get_var( $wpdb->prepare( $sql, $post_name ) );
 	}
 }

@@ -5,37 +5,35 @@ require_once MUMU_APP . '/sanitizers/blocks/Twitter.php';
 require_once MUMU_APP . '/sanitizers/blocks/Wordpress.php';
 require_once MUMU_APP . '/sanitizers/blocks/Instagram.php';
 
-class Block
-{
-    public $content;
-    public $blocks = [
-        'wp-block-embed-youtube'   => 'Youtube',
-        'wp-block-embed-wordpress' => 'Wordpress',
-        'wp-block-embed'           => 'Wordpress',
-        'wp-block-embed-twitter'   => 'Twitter',
-        'wp-block-embed-instagram' => 'Instagram',
-    ];
+class Block {
 
-    public function __construct($content)
-    {
-        $this->content = $content;
-    }
+	public $content;
+	public $blocks = array(
+		'wp-block-embed-youtube'   => 'Youtube',
+		'wp-block-embed-wordpress' => 'Wordpress',
+		'wp-block-embed'           => 'Wordpress',
+		'wp-block-embed-twitter'   => 'Twitter',
+		'wp-block-embed-instagram' => 'Instagram',
+	);
 
-    public function __invoke()
-    {
-        try {
-            $xpath = new DOMXpath($this->content);
+	public function __construct( $content ) {
+		$this->content = $content;
+	}
 
-            foreach ($this->blocks as $path => $block) {
-                $xp = '//*[contains(@class, "' . $path . '")]';
-                $nodes = $xpath->query($xp);
-                (new $block($this->content, $nodes))();
-            }
+	public function __invoke() {
+		try {
+			$xpath = new DOMXpath( $this->content );
 
-            return $this->content;
-        } catch (\Exception $e) {
-            _log($e);
-            return $this->content;
-        }
-    }
+			foreach ( $this->blocks as $path => $block ) {
+				$xp    = '//*[contains(@class, "' . $path . '")]';
+				$nodes = $xpath->query( $xp );
+				( new $block( $this->content, $nodes ) )();
+			}
+
+			return $this->content;
+		} catch ( \Exception $e ) {
+			_log( $e );
+			return $this->content;
+		}
+	}
 }
