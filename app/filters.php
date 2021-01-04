@@ -1,10 +1,20 @@
 <?php
+/**
+ * Mumu filters
+ *
+ * @package Mumu Theme
+ */
 
 remove_filter( 'the_excerpt', 'wpautop' );
 remove_filter( 'term_description', 'wpautop' );
 add_filter( 'wp_lazy_loading_enabled', '__return_false' );
 
 if ( ! function_exists( 'mumu_new_excerpt_more' ) ) {
+	/**
+	 * 省略文字
+	 *
+	 * @param string $more 省略文字
+	 */
 	function mumu_new_excerpt_more( $more ) {
 		return '...';
 	}
@@ -12,6 +22,11 @@ if ( ! function_exists( 'mumu_new_excerpt_more' ) ) {
 add_filter( 'excerpt_more', 'mumu_new_excerpt_more' );
 
 if ( ! function_exists( 'mumu_title_parts' ) ) {
+	/**
+	 * タイトル出力
+	 *
+	 * @param $title_parts title parts
+	 */
 	function mumu_title_parts( $title_parts ) {
 		$title_parts['tagline'] = '';
 		$title_parts['site']    = '';
