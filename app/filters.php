@@ -136,3 +136,22 @@ EOL;
 	}
 }
 add_filter( 'mumu_google_analytics', 'mumu_google_analytics_filter' );
+
+if ( ! function_exists( 'mumu_add_async_to_script' ) ) {
+	/**
+	 * Add attribute to js
+	 *
+	 * @param string $tag Tag name.
+	 * @param string $handle Handle name.
+	 * @param string $src src.
+	 */
+	function mumu_add_async_to_script( $tag, $handle, $src ) {
+		if ( strstr( $handle, 'amp-' ) ) {
+			$tag = '<script async custom-element="' . $handle . '" src="' . esc_url( $src ) . '"></script>';
+		} else {
+			$tag = '<script async src="' . esc_url( $src ) . '"></script>';
+		}
+		return $tag;
+	}
+}
+add_filter( 'script_loader_tag', 'mumu_add_async_to_script', 10, 3 );
