@@ -41,7 +41,7 @@ class Mumu_Popular {
 			$total_count = 0;
 		}
 
-		//error_log(print_r($counts,1));
+		// error_log(print_r($counts,1));
 
 		update_post_meta( $id, $count_key, $counts );
 		update_post_meta( $id, $key, $total_count + 1 );
@@ -63,10 +63,10 @@ class Mumu_Popular {
 			foreach ( $reset_posts as $reset_post ) {
 				$postID      = $reset_post->ID;
 				$count_array = get_post_meta( $postID, $reset_key, true );
-				if ( isset( $count_array[ $num ] ) ) { //カウント配列[n]が存在する
+				if ( isset( $count_array[ $num ] ) ) { // カウント配列[n]が存在する
 					$count_array[ $num ] = 0;
 				}
-				//アクセス数をリセットする
+				// アクセス数をリセットする
 				update_post_meta( $postID, $reset_key, $count_array );
 				update_post_meta( $postID, $key, array_sum( $count_array ) );
 			}
@@ -88,7 +88,7 @@ class Mumu_Popular {
 		return $schedules;
 	}
 
-	//ボットの判別
+	// ボットの判別
 	public function is_bot() {
 		$bot_list = array(
 			'Googlebot',

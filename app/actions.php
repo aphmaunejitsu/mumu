@@ -119,8 +119,6 @@ if ( ! function_exists( 'mumu_enqueue_scripts' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'mumu_enqueue_scripts' );
 
-
-
 if ( ! function_exists( 'mumu_add_canonical' ) ) {
 	/**
 	 * カノニカルの出力

@@ -13,7 +13,7 @@ if ( ! function_exists( 'mumu_new_excerpt_more' ) ) {
 	/**
 	 * 省略文字
 	 *
-	 * @param string $more 省略文字
+	 * @param string $more 省略文字.
 	 */
 	function mumu_new_excerpt_more( $more ) {
 		return '...';
@@ -25,25 +25,25 @@ if ( ! function_exists( 'mumu_title_parts' ) ) {
 	/**
 	 * タイトル出力
 	 *
-	 * @param $title_parts title parts
+	 * @param array $title_parts title parts.
 	 */
 	function mumu_title_parts( $title_parts ) {
 		$title_parts['tagline'] = '';
 		$title_parts['site']    = '';
 		$site_name              = trim( get_bloginfo( 'name' ) );
-		if ( is_front_page() ) { // フロントページの場合
+		if ( is_front_page() ) { // フロントページの場合.
 			$title_parts['title']   = $site_name;
 			$title_parts['site']    = '';
 			$title_parts['tagline'] = trim( get_bloginfo( 'description' ) );
-		} elseif ( is_singular() ) { // 投稿ページの場合
+		} elseif ( is_singular() ) { // 投稿ページの場合.
 			$title_parts['title'] = trim( get_the_title() );
 			$title_parts['site']  = $site_name;
-		} elseif ( is_archive() ) { // アーカイブページの場合
+		} elseif ( is_archive() ) { // アーカイブページの場合.
 			$title_parts['title'] = '「' . $title_parts['title'] . '」のアーカイブ';
 			$title_parts['site']  = $site_name;
 		} elseif ( is_search() ) {
 			$title_parts['title'] = $title_parts['title'];
-		} elseif ( is_404() ) { // 404ページの場合
+		} elseif ( is_404() ) { // 404ページの場合.
 			$title_parts['title'] = 'お探しのページは見つかりませんでした';
 			$title_parts['site']  = $site_name;
 		}
@@ -54,6 +54,9 @@ if ( ! function_exists( 'mumu_title_parts' ) ) {
 add_filter( 'document_title_parts', 'mumu_title_parts' );
 
 if ( ! function_exists( 'mumu_title_separator' ) ) {
+	/**
+	 * Set title sperator.
+	 */
 	function mumu_title_separator() {
 		$sep = ' | ';
 		return $sep;
@@ -63,6 +66,11 @@ add_filter( 'document_title_separator', 'mumu_title_separator' );
 
 
 if ( ! function_exists( 'mumu_post_search' ) ) {
+	/**
+	 * サーチをポストに限定
+	 *
+	 * @param string $search サーチストリング.
+	 */
 	function mumu_post_search( $search ) {
 		if ( is_search() ) {
 			$search .= " AND post_type = 'post'";
@@ -73,13 +81,17 @@ if ( ! function_exists( 'mumu_post_search' ) ) {
 add_filter( 'posts_search', 'mumu_post_search' );
 
 if ( ! function_exists( 'mumu_google_auto_adsens_filter' ) ) {
+	/**
+	 * Show auto Google Adsens.
+	 */
 	function mumu_google_auto_adsens_filter() {
 		$ad = null;
 		if ( is_404() ) {
 			return;
 		}
 
-		if ( ! ( $mumu = get_option( 'mumu' ) ) ) {
+		$mumu = get_option( 'mumu' );
+		if ( ! $mumu ) {
 			return;
 		}
 
@@ -96,7 +108,7 @@ if ( ! function_exists( 'mumu_google_auto_adsens_filter' ) ) {
 		}
 
 		if ( $id ) {
-			$ad = '<amp-auto-ads type="adsense" data-ad-client="ca-pub-' . $id . '"></amp-auto-ads>"';
+			$ad = '<amp-auto-ads type="adsense" data-ad-client="ca-pub-' . esc_attr( $id ) . '"></amp-auto-ads>"';
 		}
 
 		echo $ad;
@@ -105,8 +117,12 @@ if ( ! function_exists( 'mumu_google_auto_adsens_filter' ) ) {
 add_filter( 'mumu_google_auto_adsens', 'mumu_google_auto_adsens_filter' );
 
 if ( ! function_exists( 'mumu_google_analytics_filter' ) ) {
+	/**
+	 * Output Google Analitics code
+	 */
 	function mumu_google_analytics_filter() {
-		if ( ! ( $mumu = get_option( 'mumu' ) ) ) {
+		$mumu = get_option( 'mumu' );
+		if ( ! $mumu ) {
 			return;
 		}
 		$analytics = $mumu['theme_my_google']['analytics']['id'] ?? null;

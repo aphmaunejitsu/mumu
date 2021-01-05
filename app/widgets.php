@@ -45,4 +45,3 @@ if ( ! function_exists( 'mumu_widgets_init' ) ) {
 	}
 }
 add_action( 'widgets_init', 'mumu_widgets_init' );
-
