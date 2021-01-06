@@ -1,8 +1,18 @@
 <?php
+/**
+ * Customizer defines
+ *
+ * @package Mumu Theme
+ */
 
 require_once MUMU_APP . '/customizers/sns.php';
 
 if ( ! function_exists( 'mumu_customizer_amp' ) ) {
+	/**
+	 * アイキャッチ画像のポップアップ制御
+	 *
+	 * @param object $wp_customize wp_customize.
+	 */
 	function mumu_customizer_amp( $wp_customize ) {
 		$wp_customize->add_section(
 			'sgn_theme_amp',
@@ -23,7 +33,7 @@ if ( ! function_exists( 'mumu_customizer_amp' ) ) {
 		$wp_customize->add_control(
 			'sgn_theme_amp_eyecatch_popup',
 			array(
-				'label'    => _( 'アイキャッチ画像をポップアップする' ),
+				'label'    => esc_html__( 'アイキャッチ画像をポップアップする' ),
 				'section'  => 'sgn_theme_amp',
 				'settings' => 'sgn_theme_amp_eyecatch_popup',
 				'type'     => 'checkbox',
