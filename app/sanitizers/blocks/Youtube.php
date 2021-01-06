@@ -1,50 +1,47 @@
 <?php
 
-class Youtube
-{
-    const YOUTUBE = 'amp-youtube';
-    public $content;
-    public $nodes;
+class Youtube {
 
-    public function __construct($content, $nodes)
-    {
-        $this->content = $content;
-        $this->nodes = $nodes;
-    }
+	const YOUTUBE = 'amp-youtube';
+	public $content;
+	public $nodes;
 
-    public function __invoke()
-    {
-        _log('Start Youtube::__invoke');
+	public function __construct( $content, $nodes ) {
+		$this->content = $content;
+		$this->nodes   = $nodes;
+	}
 
-        try {
-            for ($i = $this->nodes->count() - 1; $i >= 0; $i--) {
-                $node = $this->nodes->item($i);
-                if (($id = $this->getYoutubeId($node)) === null) {
-                    _log('nullpo');
-                    continue;
-                }
+	public function __invoke() {
+		_log( 'Start Youtube::__invoke' );
 
-                $youtube = $this->content->createElement(self::YOUTUBE);
-                $youtube->setAttribute('data-videoid', $id);
-                $youtube->setAttribute('width', 640);
-                $youtube->setAttribute('height', 360);
-                $youtube->setAttribute('layout', 'responsive');
+		try {
+			for ( $i = $this->nodes->count() - 1; $i >= 0; $i-- ) {
+				$node = $this->nodes->item( $i );
+				if ( ( $id = $this->getYoutubeId( $node ) ) === null ) {
+					_log( 'nullpo' );
+					continue;
+				}
 
-                $node->replaceChild($youtube, $node->firstChild);
-            }
+				$youtube = $this->content->createElement( self::YOUTUBE );
+				$youtube->setAttribute( 'data-videoid', $id );
+				$youtube->setAttribute( 'width', 640 );
+				$youtube->setAttribute( 'height', 360 );
+				$youtube->setAttribute( 'layout', 'responsive' );
 
-            return $this->content;
-        } catch (\Exception $e) {
-            return $this->content;
-        }
+				$node->replaceChild( $youtube, $node->firstChild );
+			}
 
-        _log('End Youtube::__invoke');
-    }
+			return $this->content;
+		} catch ( \Exception $e ) {
+			return $this->content;
+		}
 
-    private function getYoutubeId($node)
-    {
-        _log('Start getYoutubeId');
-        $src = $node->nodeValue; //$this->content->saveHTML($node);
+		_log( 'End Youtube::__invoke' );
+	}
+
+	private function getYoutubeId( $node ) {
+		_log( 'Start getYoutubeId' );
+		$src = $node->nodeValue; // $this->content->saveHTML($node);
 		if ( ! preg_match( '/https:\/\/www\.youtube\.com/', $src ) ) {
 			if ( ! preg_match( '/https:\/\/youtu.be/', $src ) ) {
 				return null;
@@ -59,8 +56,8 @@ class Youtube
 			}
 		}
 
-		$id = str_replace(["\r\n", "\r", "\n"], '', $match[1]);
-        _log('End getYoutubeId');
-        return $id;
-    }
+		$id = str_replace( array( "\r\n", "\r", "\n" ), '', $match[1] );
+		_log( 'End getYoutubeId' );
+		return $id;
+	}
 }

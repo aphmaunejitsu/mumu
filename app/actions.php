@@ -86,35 +86,20 @@ add_action( 'after_setup_theme', 'mumu_after_setup_theme' );
 
 if ( ! function_exists( 'mumu_enqueue_scripts' ) ) {
 	/**
-	 * AMP用Javascriptの出力
+	 * AMP用Javascriptのリンク
 	 */
 	function mumu_enqueue_scripts() {
-		$mumu      = get_option( 'mumu' );
-		$ads       = $mumu['theme_my_google']['adsens']['is_use'] ?? null;
-		$auto      = $mumu['theme_my_google']['adsens']['auto'] ?? null;
-		$analytics = $mumu['theme_my_google']['analytics']['id'] ?? null;
-		_log( $mumu );
-
-		wp_enqueue_script( 'AMP', 'https://cdn.ampproject.org/v0.js', array(), null, false );
-		wp_enqueue_script( 'amp-sidebar', 'https://cdn.ampproject.org/v0/amp-sidebar-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-form', 'https://cdn.ampproject.org/v0/amp-form-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-lightbox', 'https://cdn.ampproject.org/v0/amp-lightbox-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-iframe', 'https://cdn.ampproject.org/v0/amp-iframe-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-youtube', 'https://cdn.ampproject.org/v0/amp-youtube-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-social-share', 'https://cdn.ampproject.org/v0/amp-social-share-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-twitter', 'https://cdn.ampproject.org/v0/amp-twitter-0.1.js', array(), null, false );
-		wp_enqueue_script( 'amp-instagram', 'https://cdn.ampproject.org/v0/amp-instagram-0.1.js', array(), null, false );
-
-		if ( $analytics ) {
-			wp_enqueue_script( 'amp-analytics', 'https://cdn.ampproject.org/v0/amp-analytics-0.1.js', array(), null, false );
-		}
-
-		if ( $ads ) {
-			wp_enqueue_script( 'amp-ad', 'https://cdn.ampproject.org/v0/amp-ad-0.1.js', array(), null, false );
-			if ( $auto ) {
-				wp_enqueue_script( 'amp-auto-ads', 'https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js', array(), null, false );
-			}
-		}
+		// phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion, WordPress.WP.EnqueuedResourceParameters.NotInFooter
+		wp_enqueue_script( 'AMP', 'https://cdn.ampproject.org/v0.js', array(), null );
+		wp_enqueue_script( 'amp-sidebar', 'https://cdn.ampproject.org/v0/amp-sidebar-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-form', 'https://cdn.ampproject.org/v0/amp-form-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-lightbox', 'https://cdn.ampproject.org/v0/amp-lightbox-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-iframe', 'https://cdn.ampproject.org/v0/amp-iframe-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-youtube', 'https://cdn.ampproject.org/v0/amp-youtube-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-social-share', 'https://cdn.ampproject.org/v0/amp-social-share-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-twitter', 'https://cdn.ampproject.org/v0/amp-twitter-0.1.js', array(), null );
+		wp_enqueue_script( 'amp-instagram', 'https://cdn.ampproject.org/v0/amp-instagram-0.1.js', array(), null );
+		// phpcs:enable
 	}
 }
 add_action( 'wp_enqueue_scripts', 'mumu_enqueue_scripts' );

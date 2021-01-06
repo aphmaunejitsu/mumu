@@ -29,6 +29,6 @@
 		</div><!-- .theme-copyright -->
 	</div>
 </footer>
-<?php do_action( 'mumu_google_analytics' ); ?>
+<?php wp_footer(); ?>
 </body>
 </html>

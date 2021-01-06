@@ -1,6 +1,5 @@
 <?php
 
-require_once MUMU_APP . '/customizers/google.php';
 require_once MUMU_APP . '/customizers/sns.php';
 
 if ( ! function_exists( 'mumu_customizer_amp' ) ) {

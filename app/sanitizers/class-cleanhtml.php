@@ -1,5 +1,13 @@
 <?php
+/**
+ * Output clean html
+ *
+ * @package Mumu theme
+ */
 
+/**
+ * CleanHtml class
+ */
 class CleanHtml {
 
 	public $content;

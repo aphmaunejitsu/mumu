@@ -1,14 +1,23 @@
 <?php
+/**
+ * Sanitize the content
+ *
+ * @package Mumu theme
+ */
 
 use Masterminds\HTML5;
 
-require_once MUMU_APP . '/sanitizers/Ad.php';
-require_once MUMU_APP . '/sanitizers/Block.php';
-require_once MUMU_APP . '/sanitizers/CleanHtml.php';
-require_once MUMU_APP . '/sanitizers/Iframe.php';
-require_once MUMU_APP . '/sanitizers/Image.php';
+require_once MUMU_APP . '/sanitizers/class-block.php';
+require_once MUMU_APP . '/sanitizers/class-cleanhtml.php';
+require_once MUMU_APP . '/sanitizers/class-iframe.php';
+require_once MUMU_APP . '/sanitizers/class-image.php';
 
 if ( ! function_exists( 'mumu_amp_content' ) ) {
+	/**
+	 * Output the content
+	 *
+	 * @param string $content the content.
+	 */
 	function mumu_amp_content( $content ) {
 		try {
 			if ( ! ( in_the_loop() && is_main_query() ) ) {
@@ -26,7 +35,7 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 			$html5 = new HTML5();
 			$dom   = @$html5->loadHTML( $body );
 
-			$sanitizers = array( 'Ad', 'Block', 'Iframe', 'Image' );
+			$sanitizers = array( 'Block', 'Iframe', 'Image' );
 			foreach ( $sanitizers as $sanitizer ) {
 				$dom = ( new $sanitizer( $dom ) )();
 			}

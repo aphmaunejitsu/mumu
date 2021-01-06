@@ -10,7 +10,7 @@
 <html amp>
 	<?php get_template_part( 'parts/head' ); ?>
 <body <?php body_class( 'flex flex-column' ); ?>>
-<?php do_action( 'mumu_google_auto_adsens' ); ?>
+<?php wp_body_open(); ?>
 <header id="mumu-top" class="top-0 left-0 right-0 flex justify-center">
 	<div class="container flex justify-start items-center px2">
 		<div role="button" aria-label="open sidebar" on="tap:header-side-menu" tabindex="0" class="toggle md-hide lg-hide pr2">☰ </div>
