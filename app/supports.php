@@ -16,6 +16,11 @@ add_theme_support(
 add_theme_support( 'title-tag' );
 
 if ( ! function_exists( '_log' ) ) {
+	/**
+	 * ログ出力
+	 *
+	 * @param string $message output message.
+	 */
 	function _log( $message ) {
 		if ( WP_DEBUG === true ) {
 			if ( is_array( $message ) || is_object( $message ) ) {

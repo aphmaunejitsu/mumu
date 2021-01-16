@@ -43,9 +43,12 @@ if ( ! function_exists( 'mumu_customizer_amp' ) ) {
 }
 add_action( 'customize_register', 'mumu_customizer_amp' );
 
-// カスタマイザー
 if ( ! function_exists( 'mumu_customize_preview_js' ) ) {
+	/**
+	 * カスタマイザーのプレビュー
+	 */
 	function mumu_customize_preview_js() {
+		// phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion, WordPress.WP.EnqueuedResourceParameters.NotInFooter
 		wp_enqueue_script(
 			'mumu_customizer_preview',
 			get_template_directory_uri() . '/js/customizer-preview.js',
@@ -53,12 +56,17 @@ if ( ! function_exists( 'mumu_customize_preview_js' ) ) {
 			null,
 			true
 		);
+		// phpcs:enable
 	}
 }
 add_action( 'customize_preview_init', 'mumu_customize_preview_js' );
 
 if ( ! function_exists( 'mumu_customize_control_js' ) ) {
+	/**
+	 * カスタマイザーのコントロール
+	 */
 	function mumu_customize_control_js() {
+		// phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion, WordPress.WP.EnqueuedResourceParameters.NotInFooter
 		wp_enqueue_script(
 			'mumu_customizer_control',
 			get_template_directory_uri() . '/js/customizer-control.js',
@@ -66,6 +74,7 @@ if ( ! function_exists( 'mumu_customize_control_js' ) ) {
 			null,
 			true
 		);
+		// phpcs:enable
 	}
 }
 add_action( 'customize_controls_enqueue_scripts', 'mumu_customize_control_js' );
