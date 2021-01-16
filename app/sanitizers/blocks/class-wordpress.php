@@ -78,6 +78,8 @@ class Wordpress extends BlockBase {
 			return null;
 		}
 
+		_log( 'WordPress: ' . $match[0] );
+
 		return $match[0];
 	}
 }

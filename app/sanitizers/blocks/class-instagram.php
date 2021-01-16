@@ -58,7 +58,7 @@ class Instagram extends BlockBase {
 		}
 
 		$id = str_replace( array( "\r\n", "\r", "\n" ), '', $match[1] );
-		_log( 'End getInstagramId' );
+		_log( 'End getInstagramId: ' . $id );
 		return $id;
 	}
 }

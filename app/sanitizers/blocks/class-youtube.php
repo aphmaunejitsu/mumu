@@ -67,7 +67,7 @@ class Youtube extends BlockBase {
 		}
 
 		$id = str_replace( array( "\r\n", "\r", "\n" ), '', $match[1] );
-		_log( 'End getYoutubeId' );
+		_log( 'End getYoutubeId: ' . $id );
 		return $id;
 	}
 }

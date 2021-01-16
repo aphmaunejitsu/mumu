@@ -29,7 +29,8 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 				return $content;
 			}
 
-			$content = get_the_content();
+			// $content = get_the_content();
+			$content = preg_replace( '/<!--[\s\S]*?-->/', '', do_shortcode( get_the_content() ) );
 
 			// $body = mb_convert_encoding( $content, 'HTML-ENTITIES', 'auto' );
 
@@ -42,6 +43,7 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 			}
 
 			$html = $dom->saveHTML( $dom );
+			_log( $html );
 
 			$html = ( new CleanHtml( $html ) )();
 
