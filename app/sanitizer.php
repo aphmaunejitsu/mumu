@@ -31,10 +31,10 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 
 			$content = get_the_content();
 
-			$body = mb_convert_encoding( $content, 'HTML-ENTITIES', 'auto' );
+			// $body = mb_convert_encoding( $content, 'HTML-ENTITIES', 'auto' );
 
 			$html5 = new HTML5();
-			$dom   = @$html5->loadHTML( $body );
+			$dom   = @$html5->loadHTML( $content );
 
 			$sanitizers = array( 'Block', 'Iframe', 'Image' );
 			foreach ( $sanitizers as $sanitizer ) {
