@@ -54,7 +54,7 @@ if ( ! function_exists( 'mumu_remove_action' ) ) {
 		add_filter( 'show_admin_bar', '__return_false' );
 	}
 }
-add_action( 'after_setup_theme', 'mumu_remove_action' );
+add_action( 'after_setup_theme', 'mumu_remove_action', 0 );
 
 if ( ! function_exists( 'mumu_enqueue_inline_style' ) ) {
 	/**

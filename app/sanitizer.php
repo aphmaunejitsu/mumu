@@ -29,10 +29,7 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 				return $content;
 			}
 
-			// $content = get_the_content();
 			$content = preg_replace( '/<!--[\s\S]*?-->/', '', do_shortcode( get_the_content() ) );
-
-			// $body = mb_convert_encoding( $content, 'HTML-ENTITIES', 'auto' );
 
 			$html5 = new HTML5();
 			$dom   = @$html5->loadHTML( $content );
@@ -54,5 +51,5 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 		}
 	}
 }
-add_filter( 'the_content', 'mumu_amp_content', 999999999 );
+add_filter( 'the_content', 'mumu_amp_content' );
 
