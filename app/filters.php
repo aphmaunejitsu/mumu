@@ -89,12 +89,15 @@ if ( ! function_exists( 'mumu_add_async_to_script' ) ) {
 	 * @param string $src src.
 	 */
 	function mumu_add_async_to_script( $tag, $handle, $src ) {
-		if ( strstr( $handle, 'amp-' ) ) {
-			$tag = '<script async custom-element="' . $handle . '" src="' . esc_url( $src ) . '"></script>';
-		} else {
-			$tag = '<script async src="' . esc_url( $src ) . '"></script>';
+		if ( is_admin() ) {
+			return $tag;
 		}
-		return $tag;
+
+		if ( strstr( $handle, 'amp-' ) ) {
+			return '<script async custom-element="' . $handle . '" src="' . esc_url( $src ) . '"></script>';
+		} else {
+			return $tag;
+		}
 	}
 }
 add_filter( 'script_loader_tag', 'mumu_add_async_to_script', 10, 3 );

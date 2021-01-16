@@ -1,6 +1,14 @@
 <?php
+/**
+ * the template helper file
+ *
+ * @package Mumu Theme
+ */
 
 if ( ! function_exists( 'mumu_edit_link' ) ) {
+	/**
+	 * Show Edit Link
+	 */
 	function mumu_edit_link() {
 		edit_post_link(
 			sprintf(
@@ -26,17 +34,20 @@ if ( ! function_exists( 'mumu_edit_link' ) ) {
 }
 
 if ( ! function_exists( 'mumu_next_prev' ) ) {
+	/**
+	 * Show Next Prev link
+	 */
 	function mumu_next_prev() {
 		$prev = get_previous_post_link( '&laquo; 前の記事' );
 		$next = get_next_post_link( '次の記事 &raquo;' );
 
-		$nextPrev = <<<EOL
+		$next_prev = <<<EOL
 <nav class="next-prev flex justify-between">
     <span class="prev">{$prev}</span>
     <span class="next">{$next}</span>
 </nav>
 EOL;
-		echo $nextPrev;
+		echo $next_prev;
 	}
 }
 
