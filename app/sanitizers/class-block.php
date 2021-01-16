@@ -6,10 +6,11 @@
  */
 
 // block snitizers.
-require_once MUMU_APP . '/sanitizers/blocks/Youtube.php';
-require_once MUMU_APP . '/sanitizers/blocks/Twitter.php';
-require_once MUMU_APP . '/sanitizers/blocks/Wordpress.php';
-require_once MUMU_APP . '/sanitizers/blocks/Instagram.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-block-base.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-youtube.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-twitter.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-wordpress.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-instagram.php';
 
 /**
  * Block class

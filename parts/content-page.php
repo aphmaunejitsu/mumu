@@ -10,7 +10,7 @@
 	<header class="article-header mb1">
 		<?php the_title( '<h1 class="entry-title my1">', '</h1>' ); ?>
 		<div class="meta mb1">
-		<?php publishedPost(); ?>
+		<?php mumu_published_post(); ?>
 		</div> <!-- .meta -->
 	</header>
 	<div class="article-content content mb1">

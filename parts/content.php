@@ -15,9 +15,9 @@
 				the_title( '<h3 class="entry-title my1">', '</h3>' );
 			endif;
 			?>
-		<a href="<?php the_permalink(); ?>" class="p0 text-decoration-none" ><?php featureImage(); ?></a>
+		<a href="<?php the_permalink(); ?>" class="p0 text-decoration-none" ><?php mumu_feature_image(); ?></a>
 		<div class="meta">
-		<?php publishedPost(); ?>
+		<?php mumu_published_post(); ?>
 		</div> <!-- .meta -->
 	</header>
 	<div class="article-content content mb1">

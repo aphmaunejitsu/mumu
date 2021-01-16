@@ -1,23 +1,28 @@
 <?php
+/**
+ * Youtube block class
+ *
+ * @package Mumu Theme
+ */
 
-class Youtube {
+/**
+ * Youtube Class
+ */
+class Youtube extends BlockBase {
 
 	const YOUTUBE = 'amp-youtube';
-	public $content;
-	public $nodes;
 
-	public function __construct( $content, $nodes ) {
-		$this->content = $content;
-		$this->nodes   = $nodes;
-	}
-
+	/**
+	 * __invoke
+	 */
 	public function __invoke() {
 		_log( 'Start Youtube::__invoke' );
 
 		try {
 			for ( $i = $this->nodes->count() - 1; $i >= 0; $i-- ) {
 				$node = $this->nodes->item( $i );
-				if ( ( $id = $this->getYoutubeId( $node ) ) === null ) {
+				$id   = $this->get_youtube_id( $node );
+				if ( null === $id ) {
 					_log( 'nullpo' );
 					continue;
 				}
@@ -39,7 +44,12 @@ class Youtube {
 		_log( 'End Youtube::__invoke' );
 	}
 
-	private function getYoutubeId( $node ) {
+	/**
+	 * Get Youtube Id
+	 *
+	 * @param DOMNode $node DOMNode.
+	 */
+	private function get_youtube_id( $node ) {
 		_log( 'Start getYoutubeId' );
 		$src = $node->nodeValue; // $this->content->saveHTML($node);
 		if ( ! preg_match( '/https:\/\/www\.youtube\.com/', $src ) ) {

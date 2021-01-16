@@ -11,7 +11,7 @@
 <footer id="main-footer">
 	<div class="container flex flex-column justify-center">
 		<?php
-		customLogo();
+		mumu_custom_logo();
 			wp_nav_menu(
 				array(
 					'menu_class'     => 'list-reset center m0 p0 nowrap',

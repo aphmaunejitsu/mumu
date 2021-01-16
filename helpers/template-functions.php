@@ -52,8 +52,14 @@ EOL;
 }
 
 if ( ! function_exists( 'mumu_excerpt' ) ) {
+	/**
+	 * 要約
+	 *
+	 * @param string $content the content.
+	 * @param int    $length length.
+	 */
 	function mumu_excerpt( $content, $length = 55 ) {
-		$content = preg_replace( '/<!--more-->.+/is', '', $content ); // moreタグ以降削除
+		$content = preg_replace( '/<!--more-->.+/is', '', $content );
 		$content = strip_shortcodes( $content );
 		$content = strip_tags( $content );
 		$content = str_replace( '&nbsp;', '', $content );
@@ -63,6 +69,9 @@ if ( ! function_exists( 'mumu_excerpt' ) ) {
 }
 
 if ( ! function_exists( 'mumu_pagination' ) ) {
+	/**
+	 * Write Pagination
+	 */
 	function mumu_pagination() {
 		global $wp_query;
 		$bignum = 999999999;
@@ -95,13 +104,31 @@ if ( ! function_exists( 'mumu_pagination' ) ) {
     {$html}
     </nav>
 EOL;
-			echo $paginate;
+			echo wp_kses(
+				$paginate,
+				array(
+					'nav'  => array( 'class' => array() ),
+					'a'    => array(
+						'href'  => array(),
+						'class' => array(),
+					),
+					'span' => array(
+						'aria-current' => array(),
+						'class'        => array(),
+					),
+				)
+			);
 		}
 	}
 }
 
-if ( ! function_exists( 'customLogo' ) ) {
-	function customLogo( $id = null ) {
+if ( ! function_exists( 'mumu_custom_logo' ) ) {
+	/**
+	 * Write Custom Log
+	 *
+	 * @param int $id image id.
+	 */
+	function mumu_custom_logo( $id = null ) {
 		if ( has_custom_logo( $id ) ) {
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$image          = wp_get_attachment_image_src( $custom_logo_id, 'full' );
@@ -117,12 +144,30 @@ if ( ! function_exists( 'customLogo' ) ) {
 
 		$logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
 
-		echo $logo;
+		echo wp_kses(
+			$logo,
+			array(
+				'a'       => array(
+					'href'  => array(),
+					'class' => array(),
+				),
+				'amp-img' => array(
+					'src'    => array(),
+					'width'  => array(),
+					'height' => array(),
+					'layout' => array(),
+				),
+				'h1'      => array( 'class' => array() ),
+			)
+		);
 	}
 }
 
-if ( ! function_exists( 'featureImage' ) ) {
-	function featureImage() {
+if ( ! function_exists( 'mumu_feature_image' ) ) {
+	/**
+	 * Output Feature Image.
+	 */
+	function mumu_feature_image() {
 		$title = esc_attr( get_the_title() );
 		$link  = get_the_permalink();
 
@@ -152,12 +197,28 @@ if ( ! function_exists( 'featureImage' ) ) {
 </div>
 EOF;
 
-		echo $feature;
+		echo wp_kses(
+			$feature,
+			array(
+				'div'     => array( 'class' => array() ),
+				'amp-img' => array(
+					'alt'    => array(),
+					'src'    => array(),
+					'layout' => array(),
+					'width'  => array(),
+					'height' => array(),
+					'srcset' => array(),
+				),
+			)
+		);
 	}
 }
 
-if ( ! function_exists( 'publishedPost' ) ) {
-	function publishedPost() {
+if ( ! function_exists( 'mumu_published_post' ) ) {
+	/**
+	 * Output published date
+	 */
+	function mumu_published_post() {
 		$published = get_the_date( 'U' );
 		$updated   = get_the_modified_date( 'U' );
 
@@ -191,6 +252,6 @@ if ( ! function_exists( 'publishedPost' ) ) {
     </div>
 </span>
 EOF;
-		echo $meta;
+		echo wp_kses_post( $meta );
 	}
 }
