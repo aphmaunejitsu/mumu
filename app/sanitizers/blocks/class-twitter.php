@@ -21,7 +21,7 @@ class Twitter extends BlockBase {
 		try {
 			for ( $i = $this->nodes->count() - 1; $i >= 0; $i-- ) {
 				$node = $this->nodes->item( $i );
-				$id   = $this->get_twitter_td( $node );
+				$id   = $this->get_twitter_id( $node );
 				if ( null === $id ) {
 					_log( 'nullpo' );
 					continue;

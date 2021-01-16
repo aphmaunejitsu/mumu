@@ -8,14 +8,11 @@
 /**
  * CleanHtml class
  */
-class CleanHtml {
+class CleanHtml extends SanitizerBase {
 
-	public $content;
-
-	public function __construct( $content ) {
-		$this->content = $content;
-	}
-
+	/**
+	 * Execute Clean html
+	 */
 	public function __invoke() {
 		$html = preg_replace( '/<!--.*-->/i', '', $this->content );
 		$html = preg_replace( '/<html .*?>/', '', $html );

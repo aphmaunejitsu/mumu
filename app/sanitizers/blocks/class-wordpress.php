@@ -72,7 +72,7 @@ class Wordpress extends BlockBase {
 	 * @param DOMNode $node DOMNode.
 	 */
 	public function get_wordpress_src( $node ) {
-		$source = $node->nodeValue; // $this->content->saveHTML($node);
+		$source = $node->nodeValue;
 		$source = str_replace( array( "\r\n", "\r", "\n" ), '', $source );
 		if ( ! preg_match( '/https?:\/{2}[\w\/:%#\$&\?\(\)~\.=\+\-]+/', $source, $match ) ) {
 			return null;

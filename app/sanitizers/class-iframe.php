@@ -1,12 +1,18 @@
 <?php
+/**
+ * This is iFrame Sanitizer
+ *
+ * @package Mumu Theme
+ */
 
-class Iframe {
+/**
+ * IFrame Class
+ */
+class Iframe extends SanitizerBase {
 
-	public $content;
-	public function __construct( $content ) {
-		$this->content = $content;
-	}
-
+	/**
+	 * Excute sanitize for iFrame
+	 */
 	public function __invoke() {
 		$nodes = $this->content->getElementsByTagName( 'iframe' );
 		if ( $nodes->count() < 1 ) {
@@ -23,7 +29,6 @@ class Iframe {
 
 				$src = $node->getAttribute( 'src' );
 
-				// Google Maps
 				$isGoogleMaps = false;
 				if ( preg_match( '/^https:\/\/www\.google\.(com|co\.jp)\/maps/', $src ) ) {
 					$isGoogleMaps = true;

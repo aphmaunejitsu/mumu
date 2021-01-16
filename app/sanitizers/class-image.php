@@ -1,12 +1,18 @@
 <?php
+/**
+ * Image Sanitizer
+ *
+ * @package Mumu Theme
+ */
 
-class Image {
+/**
+ * Image Class
+ */
+class Image extends SanitizerBase {
 
-	public $content;
-	public function __construct( $content ) {
-		$this->content = $content;
-	}
-
+	/**
+	 * Excute sanitize for image
+	 */
 	public function __invoke() {
 		_log( 'Start ' . __METHOD__ );
 
@@ -46,6 +52,7 @@ class Image {
 				$node->parentNode->removeChild( $node );
 			}
 
+			_log( 'END ' . __METHOD__ );
 			return $this->content;
 		} catch ( \Exception $e ) {
 			_log( $e );
@@ -53,6 +60,11 @@ class Image {
 		}
 	}
 
+	/**
+	 * Get Image id
+	 *
+	 * @param string $image image url.
+	 */
 	public function get_image_id( $image ) {
 		if ( ( $class = $image->getAttribute( 'class' ) ) ) {
 			if ( preg_match( '/(.*)wp-image-([0-9]{1,})(.*)$/', $class, $matches ) ) {
