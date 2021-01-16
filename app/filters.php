@@ -93,11 +93,21 @@ if ( ! function_exists( 'mumu_add_async_to_script' ) ) {
 			return $tag;
 		}
 
+		$allow = array(
+			'script' => array(
+				'async'          => array(),
+				'custom-element' => array(),
+				'src'            => array(),
+			),
+		);
+
 		if ( strstr( $handle, 'amp-' ) ) {
-			return '<script async custom-element="' . $handle . '" src="' . esc_url( $src ) . '"></script>';
+			$script = '<script async custom-element="' . esc_attr( $handle ) . '" src="' . esc_url( $src ) . '"></script>' . "\n";
 		} else {
-			return $tag;
+			$script = '<script async src="' . esc_url( $src ) . '"></script>' . "\n";
 		}
+
+		return wp_kses( $script, $allow );
 	}
 }
 add_filter( 'script_loader_tag', 'mumu_add_async_to_script', 10, 3 );

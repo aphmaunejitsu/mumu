@@ -15,14 +15,7 @@ require_once MUMU_APP . '/sanitizers/blocks/class-instagram.php';
 /**
  * Block class
  */
-class Block {
-
-	/**
-	 * XML object.
-	 *
-	 * @var DOMDocument $content
-	 */
-	public $content;
+class Block extends SanitizerBase {
 
 	/**
 	 * Block classes name
@@ -36,15 +29,6 @@ class Block {
 		'wp-block-embed-twitter'   => 'Twitter',
 		'wp-block-embed-instagram' => 'Instagram',
 	);
-
-	/**
-	 * Constructor.
-	 *
-	 * @param DOMDocument $content dom document.
-	 */
-	public function __construct( $content ) {
-		$this->content = $content;
-	}
 
 	/**
 	 * Excute sanitize for blocks

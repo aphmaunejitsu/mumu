@@ -7,6 +7,7 @@
 
 use Masterminds\HTML5;
 
+require_once MUMU_APP . '/sanitizers/class-sanitizer-base.php';
 require_once MUMU_APP . '/sanitizers/class-block.php';
 require_once MUMU_APP . '/sanitizers/class-cleanhtml.php';
 require_once MUMU_APP . '/sanitizers/class-iframe.php';
