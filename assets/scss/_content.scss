@@ -57,7 +57,7 @@ article {
     width: 100%;
   }
 
-  figure.wp-block-embed-wordpress {
+  figure.wp-block-embed-wordpress, figure.wp-block-embed.is-type-wp-embed {
     display: flex;
     justify-content: center;
 

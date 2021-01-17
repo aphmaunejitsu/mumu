@@ -25,7 +25,7 @@ class Block extends SanitizerBase {
 	public $blocks = array(
 		'wp-block-embed-youtube'   => 'Youtube',
 		'wp-block-embed-wordpress' => 'WordPress',
-		'wp-block-embed'           => 'WordPress',
+		'is-type-wp-embed'         => 'WordPress',
 		'wp-block-embed-twitter'   => 'Twitter',
 		'wp-block-embed-instagram' => 'Instagram',
 	);
