@@ -77,6 +77,10 @@ article {
         color: 333;
       }
 
+      div.read-more a {
+        border: initial;
+      }
+
 
       @include mq(sm) {
         flex-direction: row;
@@ -92,8 +96,9 @@ article {
 }
 
 .next-prev {
-  span > a {
-    text-decoration: none;
-    color: black;
+  span {
+    a {
+      text-decoration: none;
+    }
   }
 }
