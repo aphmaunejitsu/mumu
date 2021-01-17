@@ -103,7 +103,7 @@ if ( ! function_exists( 'mumu_add_async_to_script' ) ) {
 
 		if ( strstr( $handle, 'amp-' ) ) {
 			$script = '<script async custom-element="' . esc_attr( $handle ) . '" src="' . esc_url( $src ) . '"></script>';
-		} elseif ( strcmp( $handle, 'AMP' ) ) {
+		} elseif ( 'AMP' === $handle ) {
 			// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
 			$script = '<script async src="' . esc_url( $src ) . '"></script>' . "\n";
 			// phpcs:enable
