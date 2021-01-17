@@ -214,6 +214,35 @@ EOF;
 	}
 }
 
+if ( ! function_exists( 'mumu_get_kses_allow_svg' ) ) {
+	/**
+	 * Get kess svg
+	 */
+	function mumu_get_kses_allow_svg() {
+		$allow = wp_kses_allowed_html( 'post' );
+		$svg   = array(
+			'svg'   => array(
+				'class'           => true,
+				'aria-hidden'     => true,
+				'aria-labelledby' => true,
+				'role'            => true,
+				'xmlns'           => true,
+				'width'           => true,
+				'height'          => true,
+				'viewbox'         => true, // <= Must be lower case!
+			),
+			'g'     => array( 'fill' => true ),
+			'title' => array( 'title' => true ),
+			'path'  => array(
+				'd'    => true,
+				'fill' => true,
+			),
+		);
+
+		return $allow + $svg;
+	}
+}
+
 if ( ! function_exists( 'mumu_published_post' ) ) {
 	/**
 	 * Output published date
@@ -252,6 +281,6 @@ if ( ! function_exists( 'mumu_published_post' ) ) {
     </div>
 </span>
 EOF;
-		echo wp_kses_post( $meta );
+		echo wp_kses( $meta, mumu_get_kses_allow_svg() );
 	}
 }

@@ -32,6 +32,7 @@ class Instagram extends BlockBase {
 				$block->setAttribute( 'width', 320 );
 				$block->setAttribute( 'height', 320 );
 				$block->setAttribute( 'layout', 'responsive' );
+				$block->setAttribute( 'class', 'm1' );
 
 				$node->replaceChild( $block, $node->firstChild );
 			}
