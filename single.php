@@ -19,7 +19,7 @@ get_header(); ?>
 	endif;
 	?>
 	</main><!-- #main -->
-	<?php mumu_next_prev(); ?>
+	<?php get_template_part( 'parts/common/page', 'nextprev' ); ?>
 </div> <!-- #primary -->
 <?php
 get_sidebar();
