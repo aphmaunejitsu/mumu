@@ -32,6 +32,7 @@ class Youtube extends BlockBase {
 				$youtube->setAttribute( 'width', 640 );
 				$youtube->setAttribute( 'height', 360 );
 				$youtube->setAttribute( 'layout', 'responsive' );
+				$youtube->setAttribute( 'class', 'm1' );
 
 				$node->replaceChild( $youtube, $node->firstChild );
 			}
@@ -51,7 +52,7 @@ class Youtube extends BlockBase {
 	 */
 	private function get_youtube_id( $node ) {
 		_log( 'Start getYoutubeId' );
-		$src = $node->nodeValue; // $this->content->saveHTML($node);
+		$src = $node->nodeValue;
 		if ( ! preg_match( '/https:\/\/www\.youtube\.com/', $src ) ) {
 			if ( ! preg_match( '/https:\/\/youtu.be/', $src ) ) {
 				return null;

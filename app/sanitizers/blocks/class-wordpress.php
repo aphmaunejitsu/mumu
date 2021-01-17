@@ -45,8 +45,6 @@ class Wordpress extends BlockBase {
 					$html .= '<a href="' . $permalink . '">';
 					$html .= '<amp-img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" layout="fixed" alt="' . esc_html( $post->post_title ) . '">';
 					$html .= '</amp-img>';
-					$html .= '<amp-img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" layout="fixed" alt="' . esc_html( $post->post_title ) . '">';
-					$html .= '</amp-img>';
 					$html .= '</a>';
 					$html .= '</div>';
 				}

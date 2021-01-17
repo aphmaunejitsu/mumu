@@ -32,6 +32,7 @@ class Twitter extends BlockBase {
 				$twitter->setAttribute( 'width', 320 );
 				$twitter->setAttribute( 'height', 320 );
 				$twitter->setAttribute( 'layout', 'responsive' );
+				$twitter->setAttribute( 'class', 'm1' );
 
 				$node->replaceChild( $twitter, $node->firstChild );
 			}
