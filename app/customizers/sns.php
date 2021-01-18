@@ -33,7 +33,7 @@ if ( ! function_exists( 'mumu_sns_section' ) ) {
 		$wp_customize->add_section(
 			'mumu[theme_my_sns][shared]',
 			array(
-				'title'       => __( '有効' ),
+				'title'       => __( '利用SNS' ),
 				'description' => __( '共有で利用するSNSを選択してください' ),
 				'panel'       => 'mumu[theme_my_sns]',
 				'priority'    => 1,
