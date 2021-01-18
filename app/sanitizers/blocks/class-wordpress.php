@@ -37,9 +37,8 @@ class Wordpress extends BlockBase {
 				$permalink = get_permalink( $postid );
 				$html      = '<div class="container mumu-wordpress-card m1">';
 				if ( has_post_thumbnail( $postid ) ) {
-					$thum_id   = get_post_thumbnail_id( $postid );
-					$image     = wp_get_attachment_image_src( $thum_id, 'thumbnail' );
-					$thumb_270 = wp_get_attachment_image_src( $thum_id, 'mumu-thumbnail-s-16x9' );
+					$thum_id = get_post_thumbnail_id( $postid );
+					$image   = wp_get_attachment_image_src( $thum_id, 'thumbnail' );
 
 					$html .= '<div class="card-thumbnail flex justify-center">';
 					$html .= '<a href="' . $permalink . '">';

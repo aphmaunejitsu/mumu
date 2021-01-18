@@ -7,42 +7,6 @@
 
 require_once MUMU_APP . '/customizers/sns.php';
 
-if ( ! function_exists( 'mumu_customizer_amp' ) ) {
-	/**
-	 * アイキャッチ画像のポップアップ制御
-	 *
-	 * @param object $wp_customize wp_customize.
-	 */
-	function mumu_customizer_amp( $wp_customize ) {
-		$wp_customize->add_section(
-			'sgn_theme_amp',
-			array(
-				'title'    => 'AMP',
-				'priority' => 211,
-			)
-		);
-
-		$wp_customize->add_setting(
-			'sgn_theme_amp_eyecatch_popup',
-			array(
-				'default'   => true,
-				'type'      => 'option',
-				'transport' => 'postMessage',
-			)
-		);
-		$wp_customize->add_control(
-			'sgn_theme_amp_eyecatch_popup',
-			array(
-				'label'    => esc_html__( 'アイキャッチ画像をポップアップする' ),
-				'section'  => 'sgn_theme_amp',
-				'settings' => 'sgn_theme_amp_eyecatch_popup',
-				'type'     => 'checkbox',
-			)
-		);
-	}
-}
-add_action( 'customize_register', 'mumu_customizer_amp' );
-
 if ( ! function_exists( 'mumu_customize_preview_js' ) ) {
 	/**
 	 * カスタマイザーのプレビュー
@@ -52,7 +16,7 @@ if ( ! function_exists( 'mumu_customize_preview_js' ) ) {
 		wp_enqueue_script(
 			'mumu_customizer_preview',
 			get_template_directory_uri() . '/js/customizer-preview.js',
-			array( 'customize-preview' ),
+			array( 'jquery', 'customize-preview' ),
 			null,
 			true
 		);
