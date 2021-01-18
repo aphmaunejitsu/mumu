@@ -8,7 +8,7 @@
 ?>
 <nav class="next-prev flex justify-between">
 <?php
-if ( get_next_post() ) :
+if ( get_previous_post() ) :
 	;
 	?>
 	<span class="prev">
@@ -16,7 +16,7 @@ if ( get_next_post() ) :
 	</span>
 	<?php
 endif;
-if ( get_previous_post() ) :
+if ( get_next_post() ) :
 	?>
 	<span class="next">
 	<?php next_post_link( '%link', '次の記事 &raquo;', true ); ?>
