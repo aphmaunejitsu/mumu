@@ -1,5 +1,4 @@
-vendor/
-
+.vimrc.local
 # ignore node dependency directories
 node_modules/
 
@@ -67,5 +66,4 @@ Temporary Items
 *.css.map
 *.sass.map
 *.scss.map
-
 

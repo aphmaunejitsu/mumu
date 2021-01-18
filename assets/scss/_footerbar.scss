@@ -1,20 +1,9 @@
-.sgn-footerbar {
+footer#main-footer {
   border-top: solid 1px Silver;
   padding: .5rem;
 
-  .home-link {
-    .site-title-icon {
-      displau: flex;
-      justify-content: center;
-      .site-icon {
-        amp-img {
-         @include border-radius(16px, 16px);
-        }
-        .site-title {
-          font: 600 1.5rem/1.6 'M PLUS 1p';
-        }
-      }
-    }
+  amp-img {
+    @include box-shadow(none);
   }
 
   nav {
@@ -23,49 +12,36 @@
     text-align: center;
 
     ul {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
       li {
         line-height: 1.5rem;
         a {
           text-decoration: none;
+          color: black;
         }
+      }
+    }
+
+    @include mq(sm) {
+      ul {
+        flex-direction: row;
+      }
+    }
+
+    @include mq(md) {
+      ul {
+        flex-direction: row;
+      }
+    }
+
+    @include mq(lg) {
+      ul {
+        flex-direction: row;
       }
     }
   }
 
-  nav {
-    @include mq(sm) {
-      ul {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        li {
-          padding-left: 1.5rem;
-        }
-      }
-    }
-  }
-  nav {
-    @include mq(md) {
-      ul {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        li {
-          padding-left: 1.5rem;
-        }
-      }
-    }
-  }
-  nav {
-    @include mq(lg) {
-      ul {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        li {
-          padding-left: 1.5rem;
-        }
-      }
-    }
-  }
 }

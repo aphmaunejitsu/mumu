@@ -1,0 +1,34 @@
+section.widget.widget_recent_entries, section.widget.widget_categories {
+  font-size: 1rem;
+  ul {
+    li {
+      a {
+        &:before {
+          content: '\25B8';
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+section.widget.widget_recent_entries {
+  ul {
+    li {
+      display: flex;
+      flex-direction: column;
+      span {
+        margin-left: auto;
+      }
+
+    }
+  }
+}
+
+section.widget.widget_categories {
+  ul.children {
+    li {
+      padding-left: 0.5rem;
+    }
+  }
+}

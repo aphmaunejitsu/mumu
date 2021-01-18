@@ -1,20 +1,25 @@
-<?php get_header(); ?>
-<article class="sgn-container mx-auto">
-	<div class="sgn-article">
-		<?php
-		if ( have_posts() ) :
-			while ( have_posts() ) :
-				the_post();
-				?>
-				<?php get_template_part( 'parts/page/header' ); ?>
-				<?php get_template_part( 'parts/page/article' ); ?>
-				<?php
-			endwhile;
-			else :
-				?>
-		投稿が見つかりません
-		<?php endif; ?>
-	</div>
-	<?php get_template_part( 'parts/common/sidebar' ); ?>
-</article>
-<?php get_footer(); ?>
+<?php
+/**
+ * Page templete
+ *
+ * @package Mumu theme
+ */
+
+get_header(); ?>
+<div id="primary" class="mx-auto">
+	<main id="main">
+	<?php
+	if ( have_posts() ) :
+		while ( have_posts() ) :
+			the_post();
+			get_template_part( 'parts/content', 'page' );
+		endwhile;
+	else :
+		get_template_part( 'parts/content', 'none' );
+	endif;
+	?>
+	</main><!-- #main -->
+</div> <!-- #primary -->
+<?php
+get_sidebar();
+get_footer();
