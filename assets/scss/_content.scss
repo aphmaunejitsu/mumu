@@ -16,6 +16,7 @@ article {
 
     div.widget {
       display: flex;
+      flex-direction: column;
 
       > section > div {
         display: flex;
