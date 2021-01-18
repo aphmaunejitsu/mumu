@@ -1,12 +1,8 @@
 article {
   .read-more a {
     display: inline-block;
-    font-weight: bold;
-    padding: 0.5rem;
     text-decoration: none;
-    border: solid 1px $read-more;
     transition: .4s;
-    @include border-radius(8px 8px);
   }
 
   footer {

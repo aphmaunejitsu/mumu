@@ -1,9 +1,34 @@
 <?php
 /**
- * the template helper file
+ * The template helper file
  *
  * @package Mumu Theme
  */
+
+if ( ! function_exists( 'mumu_get_the_category' ) ) {
+	/**
+	 * 子カテゴリをなるべく取得するthe_category
+	 */
+	function mumu_the_category() {
+		$categories = get_the_category();
+		if ( ! isset( $categories[0] ) ) {
+			return null;
+		}
+
+		$result = $categories[0];
+
+		foreach ( $categories as $category ) {
+			if ( 0 != $category->category_parent ) {
+				$result = $category;
+				break;
+			}
+		}
+
+		echo wp_kses_post(
+			sprintf( '<div class="article-category">%1$s</div>', $result->cat_name )
+		);
+	}
+}
 
 if ( ! function_exists( 'mumu_edit_link' ) ) {
 	/**
