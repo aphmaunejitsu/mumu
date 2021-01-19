@@ -26,7 +26,7 @@
 		</header>
 		<div class="article-content content mb1">
 			<?php the_excerpt(); ?>
-			<div class="read-more flex justify-end">
+			<div class="read-more">
 				<a href="<?php the_permalink(); ?>" class="button">Read More</a>
 			</div><!-- .read-more -->
 		</div><!-- .article-content -->
