@@ -1,0 +1,175 @@
+<?php
+/**
+ * Recentry Posts with thumbnail widget
+ *
+ * @package Mumu Theme
+ */
+
+/**
+ * Recentry Post Widget
+ */
+class RecentryPostsWidget extends WP_Widget {
+
+	/**
+	 * サムネイル付最近の投稿Widgetの登録
+	 */
+	public function __construct() {
+		parent::__construct(
+			'mumu_recentry_posts',
+			__( 'Recentry Posts with Thumbnail' ),
+			array( 'description' => __( 'サムネイル付最近の投稿' ) )
+		);
+	}
+
+	/**
+	 * Widget
+	 *
+	 * @param array $args arguments.
+	 * @param array $instance instance.
+	 */
+	public function widget( $args, $instance ) {
+		_log( 'Start: ' . __METHOD__ );
+		_log( $instance );
+		$count        = $instance['count'] ?? 5;
+		$posted_date  = $instance['posted_date'] ?? false;
+		$is_thumbnail = $instance['is_thumbnail'] ?? false;
+		$size         = $instance['size'] ?? 'thumbnail';
+		$title        = $instance['title'] ?? __( 'Recentry Posts' );
+
+		echo wp_kses_post( $args['before_widget'] );
+		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
+		$posts = get_posts( array( 'posts_per_page' => $count ) );
+		echo wp_kses_post( '<ul class="mumu_recentry_posts_list">' );
+		foreach ( $posts as $post ) {
+			if ( $is_thumbnail ) {
+				$thum_id = get_post_thumbnail_id( $post->ID );
+				$image   = wp_get_attachment_image_src( $thum_id, $size );
+			} else {
+				$image = null;
+			}
+			if ( $posted_date ) {
+				$published   = get_the_date( 'c', $post->ID );
+				$published_t = get_the_date( 'Y-m-d', $post->ID );
+			}
+			?>
+			<li class="entry">
+				<div class="container">
+					<?php if ( $is_thumbnail ) : ?>
+					<div class="entry-thumbnail">
+						<amp-img src="<?php echo esc_attr( $image[0] ); ?>"
+							src='<?php echo esc_attr( $image[0] ); ?>'
+							layout="responsive"
+							width='<?php echo esc_attr( $image[1] ); ?>'
+							height='<?php echo esc_attr( $image[2] ); ?>'>
+						</amp-img>
+					</div>
+					<?php endif; ?>
+					<div class="entry-content">
+					<div class="entiry-title"><?php echo esc_html( $post->post_title ); ?></div>
+					<?php if ( $posted_date ) : ?>
+					<time class="entry-date published" datetime="<?php echo esc_attr( $published ); ?>">
+						<?php echo esc_html( $published_t ); ?>
+					</time>
+					<?php endif; ?>
+					</div>
+				</div>
+			</li>
+			<?php
+		}
+			echo wp_kses_post( '</ul>' );
+			echo wp_kses_post( $args['after_widget'] );
+			_log( 'End: ' . __METHOD__ );
+	}
+
+			/**
+			 * Widget form
+			 *
+			 * @param array $instance データベースの保存値.
+			 */
+	public function form( $instance ) {
+		$title        = $instance['title'] ?? '';
+		$count        = $instance['count'] ?? 5;
+		$posted_date  = $instance['posted_date'] ?? null;
+		$is_thumbnail = $instance['is_thumbnail'] ?? null;
+		$size         = $instance['size'] ?? 'thumbnail';
+		$sizes        = get_image_sizes();
+		?>
+<p>
+<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">タイトル:</label>
+<input
+	type="text" class="widefat"
+	id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+	value="<?php echo esc_attr( $title ); ?>">
+</p>
+<p>
+<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>">表示する投稿数:</label>
+<input
+	type="number" class="tiny-text"
+	id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"
+	value="<?php echo esc_attr( $count ); ?>">
+</p>
+<p>
+<input
+	type="checkbox" class="checkbox"
+	id="<?php echo esc_attr( $this->get_field_id( 'posted_date' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'posted_date' ) ); ?>"
+	value="1"
+		<?php
+		if ( $posted_date ) :
+			?>
+			checked<?php endif; ?>>
+<label for="<?php echo esc_attr( $this->get_field_id( 'posted_date' ) ); ?>">投稿日を表示する</label>
+</p>
+<p>
+<input
+	type="checkbox" class="checkbox"
+	id="<?php echo esc_attr( $this->get_field_id( 'is_thumbnail' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'is_thumbnail' ) ); ?>"
+	value="1"
+		<?php
+		if ( $is_thumbnail ) :
+			?>
+			checked<?php endif; ?>
+>
+<label for="<?php echo esc_attr( $this->get_field_id( 'is_thumbnail' ) ); ?>">アイキャッチ画像を表示する</label>
+</p>
+<p>
+<label for="<?php echo esc_attr( $this->get_field_id( 'size' ) ); ?>">サムネイルサイズ:</label>
+<select
+	id="<?php echo esc_attr( $this->get_field_id( 'size' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'size' ) ); ?>">
+				<?php foreach ( $sizes as $key => $v ) : ?>
+		<option value= "<?php echo esc_attr( $key ); ?>" <?php selected( $key, $size ); ?>>
+					<?php echo wp_kses_post( $key ); ?> (<?php echo esc_html( $v['width'] ); ?> x <?php echo esc_html( $v['height'] ); ?>)
+		</option>
+		<?php endforeach; ?>
+</select>
+</p>
+				<?php
+
+	}
+
+	/**
+	 * ウィジェットフォームの値を保存用にサニタイズ
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance 保存用に送信された値.
+	 * @param array $old_instance データベースからの以前保存された値.
+	 *
+	 * @return array 保存される更新された安全な値.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		_log( $new_instance );
+		$inctance                 = $old_instance;
+		$instance['title']        = $new_instance['title'] ? strip_tags( $new_instance['title'] ) : '';
+		$inctance['count']        = is_numeric( $new_instance['count'] ) ? $new_instance['count'] : 5;
+		$inctance['posted_date']  = $new_instance['posted_date'] ?? null;
+		$inctance['is_thumbnail'] = $new_instance['is_thumbnail'] ?? null;
+		$inctance['size']         = strip_tags( $new_instance['size'] ) ?? 'thumbnail';
+
+		return $inctance;
+	}
+}

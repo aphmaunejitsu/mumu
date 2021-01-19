@@ -5,6 +5,8 @@
  * @package Mumu Theme
  */
 
+require_once MUMU_APP . '/widgets/class-recentry-posts-widget.php';
+
 if ( ! function_exists( 'remove_recent_comments_style' ) ) {
 	/**
 	 * コメントスタイルの削除
@@ -45,3 +47,10 @@ if ( ! function_exists( 'mumu_widgets_init' ) ) {
 	}
 }
 add_action( 'widgets_init', 'mumu_widgets_init' );
+
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( RecentryPostsWidget::class );
+	}
+);
