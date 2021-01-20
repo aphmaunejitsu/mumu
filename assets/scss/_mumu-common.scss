@@ -88,7 +88,6 @@ header, footer, article, section {
 
 amp-img {
   @include border-radius(0.25rem);
-  @include box-shadow($box-shadow);
 }
 
 amp-lightbox  {

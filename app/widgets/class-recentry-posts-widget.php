@@ -16,7 +16,7 @@ class RecentryPostsWidget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'mumu_recentry_posts',
-			__( 'Recentry Posts with Thumbnail' ),
+			__( 'Mumu: Recentry Posts with Thumbnail' ),
 			array( 'description' => __( 'サムネイル付最近の投稿' ) )
 		);
 	}
@@ -30,16 +30,23 @@ class RecentryPostsWidget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		_log( 'Start: ' . __METHOD__ );
 		_log( $instance );
-		$count        = $instance['count'] ?? 5;
-		$posted_date  = $instance['posted_date'] ?? false;
-		$is_thumbnail = $instance['is_thumbnail'] ?? false;
-		$size         = $instance['size'] ?? 'thumbnail';
-		$title        = $instance['title'] ?? __( 'Recentry Posts' );
+		$count            = $instance['count'] ?? 5;
+		$is_posted_date   = $instance['is_posted_date'] ?? false;
+		$is_updated_date  = $instance['is_updated_date'] ?? false;
+		$is_order_updated = $instance['is_order_updated'] ? 'modified' : 'date';
+		$is_thumbnail     = $instance['is_thumbnail'] ?? false;
+		$size             = $instance['size'] ?? 'thumbnail';
+		$title            = $instance['title'] ?? __( 'Recentry Posts' );
 
 		echo wp_kses_post( $args['before_widget'] );
 		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
-		$posts = get_posts( array( 'posts_per_page' => $count ) );
 		echo wp_kses_post( '<ul class="mumu_recentry_posts_list">' );
+		$posts = get_posts(
+			array(
+				'posts_per_page' => $count,
+				'orderby'        => $is_order_updated,
+			)
+		);
 		foreach ( $posts as $post ) {
 			if ( $is_thumbnail ) {
 				$thum_id = get_post_thumbnail_id( $post->ID );
@@ -47,13 +54,13 @@ class RecentryPostsWidget extends WP_Widget {
 			} else {
 				$image = null;
 			}
-			if ( $posted_date ) {
+			if ( $is_posted_date ) {
 				$published   = get_the_date( 'c', $post->ID );
 				$published_t = get_the_date( 'Y-m-d', $post->ID );
 			}
 			?>
 			<li class="entry">
-				<div class="container">
+				<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" class="flex flex-column">
 					<?php if ( $is_thumbnail ) : ?>
 					<div class="entry-thumbnail">
 						<amp-img src="<?php echo esc_attr( $image[0] ); ?>"
@@ -65,14 +72,12 @@ class RecentryPostsWidget extends WP_Widget {
 					</div>
 					<?php endif; ?>
 					<div class="entry-content">
-					<div class="entiry-title"><?php echo esc_html( $post->post_title ); ?></div>
-					<?php if ( $posted_date ) : ?>
-					<time class="entry-date published" datetime="<?php echo esc_attr( $published ); ?>">
-						<?php echo esc_html( $published_t ); ?>
-					</time>
-					<?php endif; ?>
+						<div class="entry-title"><?php echo esc_html( $post->post_title ); ?></div>
+						<?php
+							mumu_published_post( $post->ID, $is_posted_date, $is_updated_date );
+						?>
 					</div>
-				</div>
+				</a>
 			</li>
 			<?php
 		}
@@ -81,18 +86,22 @@ class RecentryPostsWidget extends WP_Widget {
 			_log( 'End: ' . __METHOD__ );
 	}
 
-			/**
-			 * Widget form
-			 *
-			 * @param array $instance データベースの保存値.
-			 */
+	/**
+	 * Widget form
+	 *
+	 * @param array $instance データベースの保存値.
+	 */
 	public function form( $instance ) {
-		$title        = $instance['title'] ?? '';
-		$count        = $instance['count'] ?? 5;
-		$posted_date  = $instance['posted_date'] ?? null;
-		$is_thumbnail = $instance['is_thumbnail'] ?? null;
-		$size         = $instance['size'] ?? 'thumbnail';
-		$sizes        = get_image_sizes();
+		_log( 'Start: ' . __METHOD__ );
+		_log( $instance );
+		$title            = $instance['title'] ?? '';
+		$count            = $instance['count'] ?? 5;
+		$is_posted_date   = $instance['is_posted_date'] ?? null;
+		$is_updated_date  = $instance['is_updated_date'] ?? null;
+		$is_order_updated = $instance['is_order_updated'] ?? false;
+		$is_thumbnail     = $instance['is_thumbnail'] ?? null;
+		$size             = $instance['size'] ?? 'thumbnail';
+		$sizes            = get_image_sizes();
 		?>
 <p>
 <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">タイトル:</label>
@@ -113,14 +122,38 @@ class RecentryPostsWidget extends WP_Widget {
 <p>
 <input
 	type="checkbox" class="checkbox"
-	id="<?php echo esc_attr( $this->get_field_id( 'posted_date' ) ); ?>"
-	name="<?php echo esc_attr( $this->get_field_name( 'posted_date' ) ); ?>"
+	id="<?php echo esc_attr( $this->get_field_id( 'is_order_updated' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'is_order_updated' ) ); ?>"
 	value="1"
 		<?php
-		if ( $posted_date ) :
+		if ( $is_order_updated ) :
 			?>
 			checked<?php endif; ?>>
-<label for="<?php echo esc_attr( $this->get_field_id( 'posted_date' ) ); ?>">投稿日を表示する</label>
+<label for="<?php echo esc_attr( $this->get_field_id( 'is_order_updated' ) ); ?>">更新日順で表示する</label>
+</p>
+<p>
+<input
+	type="checkbox" class="checkbox"
+	id="<?php echo esc_attr( $this->get_field_id( 'is_posted_date' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'is_posted_date' ) ); ?>"
+	value="1"
+		<?php
+		if ( $is_posted_date ) :
+			?>
+			checked<?php endif; ?>>
+<label for="<?php echo esc_attr( $this->get_field_id( 'is_posted_date' ) ); ?>">投稿日を表示する</label>
+</p>
+<p>
+<input
+	type="checkbox" class="checkbox"
+	id="<?php echo esc_attr( $this->get_field_id( 'is_updated_date' ) ); ?>"
+	name="<?php echo esc_attr( $this->get_field_name( 'is_updated_date' ) ); ?>"
+	value="1"
+		<?php
+		if ( $is_updated_date ) :
+			?>
+			checked<?php endif; ?>>
+<label for="<?php echo esc_attr( $this->get_field_id( 'is_updated_date' ) ); ?>">更新日を表示する</label>
 </p>
 <p>
 <input
@@ -149,6 +182,7 @@ class RecentryPostsWidget extends WP_Widget {
 </p>
 				<?php
 
+				_log( 'End: ' . __METHOD__ );
 	}
 
 	/**
@@ -162,14 +196,20 @@ class RecentryPostsWidget extends WP_Widget {
 	 * @return array 保存される更新された安全な値.
 	 */
 	public function update( $new_instance, $old_instance ) {
+		_log( 'Start: ' . __METHOD__ );
 		_log( $new_instance );
-		$inctance                 = $old_instance;
-		$instance['title']        = $new_instance['title'] ? strip_tags( $new_instance['title'] ) : '';
-		$inctance['count']        = is_numeric( $new_instance['count'] ) ? $new_instance['count'] : 5;
-		$inctance['posted_date']  = $new_instance['posted_date'] ?? null;
-		$inctance['is_thumbnail'] = $new_instance['is_thumbnail'] ?? null;
-		$inctance['size']         = strip_tags( $new_instance['size'] ) ?? 'thumbnail';
+		$inctance                     = $old_instance;
+		$instance['title']            = $new_instance['title'] ? strip_tags( $new_instance['title'] ) : '';
+		$instance['count']            = is_numeric( $new_instance['count'] ) ? $new_instance['count'] : 5;
+		$instance['is_posted_date']   = $new_instance['is_posted_date'] ?? null;
+		$instance['is_updated_date']  = $new_instance['is_updated_date'] ?? null;
+		$instance['is_order_updated'] = $new_instance['is_order_updated'] ?? null;
+		$instance['is_thumbnail']     = $new_instance['is_thumbnail'] ?? null;
+		$instance['size']             = strip_tags( $new_instance['size'] ) ?? 'thumbnail';
 
-		return $inctance;
+		_log( $instance );
+
+		_log( 'end: ' . __METHOD__ );
+		return $instance;
 	}
 }

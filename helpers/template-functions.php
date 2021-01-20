@@ -253,26 +253,31 @@ if ( ! function_exists( 'mumu_get_kses_allow_svg' ) ) {
 if ( ! function_exists( 'mumu_published_post' ) ) {
 	/**
 	 * Output published date
+	 *
+	 * @param int $id post_id.
 	 */
-	function mumu_published_post() {
-		$published = get_the_date( 'U' );
-		$updated   = get_the_modified_date( 'U' );
+	function mumu_published_post( $id = null, $is_show_posted = true, $is_show_updated = true ) {
+		$published = get_the_date( 'U', $id );
+		$updated   = get_the_modified_date( 'U', $id );
 
-		if ( get_the_date( 'U' ) > get_the_modified_date( 'U' ) ) {
-			$published = get_the_date();
+		if ( $published > $updated ) {
+			$published = get_the_date( null, $id );
 			$updated   = $published;
 
-			$published_t = get_the_date( 'Y-m-d' );
+			$published_t = get_the_date( 'c', $id );
 			$updated_t   = $published_t;
 		} else {
-			$published = get_the_date();
-			$updated   = get_the_modified_date();
+			$published = get_the_date( null, $id );
+			$updated   = get_the_modified_date( null, $id );
 
-			$published_t = get_the_date( 'Y-m-d' );
-			$updated_t   = get_the_modified_date( 'Y-m-d' );
+			$published_t = get_the_date( 'c', $id );
+			$updated_t   = get_the_modified_date( 'c', $id );
 		}
 
-		$meta = <<<EOF
+		$meta = null;
+
+		if ( $is_show_posted ) {
+			$meta = <<<EOF
 <span class="published-post flex justify-end">
     <div class="published flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V10h16v11zm0-13H4V5h16v3z"/></svg>
@@ -280,6 +285,17 @@ if ( ! function_exists( 'mumu_published_post' ) ) {
             {$published}
         </time>
     </div>
+EOF;
+			if ( ! $is_show_updated ) {
+				$meta .= '</span>';
+			}
+		}
+		if ( $is_show_updated ) {
+			$updated_html = '';
+			if ( ! $is_show_posted ) {
+				$updated_html = '<span class="published-post flex justify-end">';
+			}
+			$updated_html .= <<<EOF
     <div class="updated flex items-center ml1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M.01 0h24v24h-24V0z" fill="none"/><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
         <time class="updated-post flex items-center" datetime="{$updated_t}">
@@ -288,6 +304,8 @@ if ( ! function_exists( 'mumu_published_post' ) ) {
     </div>
 </span>
 EOF;
+			$meta         .= $updated_html;
+		}
 		echo wp_kses( $meta, mumu_get_kses_allow_svg() );
 	}
 }
