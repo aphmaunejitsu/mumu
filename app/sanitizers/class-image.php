@@ -8,7 +8,7 @@
 /**
  * Image Class
  */
-class Image extends SanitizerBase {
+class Image extends Sanitizer {
 
 	/**
 	 * Excute sanitize for image

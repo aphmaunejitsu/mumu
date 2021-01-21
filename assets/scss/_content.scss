@@ -62,7 +62,7 @@ article {
       display: flex;
       flex-direction: column;
       max-width: 640px;
-      border: 1px solid #ccc;
+      border: 1px solid $color-light-gray;
       @include border-radius(0.5rem, 0.5rem);
 
       .card-thumbnail {
@@ -71,7 +71,7 @@ article {
 
       .excerpt {
         font-size: 0.75rem;
-        color: 333;
+        color: $color-gray;
       }
 
       div.read-more a {

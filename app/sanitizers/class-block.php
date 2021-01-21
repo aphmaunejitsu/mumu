@@ -6,7 +6,7 @@
  */
 
 // block snitizers.
-require_once MUMU_APP . '/sanitizers/blocks/class-block-base.php';
+require_once MUMU_APP . '/sanitizers/blocks/class-blockbase.php';
 require_once MUMU_APP . '/sanitizers/blocks/class-youtube.php';
 require_once MUMU_APP . '/sanitizers/blocks/class-twitter.php';
 require_once MUMU_APP . '/sanitizers/blocks/class-wordpress.php';
@@ -15,7 +15,7 @@ require_once MUMU_APP . '/sanitizers/blocks/class-instagram.php';
 /**
  * Block class
  */
-class Block extends SanitizerBase {
+class Block extends Sanitizer {
 
 	/**
 	 * Block classes name

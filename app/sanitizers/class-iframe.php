@@ -8,7 +8,7 @@
 /**
  * IFrame Class
  */
-class Iframe extends SanitizerBase {
+class Iframe extends Sanitizer {
 
 	/**
 	 * Excute sanitize for iFrame

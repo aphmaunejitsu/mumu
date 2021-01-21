@@ -1,23 +1,58 @@
 $line-height: 3.5rem;
 $margin: 0 0 2.5rem;
 $opacity: .8;
+
 $text-shadow: 1px 1px 2px rgba(Silver, .8);
+$text-shadow-dark: 1px 1px 2px rgba(#3f3f3f, .8);
+
 $box-shadow: 1px 1px 2px rgba(Silver, .8);
+$box-shadow-dark: 1px 1px 2px rgba(#3f3f3f, .8);
+
 $bg-color-navi: #FAE3BE;
+$bg-color-navi-dark: #051C41;
+
 $navi-border: 1px solid #dfdfdf;
+$navi-border-dark: 1px solid #202020;
+
 $font-600: 600;
 $font-large: large;
 
 $a-link: #3273dc;
-$a-hover: #0000ff;
-$a-visited: #3273dc;
-$a-active: #3273dc;
+$a-link-dark: #cd8c23;
 
-$read-more: rgba(200, 200, 200, 0.8);
+$a-hover: #0000ff;
+$a-hover-dark: #ffff00;
+
+$a-visited: #3273dc;
+$a-visited-dark: #cd8c23;
+
+$a-active: #3273dc;
+$a-active-dark: #cd8c23;
+
+$search-bg-color: #FEF4F2;
+$search-bg-color-dark: #010b0d;
+
+$header-sidemenu-bg-color: #FEF4F2;
+$header-sidemenu-bg-color-dark: #010b0d;
+
+$read-more: rgba(#C8C8C8, 0.8);
+$read-more-dark: rgba(#373737, 0.8);
 $read-more-radis: 8px 8px;
 
 $button-border-color: rgba(200, 200, 200, 0.8);
+$button-border-color-dark: rgba(#373737, 0.8);
+
 $button-radius: 8px 8px;
+
+$color-black: rgba(#000, 1);
+$color-black-dark: rgba(#fcfcfc, 1);
+
+$color-gray: rgba(#333333, 1);
+$color-gray-dark: rgba(#cccccc, 1);
+
+$color-light-gray: rgba(#cccccc, 1);
+$color-light-gray-dark: rgba(#333333, 1);
+
 
 $golden: 1.681;
 $silver: 1.414;

@@ -8,7 +8,7 @@
 /**
  * CleanHtml class
  */
-class CleanHtml extends SanitizerBase {
+class CleanHtml extends Sanitizer {
 
 	/**
 	 * Execute Clean html

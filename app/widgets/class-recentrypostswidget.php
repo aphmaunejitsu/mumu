@@ -199,7 +199,7 @@ class RecentryPostsWidget extends WP_Widget {
 		_log( 'Start: ' . __METHOD__ );
 		_log( $new_instance );
 		$inctance                     = $old_instance;
-		$instance['title']            = $new_instance['title'] ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']            = $new_instance['title'] ? strip_tags( $new_instance['title'] ) : null;
 		$instance['count']            = is_numeric( $new_instance['count'] ) ? $new_instance['count'] : 5;
 		$instance['is_posted_date']   = $new_instance['is_posted_date'] ?? null;
 		$instance['is_updated_date']  = $new_instance['is_updated_date'] ?? null;
@@ -213,3 +213,10 @@ class RecentryPostsWidget extends WP_Widget {
 		return $instance;
 	}
 }
+
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( RecentryPostsWidget::class );
+	}
+);

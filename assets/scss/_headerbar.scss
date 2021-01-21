@@ -90,7 +90,7 @@ amp-lightbox {
       line-height: 2rem;
       width: 18rem;
       padding: 1rem;
-      background-color: rgba(254,244,242, 0.95);
+      background-color: rgba($search-bg-color, 0.95);
       @include border-radius(8px, 8px);
     }
 
@@ -116,7 +116,7 @@ amp-lightbox {
 
 amp-sidebar#header-side-menu {
   width: 20rem;
-  background-color: rgba(254,244,242, 0.95);
+  background-color: rgba($header-sidemenu-bg-color, 0.95);
 
   .label {
     font-size: 1rem;
