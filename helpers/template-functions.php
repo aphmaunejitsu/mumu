@@ -92,8 +92,8 @@ if ( ! function_exists( 'mumu_pagination' ) ) {
 				'format'    => '',
 				'current'   => max( 1, get_query_var( 'paged' ) ),
 				'total'     => $wp_query->max_num_pages,
-				'prev_text' => '<',
-				'next_text' => '>',
+				'prev_text' => '&larr;',
+				'next_text' => '&rarr;',
 				'type'      => 'array',
 				'end_size'  => 1,
 				'mid_size'  => 1,
@@ -146,7 +146,7 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 				$image[2]
 			);
 		} else {
-			$output = '<h1 class="site-name">' . get_bloginfo( 'name' ) . '</h1>';
+			$output = '<h2 class="site-name m0">' . get_bloginfo( 'name' ) . '</h2>';
 		}
 
 		$logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
@@ -164,7 +164,7 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 					'height' => array(),
 					'layout' => array(),
 				),
-				'h1'      => array( 'class' => array() ),
+				'h2'      => array( 'class' => array() ),
 			)
 		);
 	}

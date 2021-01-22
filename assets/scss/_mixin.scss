@@ -20,14 +20,14 @@ $font-large: large;
 $a-link: #3273dc;
 $a-link-dark: #cd8c23;
 
-$a-hover: #0000ff;
-$a-hover-dark: #ffff00;
+$a-hover: #0000FF;
+$a-hover-dark: #FFFF00;
 
-$a-visited: #3273dc;
-$a-visited-dark: #cd8c23;
+$a-visited: #3273DC;
+$a-visited-dark: #CD8C23;
 
-$a-active: #3273dc;
-$a-active-dark: #cd8c23;
+$a-active: #3273DC;
+$a-active-dark: #CD8C23;
 
 $search-bg-color: #FEF4F2;
 $search-bg-color-dark: #010b0d;
@@ -44,15 +44,35 @@ $button-border-color-dark: rgba(#373737, 0.8);
 
 $button-radius: 8px 8px;
 
-$color-black: rgba(#000, 1);
-$color-black-dark: rgba(#fcfcfc, 1);
+$color-black: #000000;
+$color-black-dark: #fdfdfd;
 
-$color-gray: rgba(#333333, 1);
-$color-gray-dark: rgba(#cccccc, 1);
+$color-white: #ffffff;
+$color-white-dark: #000000;
 
-$color-light-gray: rgba(#cccccc, 1);
-$color-light-gray-dark: rgba(#333333, 1);
+$color-gray: #333333;
+$color-gray-dark: #cccccc;
 
+$color-light-gray: #cccccc;
+$color-light-gray-dark: #333333;
+
+$color-silver: #C0C0C0;
+$color-silver-dark: #3f3f3f;
+
+$amp-sidebar-label-color: #4F4F4F;
+$amp-sidebar-label-color-dark: #B0B0B0;
+
+$border-sidebar-widget-h3: rgba(Silver, .5);
+$border-sidebar-widget-h3-dark: rgba(#3f3f3f, .5);
+
+$body-bg-color: #EEEEEE;
+$body-bg-color-dark: #111111;
+
+$lightbox-bg-color: #000A0A;
+$lightbox-bg-color-dark: #FFF5F5;
+
+$pagination-bg-color: #FFB6C1;
+$pagination-bg-color-dark: rgba(#00493E, .8);
 
 $golden: 1.681;
 $silver: 1.414;

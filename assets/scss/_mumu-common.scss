@@ -3,15 +3,26 @@ html {
 }
 
 body {
-  background-color: #EEE;
+  background-color: $body-bg-color;
+  color: $color-black;
+  @media (prefers-color-scheme: dark) {
+    background-color: $body-bg-color-dark;
+    color: $color-black-dark;
+  }
+
   font-size: 1rem;
   line-height: 1.5rem;
+  transition: .5s;
 }
 
 svg {
     width: 1rem;
     height: 1rem;
     margin-right: 0.25rem;
+    fill: $color-black;
+    @media (prefers-color-scheme: dark) {
+      fill: $color-black-dark;
+    }
 }
 
 h1 {
@@ -49,29 +60,40 @@ h6 {
 }
 
 #content {
-    width: 100%;
-    max-width: 1280px;
-    min-width: 320px;
-    background-color: #FFF;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1px;
-    flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 320px;
 
-    @include mq(md) {
-        justify-content: space-between;
-    }
+  background-color: $color-white;
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-white-dark;
+  }
+
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1px;
+  flex: 1;
+
+  @include mq(md) {
+      justify-content: space-between;
+  }
 
   @include mq(lg) {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        @include box-shadow(rgba(silver, .8) 1px 0 2px, rgba(silver, .8) -1px 0 2px);
+        @include box-shadow(rgba($color-silver, .8) 1px 0 2px, rgba($color-silver, .8) -1px 0 2px);
+        @media (prefers-color-scheme: dark) {
+          @include box-shadow(rgba($color-silver-dark, .8) 1px 0 2px, rgba($color-silver-dark, .8) -1px 0 2px);
+        }
   }
 }
 
 #primary {
-    background-color: #white;
+    background-color: $color-white;
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-white-dark;
+    }
 }
 
 #secondary {
@@ -83,7 +105,10 @@ h6 {
 
 
 header, footer, article, section {
-  background-color: #FFF;
+  background-color: $color-white;
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-white-dark;
+  }
 }
 
 amp-img {
@@ -106,36 +131,55 @@ amp-lightbox  {
 }
 
 amp-image-lightbox, amp-lightbox {
-  background: rgba(0, 10, 10, 0.9);
+  background: rgba($lightbox-bg-color, 0.9);
+  @media (prefers-color-scheme: dark) {
+    background: rgba($lightbox-bg-color-dark, 0.9);
+  }
 }
 
 
 a {
-    color: $a-link;
-    padding: 0.25rem;
+  color: $a-link;
+  @media (prefers-color-scheme: dark) {
+    color: $a-link-dark;
+  }
+  padding: 0.25rem;
 
-    &:visited {
-        color: $a-visited;
+  &:visited {
+    color: $a-visited;
+    @media (prefers-color-scheme: dark) {
+      color: $a-visited-dark;
     }
-    &:hover {
-        color: $a-hover;
+  }
+  &:hover {
+    color: $a-hover;
+    @media (prefers-color-scheme: dark) {
+      color: $a-hover-dark;
     }
-    &:active {
-        color: $a-active;
+  }
+  &:active {
+    color: $a-active;
+    @media (prefers-color-scheme: dark) {
+      color: $a-active-dark;
     }
+  }
 }
 
 .category-tag {
-    display: inline-block;
-    line-height: 1;
-    border: 1px solid $button-border-color;
-    text-decoration: none;
-    margin-bottom: .25rem;
-    padding: .5rem;
-    @include border-radius($button-radius);
-    &:before {
-        content: "#";
-    }
+  display: inline-block;
+  line-height: 1;
+  border: 1px solid $button-border-color;
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid $button-border-color-dark;
+  }
+
+  text-decoration: none;
+  margin-bottom: .25rem;
+  padding: .5rem;
+  @include border-radius($button-radius);
+  &:before {
+      content: "#";
+  }
 }
 
 .container {
