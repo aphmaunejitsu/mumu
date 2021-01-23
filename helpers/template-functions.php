@@ -5,7 +5,7 @@
  * @package Mumu Theme
  */
 
-if ( ! function_exists( 'mumu_get_the_category' ) ) {
+if ( ! function_exists( 'mumu_the_category' ) ) {
 	/**
 	 * 子カテゴリをなるべく取得するthe_category
 	 */
@@ -27,6 +27,31 @@ if ( ! function_exists( 'mumu_get_the_category' ) ) {
 		echo wp_kses_post(
 			sprintf( '<div class="article-category">%1$s</div>', $result->cat_name )
 		);
+	}
+}
+
+if ( ! function_exists( 'mumu_get_the_category' ) ) {
+	/**
+	 * 子カテゴリをなるべく取得するget_the_category
+	 *
+	 * @param mix $post_id post id.
+	 */
+	function mumu_get_the_category( $post_id = null ) {
+		$categories = get_the_category( $post_id );
+		if ( ! isset( $categories[0] ) ) {
+			return null;
+		}
+
+		$result = $categories[0];
+
+		foreach ( $categories as $category ) {
+			if ( 0 != $category->category_parent ) {
+				$result = $category;
+				break;
+			}
+		}
+
+		return $result;
 	}
 }
 

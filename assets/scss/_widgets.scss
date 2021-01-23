@@ -33,9 +33,9 @@ section.widget.widget_categories {
   }
 }
 
-section.widget_mumu_recentry_posts {
-  ul.mumu_recentry_posts_list {
-    li.entry {
+section.widget {
+  div.mumu-widget-posts-list {
+    div.entry {
       a {
         .entry-thumbnail {
           width: 100%;
@@ -53,22 +53,22 @@ section.widget_mumu_recentry_posts {
   }
 
   @include mq(sm) {
-    ul.mumu_recentry_posts_list {
+    div.mumu-widget-posts-list {
       display: flex;
       flex-wrap: wrap;
 
-      li.entry {
+      div.entry {
         width: 33.3333%;
       }
     }
   }
 
   @include mq(md) {
-    ul.mumu_recentry_posts_list {
+    div.mumu-widget-posts-list {
       display: flex;
       flex-wrap: wrap;
 
-      li.entry {
+      div.entry {
         width: 33.33333%;
       }
     }
