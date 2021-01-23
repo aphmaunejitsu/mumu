@@ -1,23 +1,23 @@
 <?php
 /**
- * Recentry Posts with thumbnail widget
+ * Relate Posts with thumbnail widget
  *
  * @package Mumu Theme
  */
 
 /**
- * Recentry Post Widget
+ * Relate Post Widget
  */
-class RecentryPostsWidget extends WP_Widget {
+class RelatePostsWidget extends WP_Widget {
 
 	/**
-	 * サムネイル付最近の投稿Widgetの登録
+	 * サムネイル付 関連記事Widgetの登録
 	 */
 	public function __construct() {
 		parent::__construct(
-			'mumu_recentry_posts',
-			__( 'Mumu: Recentry Posts with Thumbnail' ),
-			array( 'description' => __( 'サムネイル付最近の投稿' ) )
+			'mumu_relate_posts',
+			__( 'Mumu: Relate Posts with Thumbnail' ),
+			array( 'description' => __( 'サムネイル付関連記事' ) )
 		);
 	}
 
@@ -30,21 +30,22 @@ class RecentryPostsWidget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		_log( 'Start: ' . __METHOD__ );
 		_log( $instance );
-		$count            = $instance['count'] ?? 5;
-		$is_posted_date   = $instance['is_posted_date'] ?? false;
-		$is_updated_date  = $instance['is_updated_date'] ?? false;
-		$is_order_updated = $instance['is_order_updated'] ? 'modified' : 'date';
-		$is_thumbnail     = $instance['is_thumbnail'] ?? false;
-		$size             = $instance['size'] ?? 'thumbnail';
-		$title            = $instance['title'] ?? __( 'Recentry Posts' );
+		$count           = $instance['count'] ?? 5;
+		$is_posted_date  = $instance['is_posted_date'] ?? false;
+		$is_updated_date = $instance['is_updated_date'] ?? false;
+		$is_thumbnail    = $instance['is_thumbnail'] ?? false;
+		$size            = $instance['size'] ?? 'thumbnail';
+		$title           = $instance['title'] ?? __( 'Relate Posts' );
+		$category        = mumu_get_the_category();
 
 		echo wp_kses_post( $args['before_widget'] );
 		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
-		echo wp_kses_post( '<div class="mumu-widget-posts-list recently-posts">' );
+		echo wp_kses_post( '<div class="mumu-widget-posts-list relate-posts">' );
 		$posts = get_posts(
 			array(
 				'posts_per_page' => $count,
-				'orderby'        => $is_order_updated,
+				'category'       => $category->cat_ID,
+				'orderby'        => 'rand',
 			)
 		);
 		foreach ( $posts as $post ) {
@@ -94,14 +95,13 @@ class RecentryPostsWidget extends WP_Widget {
 	public function form( $instance ) {
 		_log( 'Start: ' . __METHOD__ );
 		_log( $instance );
-		$title            = $instance['title'] ?? '';
-		$count            = $instance['count'] ?? 5;
-		$is_posted_date   = $instance['is_posted_date'] ?? null;
-		$is_updated_date  = $instance['is_updated_date'] ?? null;
-		$is_order_updated = $instance['is_order_updated'] ?? false;
-		$is_thumbnail     = $instance['is_thumbnail'] ?? null;
-		$size             = $instance['size'] ?? 'thumbnail';
-		$sizes            = get_image_sizes();
+		$title           = $instance['title'] ?? '';
+		$count           = $instance['count'] ?? 5;
+		$is_posted_date  = $instance['is_posted_date'] ?? null;
+		$is_updated_date = $instance['is_updated_date'] ?? null;
+		$is_thumbnail    = $instance['is_thumbnail'] ?? null;
+		$size            = $instance['size'] ?? 'thumbnail';
+		$sizes           = get_image_sizes();
 		?>
 <p>
 <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">タイトル:</label>
@@ -118,18 +118,6 @@ class RecentryPostsWidget extends WP_Widget {
 	id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"
 	name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"
 	value="<?php echo esc_attr( $count ); ?>">
-</p>
-<p>
-<input
-	type="checkbox" class="checkbox"
-	id="<?php echo esc_attr( $this->get_field_id( 'is_order_updated' ) ); ?>"
-	name="<?php echo esc_attr( $this->get_field_name( 'is_order_updated' ) ); ?>"
-	value="1"
-		<?php
-		if ( $is_order_updated ) :
-			?>
-			checked<?php endif; ?>>
-<label for="<?php echo esc_attr( $this->get_field_id( 'is_order_updated' ) ); ?>">更新日順で表示する</label>
 </p>
 <p>
 <input
