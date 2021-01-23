@@ -44,11 +44,12 @@ class PopularPostsWidget extends WP_Widget {
 		$posts = get_posts(
 			array(
 				'posts_per_page' => $count,
-				'key'            => 'page_count',
+				'meta_key'       => 'page_count',
 				'orderby'        => 'meta_value_num',
 				'order'          => 'DESC',
 			)
 		);
+		_log( $posts );
 		foreach ( $posts as $i => $post ) {
 			if ( $is_thumbnail ) {
 				$thum_id = get_post_thumbnail_id( $post->ID );

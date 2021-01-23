@@ -102,16 +102,48 @@ section.widget {
   section.widget {
     div.mumu-widget-posts-list {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: column;
 
       div.entry {
-        width: 33.33333%;
         a {
           text-decoration: none;
           color: $color-black;
           @media (prefers-color-scheme: dark) {
             color: $color-black-dark;
           }
+        }
+      }
+    }
+
+    @include mq(sm) {
+      div.mumu-widget-posts-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        div.entry {
+          width: 33.33333%;
+        }
+      }
+    }
+
+    @include mq(md) {
+      div.mumu-widget-posts-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        div.entry {
+          width: 33.33333%;
+        }
+      }
+    }
+
+    @include mq(lg) {
+      div.mumu-widget-posts-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        div.entry {
+          width: 33.33333%;
         }
       }
     }
