@@ -1,6 +1,6 @@
 <?php
 /**
- * Relate Posts with thumbnail widget
+ * Popular Posts with thumbnail widget
  *
  * @package Mumu Theme
  */
@@ -8,17 +8,18 @@
 /**
  * Relate Post Widget
  */
-class RelatePostsWidget extends WP_Widget {
+class PopularPostsWidget extends WP_Widget {
 
 	/**
-	 * サムネイル付 関連記事Widgetの登録
+	 * サムネイル付 人気記事Widgetの登録
 	 */
 	public function __construct() {
 		parent::__construct(
-			'mumu_relate_posts',
-			__( 'Mumu: Relate Posts with Thumbnail' ),
-			array( 'description' => __( 'サムネイル付関連記事' ) )
+			'mumu_popular_posts',
+			__( 'Mumu: Popular Posts with Thumbnail' ),
+			array( 'description' => __( '人気順' ) )
 		);
+
 	}
 
 	/**
@@ -36,19 +37,19 @@ class RelatePostsWidget extends WP_Widget {
 		$is_thumbnail    = $instance['is_thumbnail'] ?? false;
 		$size            = $instance['size'] ?? 'thumbnail';
 		$title           = $instance['title'] ?? null;
-		$category        = mumu_get_the_category();
 
 		echo wp_kses_post( $args['before_widget'] );
 		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
-		echo wp_kses_post( '<div class="mumu-widget-posts-list relate-posts">' );
+		echo wp_kses_post( '<div class="mumu-widget-posts-list popular-posts">' );
 		$posts = get_posts(
 			array(
 				'posts_per_page' => $count,
-				'category'       => $category->cat_ID,
-				'orderby'        => 'rand',
+				'key'            => 'page_count',
+				'orderby'        => 'meta_value_num',
+				'order'          => 'DESC',
 			)
 		);
-		foreach ( $posts as $post ) {
+		foreach ( $posts as $i => $post ) {
 			if ( $is_thumbnail ) {
 				$thum_id = get_post_thumbnail_id( $post->ID );
 				$image   = wp_get_attachment_image_src( $thum_id, $size );
@@ -61,15 +62,16 @@ class RelatePostsWidget extends WP_Widget {
 			}
 			?>
 			<div class="entry">
-				<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>">
+				<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" class="flex flex-column">
 					<?php if ( $is_thumbnail ) : ?>
-					<div class="entry-thumbnail">
+					<div class="entry-thumbnail relative">
 						<amp-img src="<?php echo esc_attr( $image[0] ); ?>"
 							src='<?php echo esc_attr( $image[0] ); ?>'
 							layout="responsive"
 							width='<?php echo esc_attr( $image[1] ); ?>'
 							height='<?php echo esc_attr( $image[2] ); ?>'>
 						</amp-img>
+						<div class="ranking absolute"><?php echo wp_kses_post( $i + 1 ); ?></div>
 					</div>
 					<?php endif; ?>
 					<div class="entry-content">

@@ -378,3 +378,57 @@ if ( ! function_exists( 'get_image_sizes' ) ) {
 		return $sizes;
 	}
 }
+
+if ( ! function_exists( 'mumu_is_bot' ) ) {
+	/**
+	 * BOT判定
+	 */
+	function mumu_is_bot() {
+		$bot_list = array(
+			'Googlebot',
+			'Yahoo! Slurp',
+			'Mediapartners-Google',
+			'msnbot',
+			'bingbot',
+			'MJ12bot',
+			'Ezooms',
+			'pirst; MSIE 8.0;',
+			'Google Web Preview',
+			'ia_archiver',
+			'Sogou web spider',
+			'Googlebot-Mobile',
+			'AhrefsBot',
+			'YandexBot',
+			'Purebot',
+			'Baiduspider',
+			'UnwindFetchor',
+			'TweetmemeBot',
+			'MetaURI',
+			'PaperLiBot',
+			'Showyoubot',
+			'JS-Kit',
+			'PostRank',
+			'Crowsnest',
+			'PycURL',
+			'bitlybot',
+			'Hatena',
+			'facebookexternalhit',
+			'NINJA bot',
+			'YahooCacheSystem',
+			'NHN Corp.',
+			'Steeler',
+			'DoCoMo',
+		);
+		$is_bot   = false;
+		foreach ( $bot_list as $bot ) {
+			// phpcs:disabled
+			if ( stripos( $_SERVER['HTTP_USER_AGENT'], $bot ) !== false ) {
+				$is_bot = true;
+				break;
+			}
+			// phpcs:enable
+		}
+		return $is_bot;
+
+	}
+}

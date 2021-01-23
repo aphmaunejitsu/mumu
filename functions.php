@@ -18,4 +18,5 @@ require_once MUMU_APP . '/customizers.php';
 require_once MUMU_APP . '/supports.php';
 require_once MUMU_APP . '/sanitizer.php';
 require_once MUMU_APP . '/widgets.php';
+require_once MUMU_APP . '/popular.php';
 require_once MUMU_HELPERS . '/template-functions.php';

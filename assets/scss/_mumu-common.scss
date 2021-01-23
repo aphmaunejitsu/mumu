@@ -57,6 +57,9 @@ h6 {
 
 #main {
   width: 100%;
+  @include mq(lg) {
+    width: 854px
+  }
 }
 
 #content {
