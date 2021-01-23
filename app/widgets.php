@@ -8,6 +8,7 @@
 require_once MUMU_APP . '/widgets/init.php';
 require_once MUMU_APP . '/widgets/class-recentrypostswidget.php';
 require_once MUMU_APP . '/widgets/class-relatepostswidget.php';
+require_once MUMU_APP . '/widgets/class-popularpostswidget.php';
 
 
 add_action(
@@ -15,5 +16,6 @@ add_action(
 	function() {
 		register_widget( RelatePostsWidget::class );
 		register_widget( RecentryPostsWidget::class );
+		register_widget( PopularPostsWidget::class );
 	}
 );

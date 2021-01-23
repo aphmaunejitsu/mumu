@@ -36,7 +36,7 @@ class RecentryPostsWidget extends WP_Widget {
 		$is_order_updated = $instance['is_order_updated'] ? 'modified' : 'date';
 		$is_thumbnail     = $instance['is_thumbnail'] ?? false;
 		$size             = $instance['size'] ?? 'thumbnail';
-		$title            = $instance['title'] ?? __( 'Recentry Posts' );
+		$title            = $instance['title'] ?? null;
 
 		echo wp_kses_post( $args['before_widget'] );
 		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
@@ -60,7 +60,7 @@ class RecentryPostsWidget extends WP_Widget {
 			}
 			?>
 			<div class="entry">
-				<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" class="flex flex-column">
+				<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>">
 					<?php if ( $is_thumbnail ) : ?>
 					<div class="entry-thumbnail">
 						<amp-img src="<?php echo esc_attr( $image[0] ); ?>"

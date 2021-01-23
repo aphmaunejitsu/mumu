@@ -1,11 +1,13 @@
-section.widget.widget_recent_entries, section.widget.widget_categories {
-  font-size: 1rem;
-  ul {
-    li {
-      a {
-        &:before {
-          content: '\25B8';
-          margin-right: 0.25rem;
+section.widget {
+  .widget_recent_entries, .widget_categories {
+    font-size: 1rem;
+    ul {
+      li {
+        a {
+          &:before {
+            content: '\25B8';
+            margin-right: 0.25rem;
+          }
         }
       }
     }
@@ -37,8 +39,29 @@ section.widget {
   div.mumu-widget-posts-list {
     div.entry {
       a {
+        display: flex;
+        flex-direction: column;
         .entry-thumbnail {
           width: 100%;
+          opacity: 0.9;
+          margin-bottom: .25rem;
+
+          .ranking {
+            display: block;
+            background-color: rgba($color-black, 0.2);
+            color: $color-white;
+            @media (prefers-color-scheme: dark) {
+              background-color: rgba($color-black-dark, 0.2);
+              color: $color-white-dark;
+            }
+
+            font-weight: 600;
+            text-align: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            top: 0.25rem;
+            left: 0.25rem;
+          }
         }
 
         .entry-content {
@@ -58,7 +81,7 @@ section.widget {
       flex-wrap: wrap;
 
       div.entry {
-        width: 33.3333%;
+        width: 33.33333%;
       }
     }
   }
@@ -70,6 +93,26 @@ section.widget {
 
       div.entry {
         width: 33.33333%;
+      }
+    }
+  }
+}
+
+#main {
+  section.widget {
+    div.mumu-widget-posts-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      div.entry {
+        width: 33.33333%;
+        a {
+          text-decoration: none;
+          color: $color-black;
+          @media (prefers-color-scheme: dark) {
+            color: $color-black-dark;
+          }
+        }
       }
     }
   }
