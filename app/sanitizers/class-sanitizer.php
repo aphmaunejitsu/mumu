@@ -8,7 +8,7 @@
 /**
  * Sanitizer Base Class
  */
-class SanitizerBase {
+class Sanitizer {
 	/**
 	 * XML object.
 	 *

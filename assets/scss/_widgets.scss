@@ -32,3 +32,45 @@ section.widget.widget_categories {
     }
   }
 }
+
+section.widget_mumu_recentry_posts {
+  ul.mumu_recentry_posts_list {
+    li.entry {
+      a {
+        .entry-thumbnail {
+          width: 100%;
+        }
+
+        .entry-content {
+          display: flex;
+          flex-direction: column;
+          .published-post {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include mq(sm) {
+    ul.mumu_recentry_posts_list {
+      display: flex;
+      flex-wrap: wrap;
+
+      li.entry {
+        width: 33.3333%;
+      }
+    }
+  }
+
+  @include mq(md) {
+    ul.mumu_recentry_posts_list {
+      display: flex;
+      flex-wrap: wrap;
+
+      li.entry {
+        width: 33.33333%;
+      }
+    }
+  }
+}

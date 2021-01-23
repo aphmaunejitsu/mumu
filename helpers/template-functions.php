@@ -92,8 +92,8 @@ if ( ! function_exists( 'mumu_pagination' ) ) {
 				'format'    => '',
 				'current'   => max( 1, get_query_var( 'paged' ) ),
 				'total'     => $wp_query->max_num_pages,
-				'prev_text' => '<',
-				'next_text' => '>',
+				'prev_text' => '&larr;',
+				'next_text' => '&rarr;',
 				'type'      => 'array',
 				'end_size'  => 1,
 				'mid_size'  => 1,
@@ -146,7 +146,7 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 				$image[2]
 			);
 		} else {
-			$output = '<h1 class="site-name">' . get_bloginfo( 'name' ) . '</h1>';
+			$output = '<h2 class="site-name m0">' . get_bloginfo( 'name' ) . '</h2>';
 		}
 
 		$logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
@@ -164,7 +164,7 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 					'height' => array(),
 					'layout' => array(),
 				),
-				'h1'      => array( 'class' => array() ),
+				'h2'      => array( 'class' => array() ),
 			)
 		);
 	}
@@ -253,26 +253,31 @@ if ( ! function_exists( 'mumu_get_kses_allow_svg' ) ) {
 if ( ! function_exists( 'mumu_published_post' ) ) {
 	/**
 	 * Output published date
+	 *
+	 * @param int $id post_id.
 	 */
-	function mumu_published_post() {
-		$published = get_the_date( 'U' );
-		$updated   = get_the_modified_date( 'U' );
+	function mumu_published_post( $id = null, $is_show_posted = true, $is_show_updated = true ) {
+		$published = get_the_date( 'U', $id );
+		$updated   = get_the_modified_date( 'U', $id );
 
-		if ( get_the_date( 'U' ) > get_the_modified_date( 'U' ) ) {
-			$published = get_the_date();
+		if ( $published > $updated ) {
+			$published = get_the_date( null, $id );
 			$updated   = $published;
 
-			$published_t = get_the_date( 'Y-m-d' );
+			$published_t = get_the_date( 'c', $id );
 			$updated_t   = $published_t;
 		} else {
-			$published = get_the_date();
-			$updated   = get_the_modified_date();
+			$published = get_the_date( null, $id );
+			$updated   = get_the_modified_date( null, $id );
 
-			$published_t = get_the_date( 'Y-m-d' );
-			$updated_t   = get_the_modified_date( 'Y-m-d' );
+			$published_t = get_the_date( 'c', $id );
+			$updated_t   = get_the_modified_date( 'c', $id );
 		}
 
-		$meta = <<<EOF
+		$meta = null;
+
+		if ( $is_show_posted ) {
+			$meta = <<<EOF
 <span class="published-post flex justify-end">
     <div class="published flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V10h16v11zm0-13H4V5h16v3z"/></svg>
@@ -280,6 +285,17 @@ if ( ! function_exists( 'mumu_published_post' ) ) {
             {$published}
         </time>
     </div>
+EOF;
+			if ( ! $is_show_updated ) {
+				$meta .= '</span>';
+			}
+		}
+		if ( $is_show_updated ) {
+			$updated_html = '';
+			if ( ! $is_show_posted ) {
+				$updated_html = '<span class="published-post flex justify-end">';
+			}
+			$updated_html .= <<<EOF
     <div class="updated flex items-center ml1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px"><path d="M.01 0h24v24h-24V0z" fill="none"/><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
         <time class="updated-post flex items-center" datetime="{$updated_t}">
@@ -288,6 +304,47 @@ if ( ! function_exists( 'mumu_published_post' ) ) {
     </div>
 </span>
 EOF;
+			$meta         .= $updated_html;
+		}
 		echo wp_kses( $meta, mumu_get_kses_allow_svg() );
+	}
+}
+
+if ( ! function_exists( 'get_image_sizes' ) ) {
+	/**
+	 * Get information about available image sizes
+	 *
+	 * @param string $size size.
+	 */
+	function get_image_sizes( $size = '' ) {
+		$wp_additional_image_sizes = wp_get_additional_image_sizes();
+
+		$sizes                        = array();
+		$get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+		// Create the full array with sizes and crop info.
+		foreach ( $get_intermediate_image_sizes as $_size ) {
+			if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+				$sizes[ $_size ]['width']  = get_option( $_size . '_size_w' );
+				$sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
+				$sizes[ $_size ]['crop']   = (bool) get_option( $_size . '_crop' );
+			} elseif ( isset( $wp_additional_image_sizes[ $_size ] ) ) {
+				$sizes[ $_size ] = array(
+					'width'  => $wp_additional_image_sizes[ $_size ]['width'],
+					'height' => $wp_additional_image_sizes[ $_size ]['height'],
+					'crop'   => $wp_additional_image_sizes[ $_size ]['crop'],
+				);
+			}
+		}
+
+		// Get only 1 size if found.
+		if ( $size ) {
+			if ( isset( $sizes[ $size ] ) ) {
+				return $sizes[ $size ];
+			} else {
+				return false;
+			}
+		}
+		return $sizes;
 	}
 }

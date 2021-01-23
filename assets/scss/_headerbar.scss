@@ -1,12 +1,19 @@
 header#mumu-top {
   @include box-shadow($box-shadow);
+  background-color: $color-white;
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-white-dark;
+  }
 
   amp-img {
     @include box-shadow(none);
   }
 
-  h1 {
-    color: black;
+  .site-name {
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
   }
 
   .submenu {
@@ -27,7 +34,10 @@ header#mumu-top {
       display: block;
       text-decoration: none;
       cursor: pointer;
-      color: black;
+      color: $color-black;
+      @media (prefers-color-scheme: dark) {
+        color: $color-black-dark;
+      }
     }
   }
 
@@ -69,13 +79,15 @@ header#mumu-top {
     display: block;
     text-decoration: none;
     cursor: pointer;
-    color: black;
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
   }
 }
 
 amp-lightbox {
-  background: rgba(0,0,0,.8);
-  color: #fff;
+  background: rgba($color-black,.8);
 
   .mumu-search-lightbox {
     justify-content: center;
@@ -90,7 +102,7 @@ amp-lightbox {
       line-height: 2rem;
       width: 18rem;
       padding: 1rem;
-      background-color: rgba(254,244,242, 0.95);
+      background-color: rgba($search-bg-color, 0.95);
       @include border-radius(8px, 8px);
     }
 
@@ -116,11 +128,24 @@ amp-lightbox {
 
 amp-sidebar#header-side-menu {
   width: 20rem;
-  background-color: rgba(254,244,242, 0.95);
+  background-color: rgba($header-sidemenu-bg-color, 0.95);
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba($header-sidemenu-bg-color-dark, 0.95);
+  }
+
+  .navbar-trigger {
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
+  }
 
   .label {
     font-size: 1rem;
-    color: #4f4f4f;
+    color: $amp-sidebar-label-color;
+    @media (prefers-color-scheme: dark) {
+      color: $amp-sidebar-label-color-dark;
+    }
     line-height: 1.42857;
     letter-spacing: .06rem;
     color: inherit;
@@ -133,4 +158,3 @@ amp-sidebar#header-side-menu {
     }
   }
 }
-

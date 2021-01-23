@@ -5,6 +5,21 @@ article.list-item {
 
   .container {
     padding: initial;
+
+    .read-more {
+      display: flex;
+      justify-content: flex-start;
+
+      @include mq(sm) {
+        justify-content: flex-end;
+      }
+      @include mq(md) {
+        justify-content: flex-end;
+      }
+      @include mq(lg) {
+        justify-content: flex-end;
+      }
+    }
   }
 
   @include mq(sm) {

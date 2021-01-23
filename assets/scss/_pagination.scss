@@ -6,7 +6,10 @@ nav.pagination {
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: black;
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
 
     @include mq(sm) {
       width:  2.125rem;
@@ -32,6 +35,9 @@ nav.pagination {
 
   .current {
     @extend .page-numbers;
-    background-color: lightpink;
+    background-color: $pagination-bg-color;
+    @media (prefers-color-scheme: dark) {
+      background-color: $pagination-bg-color-dark;
+    }
   }
 }

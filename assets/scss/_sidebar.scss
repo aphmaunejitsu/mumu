@@ -1,14 +1,20 @@
  #secondary {
   width: 100%;
   a {
-    color: black;
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
   }
 
 
   .widget {
     h3 {
       padding-bottom: 0.25rem;
-      border-bottom: 1px solid rgba(Silver, .5);
+      border-bottom: 1px solid $border-sidebar-widget-h3;
+      @media (prefers-color-scheme: dark) {
+        border-bottom: 1px solid $border-sidebar-widget-h3-dark;
+      }
     }
 
     a {

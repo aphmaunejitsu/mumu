@@ -2,6 +2,13 @@ footer#main-footer {
   border-top: solid 1px Silver;
   padding: .5rem;
 
+  .site-name {
+    color: $color-black;
+    @media (prefers-color-scheme: dark) {
+      color: $color-black-dark;
+    }
+  }
+
   amp-img {
     @include box-shadow(none);
   }
@@ -20,7 +27,10 @@ footer#main-footer {
         line-height: 1.5rem;
         a {
           text-decoration: none;
-          color: black;
+          color: $color-black;
+          @media (prefers-color-scheme: dark) {
+            color: $color-black-dark;
+          }
         }
       }
     }
