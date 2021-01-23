@@ -136,20 +136,24 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 	 * @param int $id image id.
 	 */
 	function mumu_custom_logo( $id = null ) {
+		$blog = get_bloginfo( 'name' );
 		if ( has_custom_logo( $id ) ) {
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$image          = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 			$output         = sprintf(
-				'<amp-img src="%1$s" width="%2$s" height="%3$s" layout="fixed"></amp_img>',
+				'<amp-img src="%1$s" width="32px" height="32px" layout="fixed" class="mr1"></amp-img><h2 class="site-name m0">%2$s</h2>',
 				$image[0],
-				$image[1],
-				$image[2]
+				$blog,
 			);
 		} else {
-			$output = '<h2 class="site-name m0">' . get_bloginfo( 'name' ) . '</h2>';
+			$output = sprintf( '<h2 class="site-name m0">%1$s</h2>', $blog );
 		}
 
-		$logo = '<a href="' . get_home_url() . '" class="home-link text-decoration-none inline-block mx-auto flex items-center">' . $output . '</a>';
+		$logo = sprintf(
+			'<a href="%1$s" class="home-link text-decoration-none inline-block mx-auto flex items-center">%2$s</a>',
+			get_home_url(),
+			$output
+		);
 
 		echo wp_kses(
 			$logo,
@@ -163,6 +167,7 @@ if ( ! function_exists( 'mumu_custom_logo' ) ) {
 					'width'  => array(),
 					'height' => array(),
 					'layout' => array(),
+					'class'  => array(),
 				),
 				'h2'      => array( 'class' => array() ),
 			)

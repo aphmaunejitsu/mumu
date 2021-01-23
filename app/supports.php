@@ -8,8 +8,8 @@
 add_theme_support(
 	'custom-logo',
 	array(
-		'height'      => 40,
-		'width'       => 240,
+		'height'      => 32,
+		'width'       => 32,
 		'flex-height' => true,
 	)
 );
