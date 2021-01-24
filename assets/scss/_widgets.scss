@@ -102,6 +102,9 @@ section.widget {
 
 #main {
   section.widget {
+    width: 100%;
+    padding: 0.25rem;
+
     div.mumu-widget-posts-list {
       display: flex;
       flex-direction: column;
