@@ -49,7 +49,6 @@ class PopularPostsWidget extends WP_Widget {
 				'order'          => 'DESC',
 			)
 		);
-		_log( $posts );
 		foreach ( $posts as $i => $post ) {
 			if ( $is_thumbnail ) {
 				$thum_id = get_post_thumbnail_id( $post->ID );

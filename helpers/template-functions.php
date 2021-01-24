@@ -50,6 +50,7 @@ if ( ! function_exists( 'mumu_get_the_category' ) ) {
 				break;
 			}
 		}
+		_log( $result );
 
 		return $result;
 	}
