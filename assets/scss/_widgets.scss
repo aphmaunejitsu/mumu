@@ -102,8 +102,7 @@ section.widget {
 
 #main {
   section.widget {
-    width: 320px;
-    padding: 0.25rem;
+    width: calc(100% - 2px);
 
     div.mumu-widget-posts-list {
       display: flex;
