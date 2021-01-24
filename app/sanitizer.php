@@ -40,7 +40,6 @@ if ( ! function_exists( 'mumu_amp_content' ) ) {
 			}
 
 			$html = $dom->saveHTML( $dom );
-			_log( $html );
 
 			$html = ( new CleanHtml( $html ) )();
 

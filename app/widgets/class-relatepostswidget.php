@@ -37,6 +37,13 @@ class RelatePostsWidget extends WP_Widget {
 		$size            = $instance['size'] ?? 'thumbnail';
 		$title           = $instance['title'] ?? null;
 		$category        = mumu_get_the_category();
+		$post_id         = get_the_ID();
+
+		if ( $category->category_parent && ( $count > ( $category->count - 1 ) ) ) {
+			$categories = join( ',', array( $category->cat_ID, $category->category_parent ) );
+		} else {
+			$categories = $category->cat_ID;
+		}
 
 		echo wp_kses_post( $args['before_widget'] );
 		echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
@@ -44,8 +51,9 @@ class RelatePostsWidget extends WP_Widget {
 		$posts = get_posts(
 			array(
 				'posts_per_page' => $count,
-				'category'       => $category->cat_ID,
+				'category'       => $categories,
 				'orderby'        => 'rand',
+				'exclude'        => $post_id,
 			)
 		);
 		foreach ( $posts as $post ) {
