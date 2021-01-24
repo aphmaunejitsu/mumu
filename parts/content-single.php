@@ -8,7 +8,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'mb2' ); ?>>
 	<header class="article-header mb1">
-		<?php the_title( '<h1 class="entry-title my1">', '</h1>' ); ?>
+		<?php the_title( '<h2 class="entry-title my1">', '</h2>' ); ?>
 		<?php mumu_feature_image(); ?>
 		<div class="meta mb1">
 		<?php mumu_published_post(); ?>

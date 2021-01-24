@@ -6,13 +6,13 @@
  */
 
 $mumu         = get_option( 'mumu' );
-$is_line      = $mumu['theme_my_sns']['is_line'] ?? false;
-$is_facebook  = $mumu['theme_my_sns']['is_facebook'] ?? false;
-$fb_id        = $mumu['theme_my_sns']['fbappid'] ?? false;
-$is_twitter   = $mumu['theme_my_sns']['is_twitter'] ?? false;
-$is_pinterest = $mumu['theme_my_sns']['is_pinterest'] ?? false;
-$is_tumblr    = $mumu['theme_my_sns']['is_tumblr'] ?? false;
-$is_os        = $mumu['theme_my_sns']['is_os'] ?? false;
+$is_line      = $mumu['theme_my_sns']['shared']['is_line'] ?? false;
+$is_facebook  = $mumu['theme_my_sns']['shared']['is_facebook'] ?? false;
+$fb_id        = $mumu['theme_my_sns']['shared']['fbappid'] ?? false;
+$is_twitter   = $mumu['theme_my_sns']['shared']['is_twitter'] ?? false;
+$is_pinterest = $mumu['theme_my_sns']['shared']['is_pinterest'] ?? false;
+$is_tumblr    = $mumu['theme_my_sns']['shared']['is_tumblr'] ?? false;
+$is_os        = $mumu['theme_my_sns']['shared']['is_os'] ?? false;
 if ( $is_line ) : ?>
 <amp-social-share type="line"></amp-social-share>
 	<?php

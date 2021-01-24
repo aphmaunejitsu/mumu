@@ -121,7 +121,6 @@ if ( ! function_exists( 'mumu_sns_shared' ) ) {
 			)
 		);
 
-		// line
 		$wp_customize->add_setting(
 			'mumu[theme_my_sns][shared][is_line]',
 			array(
