@@ -39,10 +39,10 @@ class RelatePostsWidget extends WP_Widget {
 		$category        = mumu_get_the_category();
 		$post_id         = get_the_ID();
 
-		if ( $category->category_parent ) {
+		if ( $category->category_parent && ( $count > ( $category->count - 1 ) ) ) {
 			$categories = join( ',', array( $category->cat_ID, $category->category_parent ) );
 		} else {
-			$categories = $categories;
+			$categories = $category->cat_ID;
 		}
 
 		echo wp_kses_post( $args['before_widget'] );
