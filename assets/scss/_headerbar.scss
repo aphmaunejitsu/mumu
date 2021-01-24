@@ -1,8 +1,9 @@
 header#mumu-top {
-  @include box-shadow($box-shadow);
   background-color: $color-white;
+  border-bottom: solid 1px $color-silver;
   @media (prefers-color-scheme: dark) {
     background-color: $color-white-dark;
+    border-bottom: solid 1px $color-silver-dark;
   }
 
   amp-img {
