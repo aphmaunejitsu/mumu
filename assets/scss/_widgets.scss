@@ -102,7 +102,7 @@ section.widget {
 
 #main {
   section.widget {
-    width: 100%;
+    width: 320px;
     padding: 0.25rem;
 
     div.mumu-widget-posts-list {
@@ -121,6 +121,7 @@ section.widget {
     }
 
     @include mq(sm) {
+      width: 100%;
       div.mumu-widget-posts-list {
         display: flex;
         flex-direction: row;
@@ -133,6 +134,7 @@ section.widget {
     }
 
     @include mq(md) {
+      width: 100%;
       div.mumu-widget-posts-list {
         display: flex;
         flex-direction: row;
@@ -145,6 +147,7 @@ section.widget {
     }
 
     @include mq(lg) {
+      width: 100%;
       div.mumu-widget-posts-list {
         display: flex;
         flex-direction: row;
