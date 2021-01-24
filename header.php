@@ -48,7 +48,7 @@
 			)
 		);
 		?>
-	<?php get_template_part( 'parts/common/sns' ); ?>
+	<?php get_template_part( 'parts/common/sns', 'page' ); ?>
 </amp-sidebar>
 <?php get_search_form(); ?>
 <div id="content" class="site-content flex mx-auto p1">
