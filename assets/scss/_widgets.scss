@@ -119,7 +119,7 @@ section.widget {
     }
 
     div.custom-html-widget:has(> amp-ad) {
-      width: calc(100% - 10px);
+      width: 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -135,6 +135,10 @@ section.widget {
           width: 33.33333%;
         }
       }
+
+      div.custom-html-widget:has(> amp-ad) {
+        width: 100%;
+      }
     }
 
     @include mq(md) {
@@ -147,6 +151,10 @@ section.widget {
           width: 33.33333%;
         }
       }
+
+      div.custom-html-widget:has(> amp-ad) {
+        width: 100%;
+      }
     }
 
     @include mq(lg) {
@@ -158,6 +166,10 @@ section.widget {
         div.entry {
           width: 33.33333%;
         }
+      }
+
+      div.custom-html-widget:has(> amp-ad) {
+        width: 100%;
       }
     }
   }
