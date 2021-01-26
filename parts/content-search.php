@@ -11,10 +11,10 @@
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title my1">', '</h1>' );
-			else :
-				the_title( '<h3 class="entry-title my1">', '</h3>' );
-			endif;
-			?>
+		else :
+			the_title( '<h3 class="entry-title my1">', '</h3>' );
+		endif;
+		?>
 		<a href="<?php the_permalink(); ?>" class="p0 text-decoration-none" ><?php mumu_feature_image(); ?></a>
 		<div class="meta">
 		<?php mumu_published_post(); ?>

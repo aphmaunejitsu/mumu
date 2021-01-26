@@ -9,7 +9,7 @@ get_header(); ?>
 
 <div id="primary" class="mx-auto">
 	<main id="main">
-	<header class="page-header flex">
+	<header class="page-header flex mb1">
 		<span class="page-title">
 			[<?php echo esc_html( get_search_query() ); ?>] の検索結果
 		</span>
