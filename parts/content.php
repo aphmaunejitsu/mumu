@@ -14,12 +14,16 @@
 		<header class="article-header mb1">
 			<?php
 			mumu_the_category();
+			?>
+			<a href="<?php the_permalink(); ?>" class="post-link">
+			<?php
 			if ( is_singular() ) :
-				the_title( '<h1 class="entry-title my1">', '</h1>' );
+					the_title( '<h1 class="entry-title my1">', '</h1>' );
 				else :
 					the_title( '<h3 class="entry-title my1">', '</h3>' );
 				endif;
 				?>
+			</a>
 			<div class="meta">
 			<?php mumu_published_post(); ?>
 			</div> <!-- .meta -->

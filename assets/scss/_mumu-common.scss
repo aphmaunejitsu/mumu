@@ -143,10 +143,10 @@ amp-image-lightbox, amp-lightbox {
 
 a {
   color: $a-link;
+  text-decoration: none;
   @media (prefers-color-scheme: dark) {
     color: $a-link-dark;
   }
-  padding: 0.25rem;
 
   &:visited {
     color: $a-visited;
@@ -167,6 +167,14 @@ a {
     }
   }
 }
+
+a.post-link {
+  color: $color-black;
+  @media (prefers-color-scheme: dark) {
+    color: $color-black-dark;
+  }
+}
+
 
 .category-tag {
   display: inline-block;
@@ -201,3 +209,5 @@ amp-social-share {
   @include border-radius(4px 4px);
   margin-right: .25rem;
 }
+
+
