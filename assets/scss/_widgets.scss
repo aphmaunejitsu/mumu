@@ -38,6 +38,7 @@ section.widget.widget_categories {
 section.widget {
   div.mumu-widget-posts-list {
     div.entry {
+      margin-bottom: 0.5rem;
       a {
         display: flex;
         flex-direction: column;
@@ -102,7 +103,6 @@ section.widget {
 
 #main {
   section.widget {
-
     div.mumu-widget-posts-list {
       display: flex;
       flex-direction: column;
@@ -134,6 +134,8 @@ section.widget {
 
         div.entry {
           width: 33.33333%;
+          padding-left: .25rem;
+          padding-right: .25rem;
         }
       }
 
@@ -150,6 +152,8 @@ section.widget {
 
         div.entry {
           width: 33.33333%;
+          padding-left: .25rem;
+          padding-right: .25rem;
         }
       }
 
@@ -166,6 +170,8 @@ section.widget {
 
         div.entry {
           width: 33.33333%;
+          padding-left: .25rem;
+          padding-right: .25rem;
         }
       }
 
