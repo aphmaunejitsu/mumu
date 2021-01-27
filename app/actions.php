@@ -154,7 +154,7 @@ if ( ! function_exists( 'mumu_add_meta_description' ) ) {
 		}
 
 		if ( ! $description ) {
-			$description = get_bloinfo( 'description' );
+			$description = get_bloginfo( 'description' );
 		}
 
 		_log( $description );
