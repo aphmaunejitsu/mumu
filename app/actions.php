@@ -128,6 +128,45 @@ if ( ! function_exists( 'mumu_add_canonical' ) ) {
 }
 add_action( 'wp_head', 'mumu_add_canonical' );
 
+
+if ( ! function_exists( 'mumu_add_meta_description' ) ) {
+	/**
+	 * Output meta description
+	 */
+	function mumu_add_meta_description() {
+		_log( 'Start: ' . __METHOD__ );
+
+		global $post;
+
+		_log( $post );
+
+		$description = null;
+		if ( is_single() || is_page() ) {
+			$description = mumu_excerpt( $post->post_content, 60, 0 );
+		} elseif ( is_category() ) {
+			$description = category_description();
+		} elseif ( is_archive() ) {
+			$description = get_the_archive_description();
+		} elseif ( is_tag() ) {
+			$description = tag_description();
+		} else {
+			$description = get_bloginfo( 'description' );
+		}
+
+		if ( ! $description ) {
+			$description = get_bloinfo( 'description' );
+		}
+
+		_log( $description );
+		$meta = sprintf( '<meta name="description" content="%1$s">', $description );
+
+		echo $meta;
+		_log( 'End: ' . __METHOD__ );
+	}
+}
+add_action( 'wp_head', 'mumu_add_meta_description' );
+
+
 if ( ! function_exists( 'mumu_add_author_action' ) ) {
 	/**
 	 * 投稿一覧にユーザ絞り込み表示
