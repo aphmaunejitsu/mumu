@@ -37,6 +37,13 @@ if ( ! function_exists( 'mumu_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
+				'name' => 'On Article',
+				'id'   => 'on-article',
+			) + $config
+		);
+
+		register_sidebar(
+			array(
 				'name' => 'Under Article',
 				'id'   => 'under-article',
 			) + $config

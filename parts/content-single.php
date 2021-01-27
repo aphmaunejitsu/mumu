@@ -19,6 +19,7 @@
 	</header>
 	<?php if ( is_active_sidebar( 'on-article' ) ) : ?>
 	<div class="widget">
+		<?php dynamic_sidebar( 'on-article' ); ?>
 	</div>
 	<?php endif; ?>
 	<div class="article-content content mb1">
