@@ -17,6 +17,10 @@
 		<?php get_template_part( 'parts/common/sns', 'shared' ); ?>
 		</div> <!-- .sns -->
 	</header>
+	<?php if ( is_active_sidebar( 'on-article' ) ) : ?>
+	<div class="widget">
+	</div>
+	<?php endif; ?>
 	<div class="article-content content mb1">
 		<?php the_content(); ?>
 	</div><!-- .article-content -->

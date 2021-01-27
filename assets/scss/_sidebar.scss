@@ -7,7 +7,6 @@
     }
   }
 
-
   .widget {
     h3 {
       padding-bottom: 0.25rem;
@@ -17,25 +16,15 @@
       }
     }
 
-    a {
-      text-decoration: none;
-    }
-
     ul {
       list-style: none;
       margin-left: -2rem;
       li {
         margin-bottom: 0.5rem;
+        line-height: 1.5rem;
       }
     }
 
-    ul > li ul {
-      margin-top: 0.25rem;
-      margin-left: -1rem;
-      li {
-          line-height: 1.5rem;
-      }
-    }
   }
 
   @include mq(sm) {
@@ -44,7 +33,6 @@
 
   @include mq(lg) {
     max-width: 340px;
-    margin-left: 0.25rem;
   }
 
 }
