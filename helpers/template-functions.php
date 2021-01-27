@@ -90,14 +90,18 @@ if ( ! function_exists( 'mumu_excerpt' ) ) {
 	 *
 	 * @param string $content the content.
 	 * @param int    $length length.
+	 * @param bool   $more show more ...
 	 */
-	function mumu_excerpt( $content, $length = 55 ) {
+	function mumu_excerpt( $content, $length = 55, $more = true ) {
+		_log( 'Start: ' . __METHOD__ );
 		$content = preg_replace( '/<!--more-->.+/is', '', $content );
 		$content = strip_shortcodes( $content );
 		$content = strip_tags( $content );
 		$content = str_replace( '&nbsp;', '', $content );
+		$content = str_replace( array( "\r\n", "\r", "\n" ), '', $content );
 		$content = mb_substr( $content, 0, $length );
-		return $content . ' ...';
+		$mo      = $more ? ' ...' : '';
+		return $content . $mo;
 	}
 }
 
