@@ -61,8 +61,7 @@ h6 {
 }
 
 #main {
-  width: 100vw;
-  min-width: 320px;
+  width: calc(100% - 4px);
 
   @include mq(sm) {
     width: 100%;
@@ -116,10 +115,12 @@ h6 {
 }
 
 #primary {
-    background-color: $color-white;
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-white-dark;
-    }
+  display: flex;
+  justify-content: center;
+  background-color: $color-white;
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-white-dark;
+  }
 }
 
 #secondary {
