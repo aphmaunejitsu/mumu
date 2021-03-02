@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-<div id="primary" class="mx-auto">
+<div id="primary">
 	<main id="main">
 	<?php
 	if ( have_posts() ) :

@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<div id="primary" class="mx-auto">
+<div id="primary">
 	<main id="main">
 	<header class="page-header flex mb1">
 		<span class="page-title">
