@@ -75,6 +75,20 @@ section.widget {
       }
     }
   }
+
+  @include mq(md) {
+    div.mumu-widget-posts-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      div.entry {
+        width: 33.33333%;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+    }
+  }
 }
 
 #main {
