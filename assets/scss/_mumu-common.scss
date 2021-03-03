@@ -98,8 +98,10 @@ h6 {
 
 #primary {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: $color-white;
+  margin-bottom: auto;
   @media (prefers-color-scheme: dark) {
     background-color: $color-white-dark;
   }
