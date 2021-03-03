@@ -35,12 +35,6 @@ footer#main-footer {
       }
     }
 
-    @include mq(sm) {
-      ul {
-        flex-direction: row;
-      }
-    }
-
     @include mq(md) {
       ul {
         flex-direction: row;
