@@ -3,6 +3,7 @@ article {
   justify-content: center;
   flex-direction: column;
   width: calc(100vw - 1rem);
+  min-width: 320px;
 
   @include mq(md) {
     width: 100%;
