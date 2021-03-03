@@ -116,24 +116,6 @@ section.widget {
       margin: auto;
     }
 
-    @include mq(sm) {
-      div.mumu-widget-posts-list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        div.entry {
-          width: 33.33333%;
-          padding-left: .25rem;
-          padding-right: .25rem;
-        }
-      }
-
-      div.custom-html-widget {
-        width: 100%;
-      }
-    }
-
     @include mq(md) {
       div.mumu-widget-posts-list {
         display: flex;
