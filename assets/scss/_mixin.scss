@@ -78,10 +78,10 @@ $golden: 1.681;
 $silver: 1.414;
 
 $breakpoints: (
-  'xs': 'screen and (max-witdh: 40rem)',
-  'sm': 'screen and (min-width: 40.06rem) and (max-width: 52rem)',
-  'md': 'screen and (min-width: 52.06rem) and (max-width: 64rem)',
-  'lg': 'screen and (min-width: 64.06rem)',
+  'xs': 'screen and (max-witdh: 375px)',
+  'sm': 'screen and (min-width: 376px) and (max-width: 428px)',
+  'md': 'screen and (min-width: 429px) and (max-width: 1199px)',
+  'lg': 'screen and (min-width: 1200px)',
 ) !default;
 
 @mixin mq($breakpoint: md) {

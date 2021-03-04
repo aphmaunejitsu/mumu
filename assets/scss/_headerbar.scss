@@ -50,7 +50,7 @@ header#mumu-top {
 
   .submenu {
     @include mq(md) {
-      display: inline-block;
+      display: none;
     }
   }
 

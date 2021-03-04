@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-<div id="primary" class="mx-auto">
+<div id="primary" >
 	<main id="main">
 	<header class="page-header flex">
 		<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>

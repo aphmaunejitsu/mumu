@@ -11,7 +11,7 @@ article.list-item {
       justify-content: flex-start;
 
       @include mq(sm) {
-        justify-content: flex-end;
+        justify-content: flex-start;
       }
       @include mq(md) {
         justify-content: flex-end;
@@ -22,20 +22,6 @@ article.list-item {
     }
   }
 
-  @include mq(sm) {
-    flex-direction: row;
-    .article-image {
-      width: 480px;
-      margin-right: 0.5rem;
-    }
-  }
-  @include mq(md) {
-    flex-direction: row;
-    .article-image {
-      width: 480px;
-      margin-right: 0.5rem;
-    }
-  }
   @include mq(lg) {
     flex-direction: row;
     .article-image {

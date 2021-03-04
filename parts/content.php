@@ -7,7 +7,7 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'mb2 list-item' ); ?>>
-	<?php if (has_post_thumbnail()) : ?>
+	<?php if ( has_post_thumbnail() ) : ?>
 	<div class="article-image">
 		<a href="<?php the_permalink(); ?>" class="p0 text-decoration-none" ><?php mumu_feature_image(); ?></a>
 	</div>

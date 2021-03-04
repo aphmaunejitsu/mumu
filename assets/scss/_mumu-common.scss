@@ -1,3 +1,8 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
 html {
     font-size:  16px;
 }
@@ -56,16 +61,18 @@ h6 {
 }
 
 #main {
-  width: 100%;
+  width: calc(100% - 4px);
+
   @include mq(lg) {
-    width: 854px
+    width: 854px;
+    max-width: 1280px;
   }
 }
 
 #content {
   width: 100%;
-  max-width: 1280px;
   min-width: 320px;
+  max-width: 1280px;
 
   background-color: $color-white;
   @media (prefers-color-scheme: dark) {
@@ -73,30 +80,31 @@ h6 {
   }
 
   flex-direction: column;
-  justify-content: center;
-  margin-top: 1px;
   flex: 1;
+  margin-top: 1px;
 
-  @include mq(md) {
-      justify-content: space-between;
-  }
 
   @include mq(lg) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        @include box-shadow(rgba($color-silver, .8) 1px 0 2px 0, rgba($color-silver, .8) -1px 0 2px 0 );
-        @media (prefers-color-scheme: dark) {
-          @include box-shadow(rgba($color-silver-dark, .8) 1px 0 2px 0, rgba($color-silver-dark, .8) -1px 0 2px 0);
-        }
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include box-shadow(rgba($color-silver, .8) 1px 0 2px 0, rgba($color-silver, .8) -1px 0 2px 0 );
+    @media (prefers-color-scheme: dark) {
+      @include box-shadow(rgba($color-silver-dark, .8) 1px 0 2px 0, rgba($color-silver-dark, .8) -1px 0 2px 0);
+    }
   }
 }
 
 #primary {
-    background-color: $color-white;
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-white-dark;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-white;
+  margin-bottom: auto;
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-white-dark;
+  }
 }
 
 #secondary {
