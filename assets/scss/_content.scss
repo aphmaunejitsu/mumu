@@ -99,9 +99,6 @@ article {
       }
 
 
-      @include mq(sm) {
-        flex-direction: row;
-      }
       @include mq(md) {
         flex-direction: row;
       }
