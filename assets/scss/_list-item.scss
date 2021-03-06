@@ -6,6 +6,10 @@ article.list-item {
   .container {
     padding: initial;
 
+    .article-content {
+      word-break: break-all;
+    }
+
     .read-more {
       display: flex;
       justify-content: flex-start;
