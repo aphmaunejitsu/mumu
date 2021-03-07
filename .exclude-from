@@ -1,0 +1,5 @@
+.exclude-from
+.git/
+.bundle/
+.sass-cache/
+assets/vendor/bundle/

@@ -7,7 +7,11 @@
 
 ?>
 <!doctype html>
-<html amp>
+<html
+<?php
+if ( ! is_page() ) :
+	?>
+	amp <?php endif; ?>>
 	<?php get_template_part( 'parts/head' ); ?>
 <body <?php body_class( 'flex flex-column' ); ?>>
 <?php wp_body_open(); ?>

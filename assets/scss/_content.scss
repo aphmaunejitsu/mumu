@@ -2,7 +2,7 @@ article {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: calc(100vw - 1rem);
+  width: calc(100vw - 2rem);
   min-width: 320px;
 
   @include mq(md) {
@@ -20,7 +20,9 @@ article {
   }
 
   p {
-    word-break: break-all;
+    a {
+      word-break: break-all;
+    }
   }
 
   footer {
